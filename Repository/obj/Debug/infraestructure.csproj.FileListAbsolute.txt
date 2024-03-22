@@ -25,3 +25,17 @@ C:\Users\PARDO-PC\Desktop\Sinertica\DtaVoxBureau\DtaVoxBureau\Repository\bin\Deb
 C:\Users\PARDO-PC\Desktop\Sinertica\DtaVoxBureau\DtaVoxBureau\Repository\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\PARDO-PC\Desktop\Sinertica\DtaVoxBureau\DtaVoxBureau\Repository\bin\Debug\Newtonsoft.Json.xml
 C:\Users\PARDO-PC\Desktop\Sinertica\DtaVoxBureau\DtaVoxBureau\Repository\obj\Debug\infraestructure.csproj.CopyComplete
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\Repository.dll.config
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\Repository.dll
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\Repository.pdb
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\EntityFramework.dll
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\Newtonsoft.Json.dll
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\EntityFramework.xml
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\bin\Debug\Newtonsoft.Json.xml
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\obj\Debug\infraestructure.csproj.AssemblyReference.cache
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\obj\Debug\infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\obj\Debug\infraestructure.csproj.CopyComplete
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\obj\Debug\Repository.dll
+C:\Users\PARDO-PC\Documents\IISExpress\DataVoxDef\Repository\obj\Debug\Repository.pdb
