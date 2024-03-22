@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b47e8d2cdf5842d3bafba6d9a8fafb19" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.tb_Canal" Width="1.5" PointX="1.5" PointY="56.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Cliente" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Credito" Width="1.5" PointX="9" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_CreditoObligacion" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_CreditoPeriodoPago" Width="1.5" PointX="6.75" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_CreditoSaldo" Width="1.5" PointX="8.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_CreditoTipoCalificacion" Width="1.5" PointX="2.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_CreditoTipoCredito" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_CreditoTipoEstado" Width="1.5" PointX="16.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_CreditoTipoGarantia" Width="1.5" PointX="6.75" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_CreditoTipoObligacion" Width="1.5" PointX="5.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Direccion" Width="1.5" PointX="14" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Ejecutivo" Width="1.5" PointX="1.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Empresa" Width="1.5" PointX="1.5" PointY="38.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_EmpresaEstado" Width="1.5" PointX="1.5" PointY="44.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_EmpresaTipoCapital" Width="1.5" PointX="10.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_EmpresaTipoClaseAccion" Width="1.5" PointX="16.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_EmpresaTipoParte" Width="1.5" PointX="16.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_EmpresaTipoRepresentacion" Width="1.5" PointX="16.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_EstadoFuente" Width="1.5" PointX="4.5" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Facturacion" Width="1.5" PointX="14" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Fuente" Width="1.5" PointX="6.75" PointY="67" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Gentilicio" Width="1.5" PointX="16.75" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_HuellaBusqueda" Width="1.5" PointX="0.75" PointY="59.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_HuellaConsulta" Width="1.5" PointX="3" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_HuellaMotivoConsulta" Width="1.5" PointX="0.75" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_HuellaTipoConsulta" Width="1.5" PointX="1.5" PointY="66.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Inmueble" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleAnotaciones" Width="1.5" PointX="18.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleDerecho" Width="1.5" PointX="6" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleGarantia" Width="1.5" PointX="6" PointY="52" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleGravamen" Width="1.5" PointX="0.75" PointY="75.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleLinderos" Width="1.5" PointX="3" PointY="75.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleMatrices" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleParteGravamen" Width="1.5" PointX="3" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleTipoDerecho" Width="1.5" PointX="3.75" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleTipoOperacion" Width="1.5" PointX="3.75" PointY="38" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleTipoPoderes" Width="1.5" PointX="0.75" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_InmuebleTipoProporcion" Width="1.5" PointX="3.75" PointY="41" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Juicio" Width="1.5" PointX="18.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Moneda" Width="1.5" PointX="0.75" PointY="34.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Mueble" Width="1.5" PointX="6.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleDerecho" Width="1.5" PointX="9" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleGenCodigos" Width="1.5" PointX="18.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleGenTablas" Width="1.5" PointX="18.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleGravamen" Width="1.5" PointX="11.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleInfracciones" Width="1.5" PointX="9" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleLevantamientos" Width="1.5" PointX="9" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleParteGravamen" Width="1.5" PointX="14" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleTipoBien" Width="1.5" PointX="4.5" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleTipoClaseBien" Width="1.5" PointX="11.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleTipoCodigoBien" Width="1.5" PointX="13.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleVehiculo" Width="1.5" PointX="9" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Nicaraguenses" Width="1.5" PointX="6" PointY="44" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Persona" Width="1.5" PointX="0.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaEstadoCivilHistorico" Width="1.5" PointX="15.75" PointY="21.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaEstadoId" Width="1.5" PointX="3.75" PointY="43.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaPEPs" Width="1.5" PointX="3" PointY="49.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaTipoId" Width="1.5" PointX="3.75" PointY="46.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaTipoNacionalidad" Width="1.5" PointX="20.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaTipoPersona" Width="1.5" PointX="3.75" PointY="52.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaTipoVinculo" Width="1.5" PointX="3.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaVinculo" Width="1.5" PointX="6" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Producto" Width="1.5" PointX="1.5" PointY="69.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_SalarioActualizacion" Width="1.5" PointX="16.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_SalarioHistorico" Width="1.5" PointX="19" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Sector" Width="1.5" PointX="20.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Sexo" Width="1.5" PointX="3.75" PointY="55.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Telefono" Width="1.5" PointX="6.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_TipoDireccion" Width="1.5" PointX="11.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_TipoEstadoCivil" Width="1.5" PointX="3.75" PointY="58" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_TipoPersonaJuridica" Width="1.5" PointX="1.5" PointY="52.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_TipoReport" Width="1.5" PointX="11.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_TipoTelefono" Width="1.5" PointX="4.5" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Usuario" Width="1.5" PointX="1.5" PointY="71.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DerechosMueblesExp" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_DivisionTerritorial" Width="1.5" PointX="20.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleAeronave" Width="1.5" PointX="9" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleBuque" Width="1.5" PointX="9" PointY="41.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleGarantia" Width="1.5" PointX="14" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_MuebleMotores" Width="1.5" PointX="9" PointY="46.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_PersonaIdentificacion" Width="1.5" PointX="6" PointY="31.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_Salario" Width="1.5" PointX="3" PointY="60.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_SalarioPatrono" Width="1.5" PointX="20.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.tb_TelefonoPersona" Width="1.5" PointX="9" PointY="22" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_tb_HuellaBusqueda_Canal" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Cliente_tb_Ejecutivo" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Cliente_tb_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Credito_tb_Clientes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaBusqueda_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaConsulta_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Credito_tb_CreditoPeriodoPago" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Credito_tb_CreditoTipoCredito" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Credito_tb_CreditoTipoGarantia" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Credito_tb_Fuente" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_CreditoTipoGarantia_tb_CreditoTipoGarantia" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Direccion_tb_TipoDireccion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Empresa_tb_EmpresaEstado" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Empresa_tb_TipoEmpresa" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Fuente_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK__tb_Factur__IdTip__2E70E1FD" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaBusqueda_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaBusqueda_TipoConsulta" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaBusqueda_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaConsulta_Busqueda" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaConsulta_MotivoConsulta" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaConsulta_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_HuellaConsulta_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Inmueble_Derecho" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleGarantia_tb_Inmueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleLinderos_tb_Inmueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleMatrices_tb_Inmueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleDerecho_tb_Moneda" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleDerecho_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleGarantia_tb_InmuebleGravamen" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleGravamen_Operacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleGravamen_tb_Moneda" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleMatrices_PersonaCondominio" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleMatrices_Poderes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleMatrices_tb_Moneda" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleMatrices_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_InmuebleParteGravamen_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Mueble_tb_MuebleTipoBien1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleAeronave_tb_Mueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleBuque_tb_Mueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleDerecho_tb_Mueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleInfracciones_tb_Mueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleLevantamientos_tb_Mueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleMotores_tb_Mueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleVehiculo_tb_Mueble" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleDerecho_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleGarantia_tb_MuebleGravamen" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_MuebleParteGravamen_tb_MuebleGravamen" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Nicaraguenses_EstadoCivil" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Nicaraguenses_Sexo" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Nicaraguenses_tb_Nicaraguenses" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Nicaraguenses_TipoIdentificacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Nicaraguenses_TipoPersona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_PersonaIdentificacion_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_PersonaPEPs_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_PersonaVinculo_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_PersonaVinculo_tb_PersonaVinculo" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Salario_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_TelefonoPersona_tb_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_PersonaIdentificacion_tb_PersonaEstadoId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_PersonaIdentificacion_tb_PersonaTipoId" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_PersonaVinculo_tb_PersonaTipoVinculo" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_SalarioHistorico_tb_SalarioActualizacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_Telefono_tb_TelefonoTipo" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_tb_TelefonoPersona_tb_Telefono" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Table_1_Table_TipoEmpresa" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

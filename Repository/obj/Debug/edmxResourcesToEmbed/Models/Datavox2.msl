@@ -1,0 +1,1225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="EntitiesDatavox2">
+    <EntitySetMapping Name="tb_Canal">
+      <EntityTypeMapping TypeName="Model.tb_Canal">
+        <MappingFragment StoreEntitySet="tb_Canal">
+          <ScalarProperty Name="idCanal" ColumnName="idCanal" />
+          <ScalarProperty Name="NombreCanal" ColumnName="NombreCanal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Cliente">
+      <EntityTypeMapping TypeName="Model.tb_Cliente">
+        <MappingFragment StoreEntitySet="tb_Cliente">
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="IdSector" ColumnName="IdSector" />
+          <ScalarProperty Name="ClienteEstado" ColumnName="ClienteEstado" />
+          <ScalarProperty Name="FechaAfiliacion" ColumnName="FechaAfiliacion" />
+          <ScalarProperty Name="FechaDesafiliacion" ColumnName="FechaDesafiliacion" />
+          <ScalarProperty Name="NivelReciprocidad" ColumnName="NivelReciprocidad" />
+          <ScalarProperty Name="IdEjecutivo" ColumnName="IdEjecutivo" />
+          <ScalarProperty Name="EsInterno" ColumnName="EsInterno" />
+          <ScalarProperty Name="EsCallCenter" ColumnName="EsCallCenter" />
+          <ScalarProperty Name="EsSupervisado" ColumnName="EsSupervisado" />
+          <ScalarProperty Name="CanceladoAutomaticoHC" ColumnName="CanceladoAutomaticoHC" />
+          <ScalarProperty Name="CanceladoAutomaticoTC" ColumnName="CanceladoAutomaticoTC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Credito">
+      <EntityTypeMapping TypeName="Model.tb_Credito">
+        <MappingFragment StoreEntitySet="tb_Credito">
+          <ScalarProperty Name="ConsecutivoCredito" ColumnName="ConsecutivoCredito" />
+          <ScalarProperty Name="NumeroCredito" ColumnName="NumeroCredito" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="FechaOtorgamiento" ColumnName="FechaOtorgamiento" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="FechaUltPago" ColumnName="FechaUltPago" />
+          <ScalarProperty Name="IdTipoOperacion" ColumnName="IdTipoOperacion" />
+          <ScalarProperty Name="IdTipoCredito" ColumnName="IdTipoCredito" />
+          <ScalarProperty Name="IdTipoGarantia" ColumnName="IdTipoGarantia" />
+          <ScalarProperty Name="IdPeriodoPago" ColumnName="IdPeriodoPago" />
+          <ScalarProperty Name="FechaIncobrable" ColumnName="FechaIncobrable" />
+          <ScalarProperty Name="EsOculto" ColumnName="EsOculto" />
+          <ScalarProperty Name="FechaOculto" ColumnName="FechaOculto" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+          <ScalarProperty Name="IdFuenteOculto" ColumnName="IdFuenteOculto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CreditoObligacion">
+      <EntityTypeMapping TypeName="Model.tb_CreditoObligacion">
+        <MappingFragment StoreEntitySet="tb_CreditoObligacion">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="CreditoConsecutivo" ColumnName="CreditoConsecutivo" />
+          <ScalarProperty Name="IdObligacion" ColumnName="IdObligacion" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CreditoPeriodoPago">
+      <EntityTypeMapping TypeName="Model.tb_CreditoPeriodoPago">
+        <MappingFragment StoreEntitySet="tb_CreditoPeriodoPago">
+          <ScalarProperty Name="IdPeriodoPago" ColumnName="IdPeriodoPago" />
+          <ScalarProperty Name="DescripcionPeriodoPago" ColumnName="DescripcionPeriodoPago" />
+          <ScalarProperty Name="SiglaPeriodoPago" ColumnName="SiglaPeriodoPago" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CreditoSaldo">
+      <EntityTypeMapping TypeName="Model.tb_CreditoSaldo">
+        <MappingFragment StoreEntitySet="tb_CreditoSaldo">
+          <ScalarProperty Name="ConsecutivoCredito" ColumnName="ConsecutivoCredito" />
+          <ScalarProperty Name="MontoOtorgado" ColumnName="MontoOtorgado" />
+          <ScalarProperty Name="SaldoActual" ColumnName="SaldoActual" />
+          <ScalarProperty Name="SaldoMora" ColumnName="SaldoMora" />
+          <ScalarProperty Name="IndiceMora" ColumnName="IndiceMora" />
+          <ScalarProperty Name="ValorCuota" ColumnName="ValorCuota" />
+          <ScalarProperty Name="CantidadCuotasVencidas" ColumnName="CantidadCuotasVencidas" />
+          <ScalarProperty Name="DiasMora" ColumnName="DiasMora" />
+          <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+          <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
+          <ScalarProperty Name="IdCreditoEstado" ColumnName="IdCreditoEstado" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CreditoTipoCalificacion">
+      <EntityTypeMapping TypeName="Model.tb_CreditoTipoCalificacion">
+        <MappingFragment StoreEntitySet="tb_CreditoTipoCalificacion">
+          <ScalarProperty Name="IdCalificacion" ColumnName="IdCalificacion" />
+          <ScalarProperty Name="Calificacion" ColumnName="Calificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CreditoTipoCredito">
+      <EntityTypeMapping TypeName="Model.tb_CreditoTipoCredito">
+        <MappingFragment StoreEntitySet="tb_CreditoTipoCredito">
+          <ScalarProperty Name="IdCreditoTipo" ColumnName="IdCreditoTipo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CreditoTipoEstado">
+      <EntityTypeMapping TypeName="Model.tb_CreditoTipoEstado">
+        <MappingFragment StoreEntitySet="tb_CreditoTipoEstado">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+          <ScalarProperty Name="SiglaEstado" ColumnName="SiglaEstado" />
+          <ScalarProperty Name="SiglaSubEstado" ColumnName="SiglaSubEstado" />
+          <ScalarProperty Name="PrioridadEstado" ColumnName="PrioridadEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CreditoTipoGarantia">
+      <EntityTypeMapping TypeName="Model.tb_CreditoTipoGarantia">
+        <MappingFragment StoreEntitySet="tb_CreditoTipoGarantia">
+          <ScalarProperty Name="IdGarantia" ColumnName="IdGarantia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_CreditoTipoObligacion">
+      <EntityTypeMapping TypeName="Model.tb_CreditoTipoObligacion">
+        <MappingFragment StoreEntitySet="tb_CreditoTipoObligacion">
+          <ScalarProperty Name="idTipoObligacion" ColumnName="idTipoObligacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Direccion">
+      <EntityTypeMapping TypeName="Model.tb_Direccion">
+        <MappingFragment StoreEntitySet="tb_Direccion">
+          <ScalarProperty Name="IdDireccion" ColumnName="IdDireccion" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="DistritoAdministrativo" ColumnName="DistritoAdministrativo" />
+          <ScalarProperty Name="DistritoElectoral" ColumnName="DistritoElectoral" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="TipoDireccion" ColumnName="TipoDireccion" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Ejecutivo">
+      <EntityTypeMapping TypeName="Model.tb_Ejecutivo">
+        <MappingFragment StoreEntitySet="tb_Ejecutivo">
+          <ScalarProperty Name="IdEjecutivo" ColumnName="IdEjecutivo" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="NombreEjecutivo" ColumnName="NombreEjecutivo" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CorreoNotificacion" ColumnName="CorreoNotificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Empresa">
+      <EntityTypeMapping TypeName="Model.tb_Empresa">
+        <MappingFragment StoreEntitySet="tb_Empresa">
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="NombreComercial" ColumnName="NombreComercial" />
+          <ScalarProperty Name="TipoPersonaJuridica" ColumnName="TipoPersonaJuridica" />
+          <ScalarProperty Name="IndOtorgaPoderes" ColumnName="IndOtorgaPoderes" />
+          <ScalarProperty Name="TomoInscripcion" ColumnName="TomoInscripcion" />
+          <ScalarProperty Name="FolioInscripcion" ColumnName="FolioInscripcion" />
+          <ScalarProperty Name="AsientoInscripcion" ColumnName="AsientoInscripcion" />
+          <ScalarProperty Name="FechaInscripcion" ColumnName="FechaInscripcion" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="IdEstadoActual" ColumnName="IdEstadoActual" />
+          <ScalarProperty Name="FinesEmpresa" ColumnName="FinesEmpresa" />
+          <ScalarProperty Name="Prorrogas" ColumnName="Prorrogas" />
+          <ScalarProperty Name="DescProrrogas" ColumnName="DescProrrogas" />
+          <ScalarProperty Name="Representacion" ColumnName="Representacion" />
+          <ScalarProperty Name="SectorEmpresa" ColumnName="SectorEmpresa" />
+          <ScalarProperty Name="SectorEconomicoEmpresa" ColumnName="SectorEconomicoEmpresa" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaUltimaAct" ColumnName="FechaUltimaAct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_EmpresaEstado">
+      <EntityTypeMapping TypeName="Model.tb_EmpresaEstado">
+        <MappingFragment StoreEntitySet="tb_EmpresaEstado">
+          <ScalarProperty Name="IdEstadoEmpresa" ColumnName="IdEstadoEmpresa" />
+          <ScalarProperty Name="EstadoEmpresa" ColumnName="EstadoEmpresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_EmpresaTipoCapital">
+      <EntityTypeMapping TypeName="Model.tb_EmpresaTipoCapital">
+        <MappingFragment StoreEntitySet="tb_EmpresaTipoCapital">
+          <ScalarProperty Name="IdTipoCapital" ColumnName="IdTipoCapital" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_EmpresaTipoClaseAccion">
+      <EntityTypeMapping TypeName="Model.tb_EmpresaTipoClaseAccion">
+        <MappingFragment StoreEntitySet="tb_EmpresaTipoClaseAccion">
+          <ScalarProperty Name="IdTipoClaseAccion" ColumnName="IdTipoClaseAccion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_EmpresaTipoParte">
+      <EntityTypeMapping TypeName="Model.tb_EmpresaTipoParte">
+        <MappingFragment StoreEntitySet="tb_EmpresaTipoParte">
+          <ScalarProperty Name="IdTipoParte" ColumnName="IdTipoParte" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_EmpresaTipoRepresentacion">
+      <EntityTypeMapping TypeName="Model.tb_EmpresaTipoRepresentacion">
+        <MappingFragment StoreEntitySet="tb_EmpresaTipoRepresentacion">
+          <ScalarProperty Name="IdTipoRepresentacion" ColumnName="IdTipoRepresentacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_EstadoFuente">
+      <EntityTypeMapping TypeName="Model.tb_EstadoFuente">
+        <MappingFragment StoreEntitySet="tb_EstadoFuente">
+          <ScalarProperty Name="IdEstadoFuente" ColumnName="IdEstadoFuente" />
+          <ScalarProperty Name="EstadoFuente" ColumnName="EstadoFuente" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Facturacion">
+      <EntityTypeMapping TypeName="Model.tb_Facturacion">
+        <MappingFragment StoreEntitySet="tb_Facturacion">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdReporte" ColumnName="IdReporte" />
+          <ScalarProperty Name="IdTipoReporte" ColumnName="IdTipoReporte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Fuente">
+      <EntityTypeMapping TypeName="Model.tb_Fuente">
+        <MappingFragment StoreEntitySet="tb_Fuente">
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Equipo" ColumnName="Equipo" />
+          <ScalarProperty Name="Origen" ColumnName="Origen" />
+          <ScalarProperty Name="IdPaquete" ColumnName="IdPaquete" />
+          <ScalarProperty Name="IdEstadoFuente" ColumnName="IdEstadoFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Gentilicio">
+      <EntityTypeMapping TypeName="Model.tb_Gentilicio">
+        <MappingFragment StoreEntitySet="tb_Gentilicio">
+          <ScalarProperty Name="IdGentilicio" ColumnName="IdGentilicio" />
+          <ScalarProperty Name="LugarNacimiento" ColumnName="LugarNacimiento" />
+          <ScalarProperty Name="Gentilicio" ColumnName="Gentilicio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_HuellaBusqueda">
+      <EntityTypeMapping TypeName="Model.tb_HuellaBusqueda">
+        <MappingFragment StoreEntitySet="tb_HuellaBusqueda">
+          <ScalarProperty Name="IdHuellaBusqueda" ColumnName="IdHuellaBusqueda" />
+          <ScalarProperty Name="FechaBusqueda" ColumnName="FechaBusqueda" />
+          <ScalarProperty Name="IdCanal" ColumnName="IdCanal" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="IpServidor" ColumnName="IpServidor" />
+          <ScalarProperty Name="PersonaHit" ColumnName="PersonaHit" />
+          <ScalarProperty Name="IdTipoConsulta" ColumnName="IdTipoConsulta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_HuellaConsulta">
+      <EntityTypeMapping TypeName="Model.tb_HuellaConsulta">
+        <MappingFragment StoreEntitySet="tb_HuellaConsulta">
+          <ScalarProperty Name="IdHuellaConsulta" ColumnName="IdHuellaConsulta" />
+          <ScalarProperty Name="IdHuellaBusqueda" ColumnName="IdHuellaBusqueda" />
+          <ScalarProperty Name="FechaConsulta" ColumnName="FechaConsulta" />
+          <ScalarProperty Name="IdMotivoConsulta" ColumnName="IdMotivoConsulta" />
+          <ScalarProperty Name="Cobrable" ColumnName="Cobrable" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Respuesta" ColumnName="Respuesta" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="TiempoRespuesta" ColumnName="TiempoRespuesta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_HuellaMotivoConsulta">
+      <EntityTypeMapping TypeName="Model.tb_HuellaMotivoConsulta">
+        <MappingFragment StoreEntitySet="tb_HuellaMotivoConsulta">
+          <ScalarProperty Name="IdMotivo" ColumnName="IdMotivo" />
+          <ScalarProperty Name="MotivoConsulta" ColumnName="MotivoConsulta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_HuellaTipoConsulta">
+      <EntityTypeMapping TypeName="Model.tb_HuellaTipoConsulta">
+        <MappingFragment StoreEntitySet="tb_HuellaTipoConsulta">
+          <ScalarProperty Name="IdTipoConsulta" ColumnName="IdTipoConsulta" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Inmueble">
+      <EntityTypeMapping TypeName="Model.tb_Inmueble">
+        <MappingFragment StoreEntitySet="tb_Inmueble">
+          <ScalarProperty Name="IdInmueble" ColumnName="IdInmueble" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Duplicado" ColumnName="Duplicado" />
+          <ScalarProperty Name="Horizontal" ColumnName="Horizontal" />
+          <ScalarProperty Name="NumeroFinca" ColumnName="NumeroFinca" />
+          <ScalarProperty Name="Canton" ColumnName="Canton" />
+          <ScalarProperty Name="Distrito" ColumnName="Distrito" />
+          <ScalarProperty Name="Medida" ColumnName="Medida" />
+          <ScalarProperty Name="UltimoDerecho" ColumnName="UltimoDerecho" />
+          <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
+          <ScalarProperty Name="Presentacion" ColumnName="Presentacion" />
+          <ScalarProperty Name="FechaUltActualizacion" ColumnName="FechaUltActualizacion" />
+          <ScalarProperty Name="Naturaleza" ColumnName="Naturaleza" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Plano" ColumnName="Plano" />
+          <ScalarProperty Name="NumeroCatastral" ColumnName="NumeroCatastral" />
+          <ScalarProperty Name="Avaluo" ColumnName="Avaluo" />
+          <ScalarProperty Name="ValorPorcentual" ColumnName="ValorPorcentual" />
+          <ScalarProperty Name="IndicadorSegregacion" ColumnName="IndicadorSegregacion" />
+          <ScalarProperty Name="IdProvincia2" ColumnName="IdProvincia2" />
+          <ScalarProperty Name="IdCanton2" ColumnName="IdCanton2" />
+          <ScalarProperty Name="IdDistrito2" ColumnName="IdDistrito2" />
+          <ScalarProperty Name="ValorMedida" ColumnName="ValorMedida" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaUltimaAct" ColumnName="FechaUltimaAct" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleAnotaciones">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleAnotaciones">
+        <MappingFragment StoreEntitySet="tb_InmuebleAnotaciones">
+          <ScalarProperty Name="idAnotacion" ColumnName="idAnotacion" />
+          <ScalarProperty Name="CitaAnotacion" ColumnName="CitaAnotacion" />
+          <ScalarProperty Name="TipoOperacion" ColumnName="TipoOperacion" />
+          <ScalarProperty Name="FechaAnotacion" ColumnName="FechaAnotacion" />
+          <ScalarProperty Name="IdInmueble" ColumnName="IdInmueble" />
+          <ScalarProperty Name="Derecho" ColumnName="Derecho" />
+          <ScalarProperty Name="IdGravamen" ColumnName="IdGravamen" />
+          <ScalarProperty Name="SecuenciaAfectada" ColumnName="SecuenciaAfectada" />
+          <ScalarProperty Name="CreditoAsociado" ColumnName="CreditoAsociado" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleDerecho">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleDerecho">
+        <MappingFragment StoreEntitySet="tb_InmuebleDerecho">
+          <ScalarProperty Name="IdDerecho" ColumnName="IdDerecho" />
+          <ScalarProperty Name="IdInmueble" ColumnName="IdInmueble" />
+          <ScalarProperty Name="NumeroFinca" ColumnName="NumeroFinca" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Derecho" ColumnName="Derecho" />
+          <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+          <ScalarProperty Name="MontoContrato" ColumnName="MontoContrato" />
+          <ScalarProperty Name="IdTipoDerecho" ColumnName="IdTipoDerecho" />
+          <ScalarProperty Name="idTipoOperacion" ColumnName="idTipoOperacion" />
+          <ScalarProperty Name="FechaUltimaAct" ColumnName="FechaUltimaAct" />
+          <ScalarProperty Name="IdProporcion" ColumnName="IdProporcion" />
+          <ScalarProperty Name="ValorProporcion1" ColumnName="ValorProporcion1" />
+          <ScalarProperty Name="ValorProporcion2" ColumnName="ValorProporcion2" />
+          <ScalarProperty Name="CausaAdquisitiva" ColumnName="CausaAdquisitiva" />
+          <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleGarantia">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleGarantia">
+        <MappingFragment StoreEntitySet="tb_InmuebleGarantia">
+          <ScalarProperty Name="IdGarantia" ColumnName="IdGarantia" />
+          <ScalarProperty Name="idGravamen" ColumnName="idGravamen" />
+          <ScalarProperty Name="IdInmueble" ColumnName="IdInmueble" />
+          <ScalarProperty Name="TomoGravamen" ColumnName="TomoGravamen" />
+          <ScalarProperty Name="AsientoGravamen" ColumnName="AsientoGravamen" />
+          <ScalarProperty Name="ConsecGravamen" ColumnName="ConsecGravamen" />
+          <ScalarProperty Name="SecuenciaGravamen" ColumnName="SecuenciaGravamen" />
+          <ScalarProperty Name="SubSecuenciaGravamen" ColumnName="SubSecuenciaGravamen" />
+          <ScalarProperty Name="ClaseResponsabilidad" ColumnName="ClaseResponsabilidad" />
+          <ScalarProperty Name="TomoCredito" ColumnName="TomoCredito" />
+          <ScalarProperty Name="AsientoCredito" ColumnName="AsientoCredito" />
+          <ScalarProperty Name="ConsecutivoCredito" ColumnName="ConsecutivoCredito" />
+          <ScalarProperty Name="SecuenciaCredito" ColumnName="SecuenciaCredito" />
+          <ScalarProperty Name="SubsecuenciaCredito" ColumnName="SubsecuenciaCredito" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
+          <ScalarProperty Name="Base_Remate" ColumnName="Base_Remate" />
+          <ScalarProperty Name="Referencia_Finca" ColumnName="Referencia_Finca" />
+          <ScalarProperty Name="Referencia_Gravamen" ColumnName="Referencia_Gravamen" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleGravamen">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleGravamen">
+        <MappingFragment StoreEntitySet="tb_InmuebleGravamen">
+          <ScalarProperty Name="idGravamen" ColumnName="idGravamen" />
+          <ScalarProperty Name="idGarantía" ColumnName="idGarantía" />
+          <ScalarProperty Name="TomoGravamen" ColumnName="TomoGravamen" />
+          <ScalarProperty Name="AsientoGravamen" ColumnName="AsientoGravamen" />
+          <ScalarProperty Name="ConsecGravamen" ColumnName="ConsecGravamen" />
+          <ScalarProperty Name="SecuenciaGravamen" ColumnName="SecuenciaGravamen" />
+          <ScalarProperty Name="SubsecuenciaGravamen" ColumnName="SubsecuenciaGravamen" />
+          <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="FechaInicia" ColumnName="FechaInicia" />
+          <ScalarProperty Name="FechaVence" ColumnName="FechaVence" />
+          <ScalarProperty Name="FechaInterrupcion" ColumnName="FechaInterrupcion" />
+          <ScalarProperty Name="CantRenuncias" ColumnName="CantRenuncias" />
+          <ScalarProperty Name="CantCedulasHipotecarias" ColumnName="CantCedulasHipotecarias" />
+          <ScalarProperty Name="UltSecuenciaParte" ColumnName="UltSecuenciaParte" />
+          <ScalarProperty Name="IdTipoOperacion" ColumnName="IdTipoOperacion" />
+          <ScalarProperty Name="Presentacion" ColumnName="Presentacion" />
+          <ScalarProperty Name="FechaUltActualizacion" ColumnName="FechaUltActualizacion" />
+          <ScalarProperty Name="CitasAntecedentes" ColumnName="CitasAntecedentes" />
+          <ScalarProperty Name="AreaArrendada" ColumnName="AreaArrendada" />
+          <ScalarProperty Name="FormaPago" ColumnName="FormaPago" />
+          <ScalarProperty Name="Interes" ColumnName="Interes" />
+          <ScalarProperty Name="AreaResto" ColumnName="AreaResto" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleLinderos">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleLinderos">
+        <MappingFragment StoreEntitySet="tb_InmuebleLinderos">
+          <ScalarProperty Name="IdLindero" ColumnName="IdLindero" />
+          <ScalarProperty Name="IdInmueble" ColumnName="IdInmueble" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Duplicado" ColumnName="Duplicado" />
+          <ScalarProperty Name="Horizontal" ColumnName="Horizontal" />
+          <ScalarProperty Name="PuntoCardinal" ColumnName="PuntoCardinal" />
+          <ScalarProperty Name="Lindero" ColumnName="Lindero" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleMatrices">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleMatrices">
+        <MappingFragment StoreEntitySet="tb_InmuebleMatrices">
+          <ScalarProperty Name="IdMatriz" ColumnName="IdMatriz" />
+          <ScalarProperty Name="IdInmueble" ColumnName="IdInmueble" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="Duplicado" ColumnName="Duplicado" />
+          <ScalarProperty Name="Horizontal" ColumnName="Horizontal" />
+          <ScalarProperty Name="InicioAdm" ColumnName="InicioAdm" />
+          <ScalarProperty Name="VenceAdm" ColumnName="VenceAdm" />
+          <ScalarProperty Name="IdPoder" ColumnName="IdPoder" />
+          <ScalarProperty Name="Filiales" ColumnName="Filiales" />
+          <ScalarProperty Name="AreaComun" ColumnName="AreaComun" />
+          <ScalarProperty Name="ValorTotal" ColumnName="ValorTotal" />
+          <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+          <ScalarProperty Name="NombreCondominio" ColumnName="NombreCondominio" />
+          <ScalarProperty Name="IdPersonaJuridica" ColumnName="IdPersonaJuridica" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleParteGravamen">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleParteGravamen">
+        <MappingFragment StoreEntitySet="tb_InmuebleParteGravamen">
+          <ScalarProperty Name="IdParte" ColumnName="IdParte" />
+          <ScalarProperty Name="IdGravamen" ColumnName="IdGravamen" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="TomoGravamen" ColumnName="TomoGravamen" />
+          <ScalarProperty Name="AsientoGravamen" ColumnName="AsientoGravamen" />
+          <ScalarProperty Name="ConsecGravamen" ColumnName="ConsecGravamen" />
+          <ScalarProperty Name="SecuenciaGravamen" ColumnName="SecuenciaGravamen" />
+          <ScalarProperty Name="SubSecuenciaGravamen" ColumnName="SubSecuenciaGravamen" />
+          <ScalarProperty Name="SecuenciaParte" ColumnName="SecuenciaParte" />
+          <ScalarProperty Name="CausaAdquisitiva" ColumnName="CausaAdquisitiva" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleTipoDerecho">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleTipoDerecho">
+        <MappingFragment StoreEntitySet="tb_InmuebleTipoDerecho">
+          <ScalarProperty Name="IdTipoDerecho" ColumnName="IdTipoDerecho" />
+          <ScalarProperty Name="DescripcionTipoDerecho" ColumnName="DescripcionTipoDerecho" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleTipoOperacion">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleTipoOperacion">
+        <MappingFragment StoreEntitySet="tb_InmuebleTipoOperacion">
+          <ScalarProperty Name="IdOperacion" ColumnName="IdOperacion" />
+          <ScalarProperty Name="Causa" ColumnName="Causa" />
+          <ScalarProperty Name="ClaseCausa" ColumnName="ClaseCausa" />
+          <ScalarProperty Name="RutinaCalculo" ColumnName="RutinaCalculo" />
+          <ScalarProperty Name="DescripcionOperacion" ColumnName="DescripcionOperacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleTipoPoderes">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleTipoPoderes">
+        <MappingFragment StoreEntitySet="tb_InmuebleTipoPoderes">
+          <ScalarProperty Name="IdPoder" ColumnName="IdPoder" />
+          <ScalarProperty Name="DescripcionPoder" ColumnName="DescripcionPoder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_InmuebleTipoProporcion">
+      <EntityTypeMapping TypeName="Model.tb_InmuebleTipoProporcion">
+        <MappingFragment StoreEntitySet="tb_InmuebleTipoProporcion">
+          <ScalarProperty Name="IdProporcion" ColumnName="IdProporcion" />
+          <ScalarProperty Name="DescripcionProporcion" ColumnName="DescripcionProporcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Juicio">
+      <EntityTypeMapping TypeName="Model.tb_Juicio">
+        <MappingFragment StoreEntitySet="tb_Juicio">
+          <ScalarProperty Name="IdJuicio" ColumnName="IdJuicio" />
+          <ScalarProperty Name="Expediente" ColumnName="Expediente" />
+          <ScalarProperty Name="Descrpcion" ColumnName="Descrpcion" />
+          <ScalarProperty Name="Caso" ColumnName="Caso" />
+          <ScalarProperty Name="Asunto" ColumnName="Asunto" />
+          <ScalarProperty Name="Cuantia" ColumnName="Cuantia" />
+          <ScalarProperty Name="MonedaCuantia" ColumnName="MonedaCuantia" />
+          <ScalarProperty Name="Oficina" ColumnName="Oficina" />
+          <ScalarProperty Name="Circuito" ColumnName="Circuito" />
+          <ScalarProperty Name="Sentencia" ColumnName="Sentencia" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaEstado" ColumnName="FechaEstado" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaUltimaAct" ColumnName="FechaUltimaAct" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+          <ScalarProperty Name="TempId" ColumnName="TempId" />
+          <ScalarProperty Name="EsOculto" ColumnName="EsOculto" />
+          <ScalarProperty Name="FechaOculto" ColumnName="FechaOculto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Moneda">
+      <EntityTypeMapping TypeName="Model.tb_Moneda">
+        <MappingFragment StoreEntitySet="tb_Moneda">
+          <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="TipoCambio" ColumnName="TipoCambio" />
+          <ScalarProperty Name="FechaTipoCambio" ColumnName="FechaTipoCambio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Mueble">
+      <EntityTypeMapping TypeName="Model.tb_Mueble">
+        <MappingFragment StoreEntitySet="tb_Mueble">
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="Placa" ColumnName="Placa" />
+          <ScalarProperty Name="TipoBien" ColumnName="TipoBien" />
+          <ScalarProperty Name="ClaseBien" ColumnName="ClaseBien" />
+          <ScalarProperty Name="CodigoBien" ColumnName="CodigoBien" />
+          <ScalarProperty Name="NumeroBien" ColumnName="NumeroBien" />
+          <ScalarProperty Name="NumeroRegistral" ColumnName="NumeroRegistral" />
+          <ScalarProperty Name="TomoInscripcion" ColumnName="TomoInscripcion" />
+          <ScalarProperty Name="AsientoInscripcion" ColumnName="AsientoInscripcion" />
+          <ScalarProperty Name="SecuenciaInscripcion" ColumnName="SecuenciaInscripcion" />
+          <ScalarProperty Name="FechaInscripcion" ColumnName="FechaInscripcion" />
+          <ScalarProperty Name="NumIdAnterior" ColumnName="NumIdAnterior" />
+          <ScalarProperty Name="CitasAnteriores" ColumnName="CitasAnteriores" />
+          <ScalarProperty Name="ValorHaciendaInscripcion" ColumnName="ValorHaciendaInscripcion" />
+          <ScalarProperty Name="ValorHaciendaOficial" ColumnName="ValorHaciendaOficial" />
+          <ScalarProperty Name="ValorContrato" ColumnName="ValorContrato" />
+          <ScalarProperty Name="EstadoActual" ColumnName="EstadoActual" />
+          <ScalarProperty Name="EstadoActualTributario" ColumnName="EstadoActualTributario" />
+          <ScalarProperty Name="Uso" ColumnName="Uso" />
+          <ScalarProperty Name="TomoUltMovimiento" ColumnName="TomoUltMovimiento" />
+          <ScalarProperty Name="AsientoUltMovimiento" ColumnName="AsientoUltMovimiento" />
+          <ScalarProperty Name="SecuenciaUltMovimiento" ColumnName="SecuenciaUltMovimiento" />
+          <ScalarProperty Name="FechaUltMovimiento" ColumnName="FechaUltMovimiento" />
+          <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleDerecho">
+      <EntityTypeMapping TypeName="Model.tb_MuebleDerecho">
+        <MappingFragment StoreEntitySet="tb_MuebleDerecho">
+          <ScalarProperty Name="IdDerechoMueble" ColumnName="IdDerechoMueble" />
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="NumeroDerecho" ColumnName="NumeroDerecho" />
+          <ScalarProperty Name="TomoAdquisicion" ColumnName="TomoAdquisicion" />
+          <ScalarProperty Name="AsientoAdquisicion" ColumnName="AsientoAdquisicion" />
+          <ScalarProperty Name="SecuentaAdquisicion" ColumnName="SecuentaAdquisicion" />
+          <ScalarProperty Name="TipoDerecho" ColumnName="TipoDerecho" />
+          <ScalarProperty Name="CausaAdquisitiva" ColumnName="CausaAdquisitiva" />
+          <ScalarProperty Name="Proporcion1" ColumnName="Proporcion1" />
+          <ScalarProperty Name="Proporcion2" ColumnName="Proporcion2" />
+          <ScalarProperty Name="FechaAdquisicion" ColumnName="FechaAdquisicion" />
+          <ScalarProperty Name="FechaConstitucion" ColumnName="FechaConstitucion" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleGenCodigos">
+      <EntityTypeMapping TypeName="Model.tb_MuebleGenCodigos">
+        <MappingFragment StoreEntitySet="tb_MuebleGenCodigos">
+          <ScalarProperty Name="idTabla" ColumnName="idTabla" />
+          <ScalarProperty Name="IdCodigo" ColumnName="IdCodigo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IndicadorHabilitado" ColumnName="IndicadorHabilitado" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleGenTablas">
+      <EntityTypeMapping TypeName="Model.tb_MuebleGenTablas">
+        <MappingFragment StoreEntitySet="tb_MuebleGenTablas">
+          <ScalarProperty Name="IdTabla" ColumnName="IdTabla" />
+          <ScalarProperty Name="Indicador" ColumnName="Indicador" />
+          <ScalarProperty Name="NombreTabla" ColumnName="NombreTabla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleGravamen">
+      <EntityTypeMapping TypeName="Model.tb_MuebleGravamen">
+        <MappingFragment StoreEntitySet="tb_MuebleGravamen">
+          <ScalarProperty Name="idGravamen" ColumnName="idGravamen" />
+          <ScalarProperty Name="TomoGravamen" ColumnName="TomoGravamen" />
+          <ScalarProperty Name="AsientoGravamen" ColumnName="AsientoGravamen" />
+          <ScalarProperty Name="SecuenciaGravamen" ColumnName="SecuenciaGravamen" />
+          <ScalarProperty Name="TipoGravamen" ColumnName="TipoGravamen" />
+          <ScalarProperty Name="FechaInscripcion" ColumnName="FechaInscripcion" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="IdMoneda" ColumnName="IdMoneda" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Plazo" ColumnName="Plazo" />
+          <ScalarProperty Name="EstadoGravamen" ColumnName="EstadoGravamen" />
+          <ScalarProperty Name="NumeroSumaria" ColumnName="NumeroSumaria" />
+          <ScalarProperty Name="AutoridadJudicial" ColumnName="AutoridadJudicial" />
+          <ScalarProperty Name="Intereses" ColumnName="Intereses" />
+          <ScalarProperty Name="TomoUltMovimiento" ColumnName="TomoUltMovimiento" />
+          <ScalarProperty Name="AsientoUltMovimiento" ColumnName="AsientoUltMovimiento" />
+          <ScalarProperty Name="SecuenciaUltMovimiento" ColumnName="SecuenciaUltMovimiento" />
+          <ScalarProperty Name="FechaUltMovimiento" ColumnName="FechaUltMovimiento" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleInfracciones">
+      <EntityTypeMapping TypeName="Model.tb_MuebleInfracciones">
+        <MappingFragment StoreEntitySet="tb_MuebleInfracciones">
+          <ScalarProperty Name="IdInfraccion" ColumnName="IdInfraccion" />
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="IdAutoridadJudicial" ColumnName="IdAutoridadJudicial" />
+          <ScalarProperty Name="NumeroSumaria" ColumnName="NumeroSumaria" />
+          <ScalarProperty Name="NumeroBoleta" ColumnName="NumeroBoleta" />
+          <ScalarProperty Name="FechaBoleta" ColumnName="FechaBoleta" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="HoraRegistro" ColumnName="HoraRegistro" />
+          <ScalarProperty Name="IdTipoGravamen" ColumnName="IdTipoGravamen" />
+          <ScalarProperty Name="AutoridadJudicial" ColumnName="AutoridadJudicial" />
+          <ScalarProperty Name="Obsrvaciones" ColumnName="Obsrvaciones" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleLevantamientos">
+      <EntityTypeMapping TypeName="Model.tb_MuebleLevantamientos">
+        <MappingFragment StoreEntitySet="tb_MuebleLevantamientos">
+          <ScalarProperty Name="IdLevantamiento" ColumnName="IdLevantamiento" />
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="IdAutoridadJudicial" ColumnName="IdAutoridadJudicial" />
+          <ScalarProperty Name="NumeroSumaria" ColumnName="NumeroSumaria" />
+          <ScalarProperty Name="NumeroBoleta" ColumnName="NumeroBoleta" />
+          <ScalarProperty Name="FechaBoleta" ColumnName="FechaBoleta" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="FechaLevantamiento" ColumnName="FechaLevantamiento" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleParteGravamen">
+      <EntityTypeMapping TypeName="Model.tb_MuebleParteGravamen">
+        <MappingFragment StoreEntitySet="tb_MuebleParteGravamen">
+          <ScalarProperty Name="IdParteGravamen" ColumnName="IdParteGravamen" />
+          <ScalarProperty Name="idGravamen" ColumnName="idGravamen" />
+          <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+          <ScalarProperty Name="NumeroParte" ColumnName="NumeroParte" />
+          <ScalarProperty Name="TipoParte" ColumnName="TipoParte" />
+          <ScalarProperty Name="TomoConstitucion" ColumnName="TomoConstitucion" />
+          <ScalarProperty Name="AsientoConstitucion" ColumnName="AsientoConstitucion" />
+          <ScalarProperty Name="SecuenciaConstitucion" ColumnName="SecuenciaConstitucion" />
+          <ScalarProperty Name="FechaConstitucion" ColumnName="FechaConstitucion" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleTipoBien">
+      <EntityTypeMapping TypeName="Model.tb_MuebleTipoBien">
+        <MappingFragment StoreEntitySet="tb_MuebleTipoBien">
+          <ScalarProperty Name="IdTipoBien" ColumnName="IdTipoBien" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Inhabilitado" ColumnName="Inhabilitado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleTipoClaseBien">
+      <EntityTypeMapping TypeName="Model.tb_MuebleTipoClaseBien">
+        <MappingFragment StoreEntitySet="tb_MuebleTipoClaseBien">
+          <ScalarProperty Name="TipoBien" ColumnName="TipoBien" />
+          <ScalarProperty Name="ClaseBien" ColumnName="ClaseBien" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IndicadorHabilitado" ColumnName="IndicadorHabilitado" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleTipoCodigoBien">
+      <EntityTypeMapping TypeName="Model.tb_MuebleTipoCodigoBien">
+        <MappingFragment StoreEntitySet="tb_MuebleTipoCodigoBien">
+          <ScalarProperty Name="TipoBien" ColumnName="TipoBien" />
+          <ScalarProperty Name="ClaseBien" ColumnName="ClaseBien" />
+          <ScalarProperty Name="CodigoBien" ColumnName="CodigoBien" />
+          <ScalarProperty Name="UltConsecutivo" ColumnName="UltConsecutivo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="IndicadorHabilitado" ColumnName="IndicadorHabilitado" />
+          <ScalarProperty Name="DescripcionCorta" ColumnName="DescripcionCorta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleVehiculo">
+      <EntityTypeMapping TypeName="Model.tb_MuebleVehiculo">
+        <MappingFragment StoreEntitySet="tb_MuebleVehiculo">
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="AnoFabricacion" ColumnName="AnoFabricacion" />
+          <ScalarProperty Name="Estilo" ColumnName="Estilo" />
+          <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+          <ScalarProperty Name="TipoBien" ColumnName="TipoBien" />
+          <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />
+          <ScalarProperty Name="NumeroSerie" ColumnName="NumeroSerie" />
+          <ScalarProperty Name="Carroceria" ColumnName="Carroceria" />
+          <ScalarProperty Name="CapacidadPasajeros" ColumnName="CapacidadPasajeros" />
+          <ScalarProperty Name="PesoNeto" ColumnName="PesoNeto" />
+          <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+          <ScalarProperty Name="PesoRemolque" ColumnName="PesoRemolque" />
+          <ScalarProperty Name="PesoVacio" ColumnName="PesoVacio" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Traccion" ColumnName="Traccion" />
+          <ScalarProperty Name="NumeroVIN" ColumnName="NumeroVIN" />
+          <ScalarProperty Name="TipoCabina" ColumnName="TipoCabina" />
+          <ScalarProperty Name="TipoTecho" ColumnName="TipoTecho" />
+          <ScalarProperty Name="NumeroEjes" ColumnName="NumeroEjes" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="IndicadorRefaccion" ColumnName="IndicadorRefaccion" />
+          <ScalarProperty Name="IndicadorConvertido" ColumnName="IndicadorConvertido" />
+          <ScalarProperty Name="ClaseTributaria" ColumnName="ClaseTributaria" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Nicaraguenses">
+      <EntityTypeMapping TypeName="Model.tb_Nicaraguenses">
+        <MappingFragment StoreEntitySet="tb_Nicaraguenses">
+          <ScalarProperty Name="IdNicaraguense" ColumnName="IdNicaraguense" />
+          <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="IdSexo" ColumnName="IdSexo" />
+          <ScalarProperty Name="IdEstadoCivil" ColumnName="IdEstadoCivil" />
+          <ScalarProperty Name="EstadoVida" ColumnName="EstadoVida" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="IdTipoIdentificacion" ColumnName="IdTipoIdentificacion" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="EstadoIdentificacion" ColumnName="EstadoIdentificacion" />
+          <ScalarProperty Name="Departamento" ColumnName="Departamento" />
+          <ScalarProperty Name="Municipio" ColumnName="Municipio" />
+          <ScalarProperty Name="IngresoRegistrado" ColumnName="IngresoRegistrado" />
+          <ScalarProperty Name="RangoIngreso" ColumnName="RangoIngreso" />
+          <ScalarProperty Name="FechaActIngreso" ColumnName="FechaActIngreso" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Fuente" ColumnName="Fuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Persona">
+      <EntityTypeMapping TypeName="Model.tb_Persona">
+        <MappingFragment StoreEntitySet="tb_Persona">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="IdTipoPersona" ColumnName="IdTipoPersona" />
+          <ScalarProperty Name="PrimerNombre" ColumnName="PrimerNombre" />
+          <ScalarProperty Name="SegundoNombre" ColumnName="SegundoNombre" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="FechaConstitucionJuridico" ColumnName="FechaConstitucionJuridico" />
+          <ScalarProperty Name="IdSexo" ColumnName="IdSexo" />
+          <ScalarProperty Name="IdEstadoCivil" ColumnName="IdEstadoCivil" />
+          <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+          <ScalarProperty Name="EstadoVida" ColumnName="EstadoVida" />
+          <ScalarProperty Name="IdOcupacion" ColumnName="IdOcupacion" />
+          <ScalarProperty Name="LugarNacimiento" ColumnName="LugarNacimiento" />
+          <ScalarProperty Name="FechaDefuncion" ColumnName="FechaDefuncion" />
+          <ScalarProperty Name="IdGentilicio" ColumnName="IdGentilicio" />
+          <ScalarProperty Name="ConocidoComo" ColumnName="ConocidoComo" />
+          <ScalarProperty Name="TipoAsegurado" ColumnName="TipoAsegurado" />
+          <ScalarProperty Name="EsOculto" ColumnName="EsOculto" />
+          <ScalarProperty Name="FechaOculto" ColumnName="FechaOculto" />
+          <ScalarProperty Name="idFuente" ColumnName="idFuente" />
+          <ScalarProperty Name="IdTemp" ColumnName="IdTemp" />
+          <ScalarProperty Name="FechaNaturalizacion" ColumnName="FechaNaturalizacion" />
+          <ScalarProperty Name="NombrePadre" ColumnName="NombrePadre" />
+          <ScalarProperty Name="NombreMadre" ColumnName="NombreMadre" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaUltimaAct" ColumnName="FechaUltimaAct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaEstadoCivilHistorico">
+      <EntityTypeMapping TypeName="Model.tb_PersonaEstadoCivilHistorico">
+        <MappingFragment StoreEntitySet="tb_PersonaEstadoCivilHistorico">
+          <ScalarProperty Name="IdEvento" ColumnName="IdEvento" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="IdPersonaConyuge" ColumnName="IdPersonaConyuge" />
+          <ScalarProperty Name="CitaMatrimonio" ColumnName="CitaMatrimonio" />
+          <ScalarProperty Name="TipoSuceso" ColumnName="TipoSuceso" />
+          <ScalarProperty Name="TipoMatrimonio" ColumnName="TipoMatrimonio" />
+          <ScalarProperty Name="FechaSuceso" ColumnName="FechaSuceso" />
+          <ScalarProperty Name="FechaEntrada" ColumnName="FechaEntrada" />
+          <ScalarProperty Name="ProvinciaSuceso" ColumnName="ProvinciaSuceso" />
+          <ScalarProperty Name="CantonSuceso" ColumnName="CantonSuceso" />
+          <ScalarProperty Name="DistritoSuceso" ColumnName="DistritoSuceso" />
+          <ScalarProperty Name="LugarSuceso" ColumnName="LugarSuceso" />
+          <ScalarProperty Name="EsOculto" ColumnName="EsOculto" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="FechaOculto" ColumnName="FechaOculto" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaEstadoId">
+      <EntityTypeMapping TypeName="Model.tb_PersonaEstadoId">
+        <MappingFragment StoreEntitySet="tb_PersonaEstadoId">
+          <ScalarProperty Name="idEstadoIndetificacion" ColumnName="idEstadoIndetificacion" />
+          <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaPEPs">
+      <EntityTypeMapping TypeName="Model.tb_PersonaPEPs">
+        <MappingFragment StoreEntitySet="tb_PersonaPEPs">
+          <ScalarProperty Name="IdPersonaPeps" ColumnName="IdPersonaPeps" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+          <ScalarProperty Name="Institucion" ColumnName="Institucion" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaTipoId">
+      <EntityTypeMapping TypeName="Model.tb_PersonaTipoId">
+        <MappingFragment StoreEntitySet="tb_PersonaTipoId">
+          <ScalarProperty Name="IdIdentificacionTipo" ColumnName="IdIdentificacionTipo" />
+          <ScalarProperty Name="NombreIdentificacion" ColumnName="NombreIdentificacion" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+          <ScalarProperty Name="IdFisico" ColumnName="IdFisico" />
+          <ScalarProperty Name="IdJuridico" ColumnName="IdJuridico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaTipoNacionalidad">
+      <EntityTypeMapping TypeName="Model.tb_PersonaTipoNacionalidad">
+        <MappingFragment StoreEntitySet="tb_PersonaTipoNacionalidad">
+          <ScalarProperty Name="IdNacionalidad" ColumnName="IdNacionalidad" />
+          <ScalarProperty Name="Nacionalidad" ColumnName="Nacionalidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaTipoPersona">
+      <EntityTypeMapping TypeName="Model.tb_PersonaTipoPersona">
+        <MappingFragment StoreEntitySet="tb_PersonaTipoPersona">
+          <ScalarProperty Name="idTipoPersona" ColumnName="idTipoPersona" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaTipoVinculo">
+      <EntityTypeMapping TypeName="Model.tb_PersonaTipoVinculo">
+        <MappingFragment StoreEntitySet="tb_PersonaTipoVinculo">
+          <ScalarProperty Name="IdTipoVinculo" ColumnName="IdTipoVinculo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaVinculo">
+      <EntityTypeMapping TypeName="Model.tb_PersonaVinculo">
+        <MappingFragment StoreEntitySet="tb_PersonaVinculo">
+          <ScalarProperty Name="IdVinculo" ColumnName="IdVinculo" />
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="IdVinculoTipo" ColumnName="IdVinculoTipo" />
+          <ScalarProperty Name="IdVinculoPersona" ColumnName="IdVinculoPersona" />
+          <ScalarProperty Name="FechaVinculo" ColumnName="FechaVinculo" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Producto">
+      <EntityTypeMapping TypeName="Model.tb_Producto">
+        <MappingFragment StoreEntitySet="tb_Producto">
+          <ScalarProperty Name="idProducto" ColumnName="idProducto" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_SalarioActualizacion">
+      <EntityTypeMapping TypeName="Model.tb_SalarioActualizacion">
+        <MappingFragment StoreEntitySet="tb_SalarioActualizacion">
+          <ScalarProperty Name="idActualizacion" ColumnName="idActualizacion" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="EsUltimaActualizacion" ColumnName="EsUltimaActualizacion" />
+          <ScalarProperty Name="idfuente" ColumnName="idfuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_SalarioHistorico">
+      <EntityTypeMapping TypeName="Model.tb_SalarioHistorico">
+        <MappingFragment StoreEntitySet="tb_SalarioHistorico">
+          <ScalarProperty Name="idSalario" ColumnName="idSalario" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="Salario" ColumnName="Salario" />
+          <ScalarProperty Name="IdPersonaEmpleado" ColumnName="IdPersonaEmpleado" />
+          <ScalarProperty Name="IdPersonaPatrono" ColumnName="IdPersonaPatrono" />
+          <ScalarProperty Name="IdActualizacion" ColumnName="IdActualizacion" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+          <ScalarProperty Name="EsOculto" ColumnName="EsOculto" />
+          <ScalarProperty Name="FechaOculto" ColumnName="FechaOculto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Sector">
+      <EntityTypeMapping TypeName="Model.tb_Sector">
+        <MappingFragment StoreEntitySet="tb_Sector">
+          <ScalarProperty Name="IdSector" ColumnName="IdSector" />
+          <ScalarProperty Name="Sector" ColumnName="Sector" />
+          <ScalarProperty Name="SubSector" ColumnName="SubSector" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Sexo">
+      <EntityTypeMapping TypeName="Model.tb_Sexo">
+        <MappingFragment StoreEntitySet="tb_Sexo">
+          <ScalarProperty Name="IdSexo" ColumnName="IdSexo" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Telefono">
+      <EntityTypeMapping TypeName="Model.tb_Telefono">
+        <MappingFragment StoreEntitySet="tb_Telefono">
+          <ScalarProperty Name="idTelefono" ColumnName="idTelefono" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="TipoTelefono" ColumnName="TipoTelefono" />
+          <ScalarProperty Name="idFuente" ColumnName="idFuente" />
+          <ScalarProperty Name="TempId" ColumnName="TempId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TipoDireccion">
+      <EntityTypeMapping TypeName="Model.tb_TipoDireccion">
+        <MappingFragment StoreEntitySet="tb_TipoDireccion">
+          <ScalarProperty Name="IdTipoDireccion" ColumnName="IdTipoDireccion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TipoEstadoCivil">
+      <EntityTypeMapping TypeName="Model.tb_TipoEstadoCivil">
+        <MappingFragment StoreEntitySet="tb_TipoEstadoCivil">
+          <ScalarProperty Name="IdEstadoCivil" ColumnName="IdEstadoCivil" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Sigla" ColumnName="Sigla" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TipoPersonaJuridica">
+      <EntityTypeMapping TypeName="Model.tb_TipoPersonaJuridica">
+        <MappingFragment StoreEntitySet="tb_TipoPersonaJuridica">
+          <ScalarProperty Name="IdTipoPersonaJuridica" ColumnName="IdTipoPersonaJuridica" />
+          <ScalarProperty Name="CodigoTipoCedula" ColumnName="CodigoTipoCedula" />
+          <ScalarProperty Name="DescripcionTipo" ColumnName="DescripcionTipo" />
+          <ScalarProperty Name="CodigoClaseCedula" ColumnName="CodigoClaseCedula" />
+          <ScalarProperty Name="DescripcionClase" ColumnName="DescripcionClase" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TipoReport">
+      <EntityTypeMapping TypeName="Model.tb_TipoReport">
+        <MappingFragment StoreEntitySet="tb_TipoReport">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TipoTelefono">
+      <EntityTypeMapping TypeName="Model.tb_TipoTelefono">
+        <MappingFragment StoreEntitySet="tb_TipoTelefono">
+          <ScalarProperty Name="IdTipoTelefono" ColumnName="IdTipoTelefono" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Usuario">
+      <EntityTypeMapping TypeName="Model.tb_Usuario">
+        <MappingFragment StoreEntitySet="tb_Usuario">
+          <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+          <ScalarProperty Name="AreaEmpresa" ColumnName="AreaEmpresa" />
+          <ScalarProperty Name="Cargo" ColumnName="Cargo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DerechosMueblesExp">
+      <EntityTypeMapping TypeName="Model.DerechosMueblesExp">
+        <MappingFragment StoreEntitySet="DerechosMueblesExp">
+          <ScalarProperty Name="idderechomueble" ColumnName="idderechomueble" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_DivisionTerritorial">
+      <EntityTypeMapping TypeName="Model.tb_DivisionTerritorial">
+        <MappingFragment StoreEntitySet="tb_DivisionTerritorial">
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="CodProvincia" ColumnName="CodProvincia" />
+          <ScalarProperty Name="CodCanton" ColumnName="CodCanton" />
+          <ScalarProperty Name="CodDistritoAdm" ColumnName="CodDistritoAdm" />
+          <ScalarProperty Name="CodDistritoElec" ColumnName="CodDistritoElec" />
+          <ScalarProperty Name="NombreProvincia" ColumnName="NombreProvincia" />
+          <ScalarProperty Name="NombreCanton" ColumnName="NombreCanton" />
+          <ScalarProperty Name="NombreDistritoAdm" ColumnName="NombreDistritoAdm" />
+          <ScalarProperty Name="NombreDistritoElec" ColumnName="NombreDistritoElec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleAeronave">
+      <EntityTypeMapping TypeName="Model.tb_MuebleAeronave">
+        <MappingFragment StoreEntitySet="tb_MuebleAeronave">
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="AnoFabricacion" ColumnName="AnoFabricacion" />
+          <ScalarProperty Name="TipoAeronave" ColumnName="TipoAeronave" />
+          <ScalarProperty Name="NumeroSerie" ColumnName="NumeroSerie" />
+          <ScalarProperty Name="Estilo" ColumnName="Estilo" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="ClaseTributaria" ColumnName="ClaseTributaria" />
+          <ScalarProperty Name="PesoMaximo" ColumnName="PesoMaximo" />
+          <ScalarProperty Name="PesoVacio" ColumnName="PesoVacio" />
+          <ScalarProperty Name="Fabricante" ColumnName="Fabricante" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleBuque">
+      <EntityTypeMapping TypeName="Model.tb_MuebleBuque">
+        <MappingFragment StoreEntitySet="tb_MuebleBuque">
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="IdMarca" ColumnName="IdMarca" />
+          <ScalarProperty Name="IdActividad" ColumnName="IdActividad" />
+          <ScalarProperty Name="NumeroSerie" ColumnName="NumeroSerie" />
+          <ScalarProperty Name="AnoConstruccion" ColumnName="AnoConstruccion" />
+          <ScalarProperty Name="PesoNeto" ColumnName="PesoNeto" />
+          <ScalarProperty Name="PesoBruto" ColumnName="PesoBruto" />
+          <ScalarProperty Name="NumeroEslora" ColumnName="NumeroEslora" />
+          <ScalarProperty Name="NumeroManga" ColumnName="NumeroManga" />
+          <ScalarProperty Name="NumeroPuntal" ColumnName="NumeroPuntal" />
+          <ScalarProperty Name="Estilo" ColumnName="Estilo" />
+          <ScalarProperty Name="NumeroCasco" ColumnName="NumeroCasco" />
+          <ScalarProperty Name="NombreBuque" ColumnName="NombreBuque" />
+          <ScalarProperty Name="NumeroChasis" ColumnName="NumeroChasis" />
+          <ScalarProperty Name="NombreConstructor" ColumnName="NombreConstructor" />
+          <ScalarProperty Name="LugarConstruccion" ColumnName="LugarConstruccion" />
+          <ScalarProperty Name="DescripcionCasco" ColumnName="DescripcionCasco" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleGarantia">
+      <EntityTypeMapping TypeName="Model.tb_MuebleGarantia">
+        <MappingFragment StoreEntitySet="tb_MuebleGarantia">
+          <ScalarProperty Name="IdGravamen" ColumnName="IdGravamen" />
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="NumeroGarantia" ColumnName="NumeroGarantia" />
+          <ScalarProperty Name="NumeroDerecho" ColumnName="NumeroDerecho" />
+          <ScalarProperty Name="TomoGravamenAfectado" ColumnName="TomoGravamenAfectado" />
+          <ScalarProperty Name="AsientoGravamenAfectado" ColumnName="AsientoGravamenAfectado" />
+          <ScalarProperty Name="SecuenciaGravamenAfectado" ColumnName="SecuenciaGravamenAfectado" />
+          <ScalarProperty Name="TipoGarantia" ColumnName="TipoGarantia" />
+          <ScalarProperty Name="GradoGarantia" ColumnName="GradoGarantia" />
+          <ScalarProperty Name="TomoConstitucion" ColumnName="TomoConstitucion" />
+          <ScalarProperty Name="AsientoConstitucion" ColumnName="AsientoConstitucion" />
+          <ScalarProperty Name="SecuenciaConstitucion" ColumnName="SecuenciaConstitucion" />
+          <ScalarProperty Name="NumeroFinca" ColumnName="NumeroFinca" />
+          <ScalarProperty Name="AnoAgricola" ColumnName="AnoAgricola" />
+          <ScalarProperty Name="EstadoGarantia" ColumnName="EstadoGarantia" />
+          <ScalarProperty Name="ProporcionMonto" ColumnName="ProporcionMonto" />
+          <ScalarProperty Name="DescripcionGarantia" ColumnName="DescripcionGarantia" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_MuebleMotores">
+      <EntityTypeMapping TypeName="Model.tb_MuebleMotores">
+        <MappingFragment StoreEntitySet="tb_MuebleMotores">
+          <ScalarProperty Name="IdMueble" ColumnName="IdMueble" />
+          <ScalarProperty Name="NumeroMotor" ColumnName="NumeroMotor" />
+          <ScalarProperty Name="Marca" ColumnName="Marca" />
+          <ScalarProperty Name="Procedencia" ColumnName="Procedencia" />
+          <ScalarProperty Name="Combustible" ColumnName="Combustible" />
+          <ScalarProperty Name="NumeroCilindros" ColumnName="NumeroCilindros" />
+          <ScalarProperty Name="Cilindrada" ColumnName="Cilindrada" />
+          <ScalarProperty Name="Potencia" ColumnName="Potencia" />
+          <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="NumeroSerie" ColumnName="NumeroSerie" />
+          <ScalarProperty Name="NombreFabricante" ColumnName="NombreFabricante" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_PersonaIdentificacion">
+      <EntityTypeMapping TypeName="Model.tb_PersonaIdentificacion">
+        <MappingFragment StoreEntitySet="tb_PersonaIdentificacion">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+          <ScalarProperty Name="IdIdentificacionTipo" ColumnName="IdIdentificacionTipo" />
+          <ScalarProperty Name="FechaEmision" ColumnName="FechaEmision" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="IdUbicacionGeo1" ColumnName="IdUbicacionGeo1" />
+          <ScalarProperty Name="IdUbicacionGeo2" ColumnName="IdUbicacionGeo2" />
+          <ScalarProperty Name="IdUbicacionGeo3" ColumnName="IdUbicacionGeo3" />
+          <ScalarProperty Name="IdentificacionEstado" ColumnName="IdentificacionEstado" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaUltimaAct" ColumnName="FechaUltimaAct" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_Salario">
+      <EntityTypeMapping TypeName="Model.tb_Salario">
+        <MappingFragment StoreEntitySet="tb_Salario">
+          <ScalarProperty Name="idSalario" ColumnName="idSalario" />
+          <ScalarProperty Name="idPersonaAsalariado" ColumnName="idPersonaAsalariado" />
+          <ScalarProperty Name="idPersonaPatrono" ColumnName="idPersonaPatrono" />
+          <ScalarProperty Name="UltimoSalario" ColumnName="UltimoSalario" />
+          <ScalarProperty Name="SalarioPromedio2meses" ColumnName="SalarioPromedio2meses" />
+          <ScalarProperty Name="SalarioPromedio3meses" ColumnName="SalarioPromedio3meses" />
+          <ScalarProperty Name="SalarioPromedio6meses" ColumnName="SalarioPromedio6meses" />
+          <ScalarProperty Name="SalarioPromedio12meses" ColumnName="SalarioPromedio12meses" />
+          <ScalarProperty Name="IdRangoUltSalario" ColumnName="IdRangoUltSalario" />
+          <ScalarProperty Name="IdRangoPromedio2meses" ColumnName="IdRangoPromedio2meses" />
+          <ScalarProperty Name="IdRangoPromedio3meses" ColumnName="IdRangoPromedio3meses" />
+          <ScalarProperty Name="IdRangoPromedio6meses" ColumnName="IdRangoPromedio6meses" />
+          <ScalarProperty Name="IdRangoPromedio12meses" ColumnName="IdRangoPromedio12meses" />
+          <ScalarProperty Name="ConteoMesesLaborados" ColumnName="ConteoMesesLaborados" />
+          <ScalarProperty Name="FechaActualizacion" ColumnName="FechaActualizacion" />
+          <ScalarProperty Name="EsOculto" ColumnName="EsOculto" />
+          <ScalarProperty Name="FechaOculto" ColumnName="FechaOculto" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_SalarioPatrono">
+      <EntityTypeMapping TypeName="Model.tb_SalarioPatrono">
+        <MappingFragment StoreEntitySet="tb_SalarioPatrono">
+          <ScalarProperty Name="idPatrono" ColumnName="idPatrono" />
+          <ScalarProperty Name="IdPersonaEmpleado" ColumnName="IdPersonaEmpleado" />
+          <ScalarProperty Name="IdFuente" ColumnName="IdFuente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tb_TelefonoPersona">
+      <EntityTypeMapping TypeName="Model.tb_TelefonoPersona">
+        <MappingFragment StoreEntitySet="tb_TelefonoPersona">
+          <ScalarProperty Name="IdPersona" ColumnName="IdPersona" />
+          <ScalarProperty Name="IdTelefono" ColumnName="IdTelefono" />
+          <ScalarProperty Name="EsOculto" ColumnName="EsOculto" />
+          <ScalarProperty Name="FechaOculto" ColumnName="FechaOculto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

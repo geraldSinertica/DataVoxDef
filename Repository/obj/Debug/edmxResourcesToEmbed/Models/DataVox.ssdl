@@ -1,0 +1,2038 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dataVoxBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.MaestroNacimiento' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MaestroNacimiento">
+          <Property Name="Cedula" Type="varchar" MaxLength="50" />
+          <Property Name="Folio" Type="varchar" MaxLength="50" />
+          <Property Name="CedulaProgenitor1" Type="varchar" MaxLength="50" />
+          <Property Name="CedulaProgenitor2" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoHospital" Type="varchar" MaxLength="50" />
+          <Property Name="HoraSuceso" Type="varchar" MaxLength="50" />
+          <Property Name="FechaSuceso" Type="varchar" MaxLength="50" />
+          <Property Name="Sexo" Type="varchar" MaxLength="50" />
+          <Property Name="Nacionalidad" Type="varchar" MaxLength="50" />
+          <Property Name="IndicadorDefuncion" Type="varchar" MaxLength="50" />
+          <Property Name="PaisProgenitor1" Type="varchar" MaxLength="50" />
+          <Property Name="PaisProgenitor2" Type="varchar" MaxLength="50" />
+          <Property Name="Relleno2" Type="varchar" MaxLength="50" />
+          <Property Name="ProvCantonProgenitor2" Type="varchar" MaxLength="50" />
+          <Property Name="FechaNaturalizacion" Type="varchar" MaxLength="50" />
+          <Property Name="Relleno3" Type="varchar" MaxLength="50" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="50" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="NombreProgenitor1" Type="varchar" MaxLength="50" />
+          <Property Name="NombreProgenitor2" Type="varchar" MaxLength="50" />
+          <Property Name="LugarNacimiento" Type="varchar" MaxLength="50" />
+          <Property Name="CedulaFormateada" Type="varchar" MaxLength="50" />
+          <Property Name="PersonaRegistrada" Type="bit" />
+          <Property Name="PrimerNombre" Type="varchar" MaxLength="50" />
+          <Property Name="SegundoNombre" Type="varchar" MaxLength="50" />
+          <Property Name="FechaNacimientoValida" Type="bit" />
+          <Property Name="FechaNacimientoFormato" Type="datetime" />
+          <Property Name="IdPersonaBD" Type="int" />
+        </EntityType>-->
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="tb_Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="smallint" Nullable="false" />
+    <Property Name="IdPersona" Type="int" />
+    <Property Name="IdSector" Type="int" />
+    <Property Name="ClienteEstado" Type="char" MaxLength="10" />
+    <Property Name="FechaAfiliacion" Type="nchar" MaxLength="10" />
+    <Property Name="FechaDesafiliacion" Type="nchar" MaxLength="10" />
+    <Property Name="NivelReciprocidad" Type="tinyint" />
+    <Property Name="IdEjecutivo" Type="smallint" />
+    <Property Name="EsInterno" Type="bit" />
+    <Property Name="EsCallCenter" Type="bit" />
+    <Property Name="EsSupervisado" Type="bit" />
+    <Property Name="CanceladoAutomaticoHC" Type="bit" />
+    <Property Name="CanceladoAutomaticoTC" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_ColegioProfesional' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_ColegioProfesional">
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="Colegio" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+  <EntityType Name="tb_Credito">
+    <Key>
+      <PropertyRef Name="ConsecutivoCredito" />
+    </Key>
+    <Property Name="ConsecutivoCredito" Type="int" Nullable="false" />
+    <Property Name="NumeroCredito" Type="varchar" MaxLength="50" />
+    <Property Name="IdCliente" Type="smallint" />
+    <Property Name="FechaOtorgamiento" Type="datetime" />
+    <Property Name="FechaVencimiento" Type="datetime" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="IdTipoOperacion" Type="smallint" />
+    <Property Name="IdTipoCredito" Type="smallint" />
+    <Property Name="IdTipoGarantia" Type="smallint" />
+    <Property Name="IdPeriodoPago" Type="smallint" />
+    <Property Name="FechaIncobrable" Type="datetime" />
+    <Property Name="EsOculto" Type="bit" />
+    <Property Name="FechaOculto" Type="datetime" />
+    <Property Name="IdFuente" Type="int" />
+    <Property Name="IdFuenteOculto" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_CreditoObligacion">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="CreditoConsecutivo" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="CreditoConsecutivo" Type="int" Nullable="false" />
+    <Property Name="IdObligacion" Type="tinyint" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_CreditoPeriodoPago">
+    <Key>
+      <PropertyRef Name="IdPeriodoPago" />
+    </Key>
+    <Property Name="IdPeriodoPago" Type="smallint" Nullable="false" />
+    <Property Name="DescripcionPeriodoPago" Type="varchar" MaxLength="50" />
+    <Property Name="SiglaPeriodoPago" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="tb_CreditoSaldo">
+    <Key>
+      <PropertyRef Name="ConsecutivoCredito" />
+      <PropertyRef Name="IdMoneda" />
+      <PropertyRef Name="FechaActualizacion" />
+    </Key>
+    <Property Name="ConsecutivoCredito" Type="int" Nullable="false" />
+    <Property Name="MontoOtorgado" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SaldoActual" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="SaldoMora" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IndiceMora" Type="smallint" />
+    <Property Name="ValorCuota" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CantidadCuotasVencidas" Type="smallint" />
+    <Property Name="DiasMora" Type="int" />
+    <Property Name="IdMoneda" Type="smallint" Nullable="false" />
+    <Property Name="IdCalificacion" Type="smallint" />
+    <Property Name="IdCreditoEstado" Type="smallint" />
+    <Property Name="FechaActualizacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_CreditoTipoCalificacion">
+    <Key>
+      <PropertyRef Name="IdCalificacion" />
+    </Key>
+    <Property Name="IdCalificacion" Type="smallint" Nullable="false" />
+    <Property Name="Calificacion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tb_CreditoTipoCredito">
+    <Key>
+      <PropertyRef Name="IdCreditoTipo" />
+    </Key>
+    <Property Name="IdCreditoTipo" Type="smallint" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="10" />
+    <Property Name="Sigla" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="tb_CreditoTipoEstado">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="smallint" Nullable="false" />
+    <Property Name="DescripcionEstado" Type="varchar" MaxLength="100" />
+    <Property Name="SiglaEstado" Type="char" MaxLength="3" />
+    <Property Name="SiglaSubEstado" Type="char" MaxLength="3" />
+    <Property Name="PrioridadEstado" Type="smallint" />
+  </EntityType>
+  <EntityType Name="tb_Direccion">
+    <Key>
+      <PropertyRef Name="IdDireccion" />
+    </Key>
+    <Property Name="IdDireccion" Type="int" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="255" />
+    <Property Name="TipoDireccion" Type="smallint" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_DireccionPersona' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_DireccionPersona">
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="idDireccion" Type="int" />
+          <Property Name="EsOculto" Type="bit" />
+          <Property Name="FechaOculto" Type="datetime" />
+        </EntityType>-->
+  <EntityType Name="tb_Ejecutivo">
+    <Key>
+      <PropertyRef Name="IdEjecutivo" />
+    </Key>
+    <Property Name="IdEjecutivo" Type="smallint" Nullable="false" />
+    <Property Name="IdPersona" Type="int" />
+    <Property Name="NombreEjecutivo" Type="varchar" MaxLength="100" />
+    <Property Name="Estado" Type="char" MaxLength="1" />
+    <Property Name="CorreoNotificacion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tb_Empresa">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="int" Nullable="false" />
+    <Property Name="NombreComercial" Type="varchar" MaxLength="500" />
+    <Property Name="TipoPersonaJuridica" Type="smallint" />
+    <Property Name="IndOtorgaPoderes" Type="smallint" />
+    <Property Name="TomoInscripcion" Type="char" MaxLength="4" />
+    <Property Name="FolioInscripcion" Type="char" MaxLength="3" />
+    <Property Name="AsientoInscripcion" Type="char" MaxLength="5" />
+    <Property Name="FechaInscripcion" Type="datetime" />
+    <Property Name="FechaInicio" Type="datetime" />
+    <Property Name="FechaVencimiento" Type="nchar" MaxLength="10" />
+    <Property Name="IdEstadoActual" Type="char" MaxLength="6" />
+    <Property Name="FinesEmpresa" Type="varchar" MaxLength="500" />
+    <Property Name="Prorrogas" Type="varchar" MaxLength="255" />
+    <Property Name="DescProrrogas" Type="text" />
+    <Property Name="Representacion" Type="text" />
+    <Property Name="SectorEmpresa" Type="varchar" MaxLength="255" />
+    <Property Name="SectorEconomicoEmpresa" Type="varchar" MaxLength="255" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_EmpresaCapital' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_EmpresaCapital">
+          <Property Name="IdPersonaEmpresa" Type="int" />
+          <Property Name="IdTipoClaseAccion" Type="varchar" MaxLength="20" />
+          <Property Name="IdTipoCapital" Type="varchar" MaxLength="20" />
+          <Property Name="IdMoneda" Type="smallint" />
+          <Property Name="Monto" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CantidadAcciones" Type="smallint" />
+          <Property Name="FechaInscripcion" Type="datetime" />
+          <Property Name="DescripcionAccion" Type="varchar" MaxLength="200" />
+          <Property Name="TomoInscripcion" Type="char" MaxLength="20" />
+          <Property Name="AsientoInscripcion" Type="char" MaxLength="20" />
+          <Property Name="ConsecutivoInscripcion" Type="char" MaxLength="20" />
+          <Property Name="SecuenciaInscripcion" Type="char" MaxLength="20" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_EmpresaNombramiento' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_EmpresaNombramiento">
+          <Property Name="IdPersonaEmpresa" Type="int" />
+          <Property Name="IdPersonaMiembro" Type="int" />
+          <Property Name="IdTipoParte" Type="varchar" MaxLength="20" />
+          <Property Name="IdTipoRepresentacion" Type="varchar" MaxLength="20" />
+          <Property Name="FechaInscripcion" Type="datetime" />
+          <Property Name="IndicadorJuntaDirectiva" Type="varchar" MaxLength="20" />
+          <Property Name="FechaInicio" Type="datetime" />
+          <Property Name="FechaVencimiento" Type="datetime" />
+          <Property Name="PorcentajeCuotas" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="IndicadorPuestoVacante" Type="smallint" />
+        </EntityType>-->
+  <EntityType Name="tb_EmpresaTipoCapital">
+    <Key>
+      <PropertyRef Name="IdTipoCapital" />
+    </Key>
+    <Property Name="IdTipoCapital" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_EmpresaTipoClaseAccion">
+    <Key>
+      <PropertyRef Name="IdTipoClaseAccion" />
+    </Key>
+    <Property Name="IdTipoClaseAccion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_EmpresaTipoParte">
+    <Key>
+      <PropertyRef Name="IdTipoParte" />
+    </Key>
+    <Property Name="IdTipoParte" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tb_EmpresaTipoRepresentacion">
+    <Key>
+      <PropertyRef Name="IdTipoRepresentacion" />
+    </Key>
+    <Property Name="IdTipoRepresentacion" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tb_EstadoFuente">
+    <Key>
+      <PropertyRef Name="IdEstadoFuente" />
+    </Key>
+    <Property Name="IdEstadoFuente" Type="smallint" Nullable="false" />
+    <Property Name="EstadoFuente" Type="varchar" MaxLength="50" />
+    <Property Name="Sigla" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="tb_Fuente">
+    <Key>
+      <PropertyRef Name="IdFuente" />
+    </Key>
+    <Property Name="IdFuente" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" />
+    <Property Name="Equipo" Type="varchar" MaxLength="50" />
+    <Property Name="Origen" Type="varchar" MaxLength="50" />
+    <Property Name="IdPaquete" Type="int" />
+    <Property Name="IdEstadoFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_Gentilicio">
+    <Key>
+      <PropertyRef Name="IdGentilicio" />
+    </Key>
+    <Property Name="IdGentilicio" Type="smallint" Nullable="false" />
+    <Property Name="LugarNacimiento" Type="varchar" MaxLength="200" />
+    <Property Name="Gentilicio" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tb_Inmueble">
+    <Key>
+      <PropertyRef Name="IdInmueble" />
+    </Key>
+    <Property Name="IdInmueble" Type="int" Nullable="false" />
+    <Property Name="NumeroFinca" Type="varchar" MaxLength="50" />
+    <Property Name="Canton" Type="smallint" />
+    <Property Name="Distrito" Type="smallint" />
+    <Property Name="Medida" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="UltimoDerecho" Type="smallint" />
+    <Property Name="IdOperacion" Type="int" />
+    <Property Name="Presentacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaUltActualizacion" Type="datetime" />
+    <Property Name="Naturaleza" Type="varchar" MaxLength="255" />
+    <Property Name="Status" Type="char" MaxLength="10" />
+    <Property Name="Plano" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroCatastral" Type="varchar" MaxLength="50" />
+    <Property Name="Avaluo" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="ValorPorcentual" Type="decimal" Precision="11" Scale="7" />
+    <Property Name="IndicadorSegregacion" Type="char" MaxLength="1" />
+    <Property Name="IdProvincia2" Type="smallint" />
+    <Property Name="IdCanton2" Type="smallint" />
+    <Property Name="IdDistrito2" Type="smallint" />
+    <Property Name="ValorMedida" Type="decimal" Precision="9" Scale="7" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleAnotaciones">
+    <Key>
+      <PropertyRef Name="idAnotacion" />
+    </Key>
+    <Property Name="idAnotacion" Type="int" Nullable="false" />
+    <Property Name="CitaAnotacion" Type="nchar" MaxLength="10" />
+    <Property Name="TipoOperacion" Type="varchar" MaxLength="15" />
+    <Property Name="FechaAnotacion" Type="datetime" />
+    <Property Name="IdInmueble" Type="int" />
+    <Property Name="Derecho" Type="smallint" />
+    <Property Name="IdGravamen" Type="int" />
+    <Property Name="SecuenciaAfectada" Type="smallint" />
+    <Property Name="CreditoAsociado" Type="varchar" MaxLength="50" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleDerecho">
+    <Key>
+      <PropertyRef Name="IdInmueble" />
+    </Key>
+    <Property Name="IdInmueble" Type="int" Nullable="false" />
+    <Property Name="NumeroFinca" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdPersona" Type="int" />
+    <Property Name="IdMoneda" Type="smallint" />
+    <Property Name="MontoContrato" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="IdTipoDerecho" Type="smallint" />
+    <Property Name="idTipoOperacion" Type="smallint" />
+    <Property Name="FechaUltimaAct" Type="datetime" />
+    <Property Name="IdProporcion" Type="smallint" />
+    <Property Name="ValorProporcion1" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="ValorProporcion2" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="CausaAdquisitiva" Type="varchar" MaxLength="30" />
+    <Property Name="FormaPago" Type="varchar" MaxLength="255" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_InmuebleDivisionTerritorial' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_InmuebleDivisionTerritorial">
+          <Property Name="IdDivisionTerritorial" Type="int" />
+          <Property Name="Provincia" Type="smallint" />
+          <Property Name="Canton" Type="smallint" />
+          <Property Name="Distrito" Type="smallint" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="IdFuente" Type="int" />
+        </EntityType>-->
+  <EntityType Name="tb_InmuebleGarantia">
+    <Key>
+      <PropertyRef Name="idGravamen" />
+      <PropertyRef Name="IdInmueble" />
+    </Key>
+    <Property Name="idGravamen" Type="int" Nullable="false" />
+    <Property Name="IdInmueble" Type="int" Nullable="false" />
+    <Property Name="ClaseResponsabilidad" Type="char" MaxLength="1" />
+    <Property Name="TomoCredito" Type="smallint" />
+    <Property Name="AsientoCredito" Type="int" />
+    <Property Name="ConsecutivoCredito" Type="smallint" />
+    <Property Name="SecuenciaCredito" Type="smallint" />
+    <Property Name="SubsecuenciaCredito" Type="smallint" />
+    <Property Name="Monto" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="Grado" Type="smallint" />
+    <Property Name="Base_Remate" Type="varchar" MaxLength="20" />
+    <Property Name="Referencia_Finca" Type="varchar" MaxLength="14" />
+    <Property Name="Referencia_Gravamen" Type="varchar" MaxLength="21" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleGravamen">
+    <Key>
+      <PropertyRef Name="idGravamen" />
+    </Key>
+    <Property Name="idGravamen" Type="int" Nullable="false" />
+    <Property Name="idGarantía" Type="int" />
+    <Property Name="CitaGravamen" Type="varchar" MaxLength="50" />
+    <Property Name="IdMoneda" Type="smallint" />
+    <Property Name="Monto" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="FechaInicia" Type="datetime" />
+    <Property Name="FechaVence" Type="datetime" />
+    <Property Name="FechaInterrupcion" Type="datetime" />
+    <Property Name="CantRenuncias" Type="smallint" />
+    <Property Name="CantCedulasHipotecarias" Type="smallint" />
+    <Property Name="UltSecuenciaParte" Type="smallint" />
+    <Property Name="IdTipoOperacion" Type="int" />
+    <Property Name="Presentacion" Type="varchar" MaxLength="50" />
+    <Property Name="FechaUltActualizacion" Type="datetime" />
+    <Property Name="CitasAntecedentes" Type="varchar" MaxLength="50" />
+    <Property Name="AreaArrendada" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="FormaPago" Type="varchar" MaxLength="255" />
+    <Property Name="Interes" Type="varchar" MaxLength="255" />
+    <Property Name="AreaResto" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleLinderos">
+    <Key>
+      <PropertyRef Name="IdInmueble" />
+    </Key>
+    <Property Name="IdInmueble" Type="int" Nullable="false" />
+    <Property Name="PuntoCardinal" Type="char" MaxLength="1" />
+    <Property Name="Lindero" Type="varchar" MaxLength="255" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleMatrices">
+    <Key>
+      <PropertyRef Name="IdInmueble" />
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdInmueble" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="InicioAdm" Type="datetime" />
+    <Property Name="VenceAdm" Type="datetime" />
+    <Property Name="IdPoder" Type="smallint" />
+    <Property Name="Filiales" Type="smallint" />
+    <Property Name="AreaComun" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="ValorTotal" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="IdMoneda" Type="smallint" />
+    <Property Name="NombreCondominio" Type="varchar" MaxLength="200" />
+    <Property Name="IdPersonaJuridica" Type="int" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleParteGravamen">
+    <Key>
+      <PropertyRef Name="IdGravamen" />
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdGravamen" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="SecuenciaParte" Type="smallint" />
+    <Property Name="CausaAdquisitiva" Type="varchar" MaxLength="30" />
+    <Property Name="Monto" Type="decimal" Precision="13" Scale="2" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleTipoDerecho">
+    <Key>
+      <PropertyRef Name="IdTipoDerecho" />
+    </Key>
+    <Property Name="IdTipoDerecho" Type="smallint" Nullable="false" />
+    <Property Name="DescripcionTipoDerecho" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleTipoOperacion">
+    <Key>
+      <PropertyRef Name="IdOperacion" />
+    </Key>
+    <Property Name="IdOperacion" Type="smallint" Nullable="false" />
+    <Property Name="Causa" Type="varchar" MaxLength="30" />
+    <Property Name="ClaseCausa" Type="smallint" />
+    <Property Name="RutinaCalculo" Type="smallint" />
+    <Property Name="DescripcionOperacion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_InmuebleTipoPoderes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_InmuebleTipoPoderes">
+          <Property Name="IdPoder" Type="smallint" />
+          <Property Name="DescripcionPoder" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityType Name="tb_InmuebleTipoProporcion">
+    <Key>
+      <PropertyRef Name="IdProporcion" />
+    </Key>
+    <Property Name="IdProporcion" Type="smallint" Nullable="false" />
+    <Property Name="DescripcionProporcion" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tb_Juicio">
+    <Key>
+      <PropertyRef Name="IdJuicio" />
+    </Key>
+    <Property Name="IdJuicio" Type="int" Nullable="false" />
+    <Property Name="Expediente" Type="varchar" MaxLength="50" />
+    <Property Name="Descrpcion" Type="varchar" MaxLength="200" />
+    <Property Name="Caso" Type="varchar" MaxLength="100" />
+    <Property Name="Asunto" Type="varchar" MaxLength="100" />
+    <Property Name="Cuantia" Type="decimal" Precision="7" Scale="2" />
+    <Property Name="MonedaCuantia" Type="smallint" />
+    <Property Name="Oficina" Type="varchar" MaxLength="200" />
+    <Property Name="Circuito" Type="varchar" MaxLength="200" />
+    <Property Name="Sentencia" Type="varchar" MaxLength="200" />
+    <Property Name="Estado" Type="varchar" MaxLength="100" />
+    <Property Name="FechaEstado" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_JuicioPersona' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_JuicioPersona">
+          <Property Name="IdJuicio" Type="int" />
+          <Property Name="IdPersona" Type="int" />
+          <Property Name="TipoParte" Type="varchar" MaxLength="100" />
+        </EntityType>-->
+  <EntityType Name="tb_Moneda">
+    <Key>
+      <PropertyRef Name="IdMoneda" />
+    </Key>
+    <Property Name="IdMoneda" Type="smallint" Nullable="false" />
+    <Property Name="Sigla" Type="char" MaxLength="3" />
+    <Property Name="Nombre" Type="char" MaxLength="20" />
+    <Property Name="TipoCambio" Type="decimal" Precision="3" Scale="2" />
+    <Property Name="FechaTipoCambio" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tb_Mueble">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="Placa" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TipoBien" Type="char" MaxLength="6" />
+    <Property Name="ClaseBien" Type="char" MaxLength="3" />
+    <Property Name="CodigoBien" Type="char" MaxLength="2" />
+    <Property Name="NumeroRegistral" Type="decimal" Precision="7" Scale="0" />
+    <Property Name="TomoInscripcion" Type="varchar" MaxLength="10" />
+    <Property Name="AsientoInscripcion" Type="varchar" MaxLength="10" />
+    <Property Name="SecuenciaInscripcion" Type="varchar" MaxLength="10" />
+    <Property Name="FechaInscripcion" Type="datetime" />
+    <Property Name="NumIdAnterior" Type="varchar" MaxLength="10" />
+    <Property Name="CitasAnteriores" Type="varchar" MaxLength="10" />
+    <Property Name="ValorHaciendaInscripcion" Type="decimal" Precision="14" Scale="0" />
+    <Property Name="ValorHaciendaOficial" Type="decimal" Precision="14" Scale="0" />
+    <Property Name="ValorContrato" Type="decimal" Precision="14" Scale="0" />
+    <Property Name="EstadoActual" Type="varchar" MaxLength="20" />
+    <Property Name="EstadoActualTributario" Type="varchar" MaxLength="20" />
+    <Property Name="Uso" Type="varchar" MaxLength="20" />
+    <Property Name="TomoUltMovimiento" Type="varchar" MaxLength="20" />
+    <Property Name="AsientoUltMovimiento" Type="varchar" MaxLength="20" />
+    <Property Name="SecuenciaUltMovimiento" Type="varchar" MaxLength="20" />
+    <Property Name="FechaUltMovimiento" Type="varchar" MaxLength="20" />
+    <Property Name="IdMoneda" Type="int" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleAeronave">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="AnoFabricacion" Type="decimal" Precision="4" Scale="0" />
+    <Property Name="IdTipoAeronave" Type="char" MaxLength="6" />
+    <Property Name="NumeroSerie" Type="nchar" MaxLength="30" />
+    <Property Name="Estilo" Type="char" MaxLength="30" />
+    <Property Name="Modelo" Type="char" MaxLength="30" />
+    <Property Name="IdMarca" Type="char" MaxLength="6" />
+    <Property Name="ClaseTributaria" Type="decimal" Precision="7" Scale="0" />
+    <Property Name="PesoMaximo" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PesoVacio" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="Fabricante" Type="varchar" MaxLength="100" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleBuque">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="IdMarca" Type="char" MaxLength="6" />
+    <Property Name="IdActividad" Type="char" MaxLength="6" />
+    <Property Name="NumeroSerie" Type="char" MaxLength="30" />
+    <Property Name="AnoConstruccion" Type="int" />
+    <Property Name="PesoNeto" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PesoBruto" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="NumeroEslora" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="NumeroManga" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="NumeroPuntal" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="Estilo" Type="char" MaxLength="30" />
+    <Property Name="NumeroCasco" Type="char" MaxLength="30" />
+    <Property Name="NombreBuque" Type="char" MaxLength="50" />
+    <Property Name="NumeroChasis" Type="char" MaxLength="30" />
+    <Property Name="NombreConstructor" Type="varchar" MaxLength="80" />
+    <Property Name="LugarConstruccion" Type="varchar" MaxLength="80" />
+    <Property Name="DescripcionCasco" Type="varchar" MaxLength="80" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleDerecho">
+    <Key>
+      <PropertyRef Name="IdDerechoMueble" />
+    </Key>
+    <Property Name="IdDerechoMueble" Type="int" Nullable="false" />
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="NumeroDerecho" Type="nchar" MaxLength="10" />
+    <Property Name="TomoAdquisicion" Type="nchar" MaxLength="10" />
+    <Property Name="AsientoAdquisicion" Type="nchar" MaxLength="10" />
+    <Property Name="SecuentaAdquisicion" Type="nchar" MaxLength="10" />
+    <Property Name="IdTipoDerecho" Type="nchar" MaxLength="10" />
+    <Property Name="CausaAdquisitiva" Type="nchar" MaxLength="10" />
+    <Property Name="Proporcion1" Type="decimal" Precision="3" Scale="0" />
+    <Property Name="Proporcion2" Type="decimal" Precision="3" Scale="0" />
+    <Property Name="FechaAdquisicion" Type="datetime" />
+    <Property Name="FechaConstitucion" Type="datetime" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleGarantia">
+    <Key>
+      <PropertyRef Name="IdGravamen" />
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdGravamen" Type="int" Nullable="false" />
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="NumeroGarantia" Type="char" MaxLength="30" />
+    <Property Name="NumeroDerecho" Type="char" MaxLength="6" />
+    <Property Name="TomoGravamenAfectado" Type="nchar" MaxLength="10" />
+    <Property Name="AsientoGravamenAfectado" Type="nchar" MaxLength="10" />
+    <Property Name="SecuenciaGravamenAfectado" Type="nchar" MaxLength="10" />
+    <Property Name="IdTipoGarantia" Type="char" MaxLength="6" />
+    <Property Name="IdGradoGarantia" Type="char" MaxLength="6" />
+    <Property Name="TomoConstitucion" Type="nchar" MaxLength="10" />
+    <Property Name="AsientoConstitucion" Type="nchar" MaxLength="10" />
+    <Property Name="SecuenciaConstitucion" Type="nchar" MaxLength="10" />
+    <Property Name="NumeroFinca" Type="nchar" MaxLength="10" />
+    <Property Name="AnoAgricola" Type="nchar" MaxLength="10" />
+    <Property Name="IdEstadoGarantia" Type="char" MaxLength="6" />
+    <Property Name="ProporcionMonto" Type="decimal" Precision="14" Scale="0" />
+    <Property Name="DescripcionGarantia" Type="varchar" MaxLength="100" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleGenCodigos">
+    <Key>
+      <PropertyRef Name="idTabla" />
+      <PropertyRef Name="IdCodigo" />
+    </Key>
+    <Property Name="idTabla" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="IdCodigo" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="255" />
+    <Property Name="IndicadorHabilitado" Type="char" MaxLength="1" />
+    <Property Name="DescripcionCorta" Type="char" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tb_MuebleGenTablas">
+    <Key>
+      <PropertyRef Name="IdTabla" />
+    </Key>
+    <Property Name="IdTabla" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="Indicador" Type="nchar" MaxLength="10" />
+    <Property Name="NombreTabla" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="tb_MuebleGravamen">
+    <Key>
+      <PropertyRef Name="idGravamen" />
+    </Key>
+    <Property Name="idGravamen" Type="int" Nullable="false" />
+    <Property Name="TipoGravamen" Type="char" MaxLength="6" />
+    <Property Name="FechaInscripcion" Type="datetime" />
+    <Property Name="FechaInicio" Type="datetime" />
+    <Property Name="FechaVencimiento" Type="datetime" />
+    <Property Name="IdMoneda" Type="int" />
+    <Property Name="Monto" Type="decimal" Precision="17" Scale="0" />
+    <Property Name="Plazo" Type="varchar" MaxLength="255" />
+    <Property Name="IdEstadoGravamen" Type="char" MaxLength="6" />
+    <Property Name="NumeroSumaria" Type="char" MaxLength="30" />
+    <Property Name="IdAutoridadJudicial" Type="char" MaxLength="6" />
+    <Property Name="Intereses" Type="varchar" MaxLength="255" />
+    <Property Name="TomoUltMovimiento" Type="varchar" MaxLength="30" />
+    <Property Name="AsientoUltMovimiento" Type="varchar" MaxLength="30" />
+    <Property Name="SecuenciaUltMovimiento" Type="varchar" MaxLength="30" />
+    <Property Name="FechaUltMovimiento" Type="datetime" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleInfracciones">
+    <Key>
+      <PropertyRef Name="IdInfraccion" />
+    </Key>
+    <Property Name="IdInfraccion" Type="int" Nullable="false" />
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="IdAutoridadJudicial" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="NumeroSumaria" Type="char" MaxLength="20" />
+    <Property Name="NumeroBoleta" Type="char" MaxLength="20" />
+    <Property Name="FechaBoleta" Type="datetime" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="HoraRegistro" Type="datetime" />
+    <Property Name="IdTipoGravamen" Type="char" MaxLength="6" />
+    <Property Name="AutoridadJudicial" Type="varchar" MaxLength="100" />
+    <Property Name="Obsrvaciones" Type="varchar" MaxLength="255" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleLevantamientos">
+    <Key>
+      <PropertyRef Name="IdLevantamiento" />
+    </Key>
+    <Property Name="IdLevantamiento" Type="int" Nullable="false" />
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="IdAutoridadJudicial" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="NumeroSumaria" Type="char" MaxLength="30" />
+    <Property Name="NumeroBoleta" Type="char" MaxLength="30" />
+    <Property Name="FechaBoleta" Type="datetime" />
+    <Property Name="FechaRegistro" Type="datetime" />
+    <Property Name="FechaLevantamiento" Type="datetime" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleMotores">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="NumeroMotor" Type="char" MaxLength="40" />
+    <Property Name="IdMarca" Type="char" MaxLength="6" />
+    <Property Name="IdProcedencia" Type="char" MaxLength="6" />
+    <Property Name="IdCombustible" Type="char" MaxLength="6" />
+    <Property Name="NumeroCilindros" Type="smallint" />
+    <Property Name="Cilindrada" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="Potencia" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="Modelo" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroSerie" Type="varchar" MaxLength="50" />
+    <Property Name="NombreFabricante" Type="varchar" MaxLength="50" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleParteGravamen">
+    <Key>
+      <PropertyRef Name="idGravamen" />
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="IdParteGravamen" Type="int" Nullable="false" />
+    <Property Name="idGravamen" Type="int" Nullable="false" />
+    <Property Name="idPersona" Type="int" Nullable="false" />
+    <Property Name="NumeroParte" Type="char" MaxLength="3" />
+    <Property Name="TipoParte" Type="char" MaxLength="6" />
+    <Property Name="TomoConstitucion" Type="nchar" MaxLength="10" />
+    <Property Name="AsientoConstitucion" Type="nchar" MaxLength="10" />
+    <Property Name="SecuenciaConstitucion" Type="nchar" MaxLength="10" />
+    <Property Name="FechaConstitucion" Type="datetime" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_MuebleTipoBien">
+    <Key>
+      <PropertyRef Name="IdTipoBien" />
+    </Key>
+    <Property Name="IdTipoBien" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="Inhabilitado" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tb_MuebleTipoClaseBien">
+    <Key>
+      <PropertyRef Name="TipoBien" />
+      <PropertyRef Name="ClaseBien" />
+    </Key>
+    <Property Name="TipoBien" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ClaseBien" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="Descripcion" Type="nchar" MaxLength="10" />
+    <Property Name="IndicadorHabilitado" Type="nchar" MaxLength="10" />
+    <Property Name="DescripcionCorta" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tb_MuebleTipoCodigoBien">
+    <Key>
+      <PropertyRef Name="TipoBien" />
+      <PropertyRef Name="ClaseBien" />
+      <PropertyRef Name="CodigoBien" />
+    </Key>
+    <Property Name="TipoBien" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="ClaseBien" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="CodigoBien" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="UltConsecutivo" Type="decimal" Precision="6" Scale="0" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="IndicadorHabilitado" Type="char" MaxLength="1" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="tb_MuebleVehiculo">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="int" Nullable="false" />
+    <Property Name="IdMarca" Type="char" MaxLength="6" />
+    <Property Name="AnoFabricacion" Type="int" />
+    <Property Name="Estilo" Type="char" MaxLength="30" />
+    <Property Name="IdCategoria" Type="char" MaxLength="6" />
+    <Property Name="IdTipoBien" Type="char" MaxLength="6" />
+    <Property Name="NumeroChasis" Type="char" MaxLength="30" />
+    <Property Name="NumeroSerie" Type="char" MaxLength="30" />
+    <Property Name="IdCarroceria" Type="char" MaxLength="6" />
+    <Property Name="CapacidadPasajeros" Type="smallint" />
+    <Property Name="PesoNeto" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PesoBruto" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PesoRemolque" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="PesoVacio" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="IdColor" Type="char" MaxLength="6" />
+    <Property Name="IdTraccion" Type="char" MaxLength="6" />
+    <Property Name="NumeroVIN" Type="char" MaxLength="30" />
+    <Property Name="IdTipoCabina" Type="char" MaxLength="6" />
+    <Property Name="IdTipoTecho" Type="char" MaxLength="6" />
+    <Property Name="NumeroEjes" Type="smallint" />
+    <Property Name="Longitud" Type="decimal" Precision="8" Scale="0" />
+    <Property Name="IndicadorRefaccion" Type="char" MaxLength="1" />
+    <Property Name="IndicadorConvertido" Type="char" MaxLength="1" />
+    <Property Name="ClaseTributaria" Type="decimal" Precision="7" Scale="0" />
+  </EntityType>
+  <EntityType Name="tb_Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="255" />
+    <Property Name="IdTipoPersona" Type="smallint" />
+    <Property Name="PrimerNombre" Type="varchar" MaxLength="255" />
+    <Property Name="SegundoNombre" Type="varchar" MaxLength="255" />
+    <Property Name="PrimerApellido" Type="varchar" MaxLength="255" />
+    <Property Name="SegundoApellido" Type="varchar" MaxLength="255" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="255" />
+    <Property Name="FechaNacimiento" Type="datetime" />
+    <Property Name="FechaConstitucionJuridico" Type="datetime" />
+    <Property Name="IdSexo" Type="char" MaxLength="1" />
+    <Property Name="IdEstadoCivil" Type="smallint" />
+    <Property Name="Nacionalidad" Type="smallint" />
+    <Property Name="EstadoVida" Type="char" MaxLength="1" />
+    <Property Name="IdOcupacion" Type="smallint" />
+    <Property Name="LugarNacimiento" Type="varchar" MaxLength="255" />
+    <Property Name="FechaDefuncion" Type="datetime" />
+    <Property Name="IdGentilicio" Type="smallint" />
+    <Property Name="ConocidoComo" Type="varchar" MaxLength="255" />
+    <Property Name="TipoAsegurado" Type="char" MaxLength="30" />
+    <Property Name="EsOculto" Type="nchar" MaxLength="10" />
+    <Property Name="FechaOculto" Type="nchar" MaxLength="10" />
+    <Property Name="idFuente" Type="int" />
+    <Property Name="IdTemp" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_PersonaEstadoCivilHistorico">
+    <Key>
+      <PropertyRef Name="IdEvento" />
+    </Key>
+    <Property Name="IdEvento" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" />
+    <Property Name="IdPersonaConyuge" Type="int" />
+    <Property Name="CitaMatrimonio" Type="varchar" MaxLength="20" />
+    <Property Name="TipoSuceso" Type="smallint" />
+    <Property Name="TipoMatrimonio" Type="smallint" />
+    <Property Name="FechaSuceso" Type="datetime" />
+    <Property Name="FechaEntrada" Type="datetime" />
+    <Property Name="ProvinciaSuceso" Type="smallint" />
+    <Property Name="CantonSuceso" Type="smallint" />
+    <Property Name="DistritoSuceso" Type="smallint" />
+    <Property Name="LugarSuceso" Type="varchar" MaxLength="50" />
+    <Property Name="EsOculto" Type="bit" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="FechaOculto" Type="datetime" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_PersonaEstadoId">
+    <Key>
+      <PropertyRef Name="idEstadoIndetificacion" />
+    </Key>
+    <Property Name="idEstadoIndetificacion" Type="smallint" Nullable="false" />
+    <Property Name="DescripcionEstado" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dataVoxBD.dbo.tb_PersonaIdentificacion' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tb_PersonaIdentificacion">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="Identificacion" />
+      <PropertyRef Name="IdIdentificacionTipo" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="Identificacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdIdentificacionTipo" Type="smallint" Nullable="false" />
+    <Property Name="FechaEmision" Type="datetime" />
+    <Property Name="FechaVencimiento" Type="datetime" />
+    <Property Name="IdUbicacionGeo1" Type="int" />
+    <Property Name="IdUbicacionGeo2" Type="int" />
+    <Property Name="IdUbicacionGeo3" Type="int" />
+    <Property Name="IdentificacionEstado" Type="smallint" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dataVoxBD.dbo.tb_PersonaIdentificacionPre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tb_PersonaIdentificacionPre">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="Identificacion" />
+      <PropertyRef Name="IdIdentificacionTipo" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="Identificacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdIdentificacionTipo" Type="smallint" Nullable="false" />
+    <Property Name="FechaEmision" Type="smalldatetime" />
+    <Property Name="FechaVencimiento" Type="smalldatetime" />
+    <Property Name="IdUbicacionGeo1" Type="int" />
+    <Property Name="IdUbicacionGeo2" Type="int" />
+    <Property Name="IdUbicacionGeo3" Type="int" />
+    <Property Name="IdentificacionEstado" Type="smallint" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_PersonaPEPs">
+    <Key>
+      <PropertyRef Name="IdPersonaPeps" />
+    </Key>
+    <Property Name="IdPersonaPeps" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" />
+    <Property Name="Identificacion" Type="varchar" MaxLength="20" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="255" />
+    <Property Name="Institucion" Type="varchar" MaxLength="255" />
+    <Property Name="Cargo" Type="varchar" MaxLength="255" />
+    <Property Name="Periodo" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dataVoxBD.dbo.tb_PersonaPre' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tb_PersonaPre">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="NombreCompleto" Type="varchar" MaxLength="255" />
+    <Property Name="IdTipoPersona" Type="smallint" />
+    <Property Name="PrimerNombre" Type="varchar" MaxLength="255" />
+    <Property Name="SegundoNombre" Type="varchar" MaxLength="255" />
+    <Property Name="PrimerApellido" Type="varchar" MaxLength="255" />
+    <Property Name="SegundoApellido" Type="varchar" MaxLength="255" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="255" />
+    <Property Name="FechaNacimiento" Type="smalldatetime" />
+    <Property Name="FechaConstitucionJuridico" Type="smalldatetime" />
+    <Property Name="IdSexo" Type="char" MaxLength="1" />
+    <Property Name="IdEstadoCivil" Type="smallint" />
+    <Property Name="Nacionalidad" Type="smallint" />
+    <Property Name="EstadoVida" Type="char" MaxLength="1" />
+    <Property Name="IdOcupacion" Type="smallint" />
+    <Property Name="LugarNacimiento" Type="varchar" MaxLength="255" />
+    <Property Name="FechaDefuncion" Type="smalldatetime" />
+    <Property Name="IdGentilicio" Type="smallint" />
+    <Property Name="ConocidoComo" Type="varchar" MaxLength="255" />
+    <Property Name="TipoAsegurado" Type="char" MaxLength="30" />
+    <Property Name="EsOculto" Type="nchar" MaxLength="10" />
+    <Property Name="FechaOculto" Type="nchar" MaxLength="10" />
+    <Property Name="idFuente" Type="int" />
+    <Property Name="IdTemp" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tb_PersonaTipoId">
+    <Key>
+      <PropertyRef Name="IdIdentificacionTipo" />
+    </Key>
+    <Property Name="IdIdentificacionTipo" Type="smallint" Nullable="false" />
+    <Property Name="NombreIdentificacion" Type="varchar" MaxLength="120" />
+    <Property Name="Sigla" Type="char" MaxLength="5" />
+    <Property Name="IdFisico" Type="bit" />
+    <Property Name="IdJuridico" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_PersonaTipoJuridico' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_PersonaTipoJuridico">
+          <Property Name="IdTipoJuridico" Type="tinyint" />
+          <Property Name="NombreTipoJuridico" Type="varchar" MaxLength="250" />
+        </EntityType>-->
+  <EntityType Name="tb_PersonaTipoNacionalidad">
+    <Key>
+      <PropertyRef Name="IdNacionalidad" />
+    </Key>
+    <Property Name="IdNacionalidad" Type="tinyint" Nullable="false" />
+    <Property Name="Nacionalidad" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tb_PersonaTipoPersona">
+    <Key>
+      <PropertyRef Name="idTipoPersona" />
+    </Key>
+    <Property Name="idTipoPersona" Type="smallint" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="50" />
+    <Property Name="Sigla" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tb_PersonaVinculo">
+    <Key>
+      <PropertyRef Name="IdVinculo" />
+    </Key>
+    <Property Name="IdVinculo" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" />
+    <Property Name="IdVinculoTipo" Type="tinyint" />
+    <Property Name="IdVinculoPersona" Type="int" />
+    <Property Name="FechaVinculo" Type="datetime" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_Salario' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_Salario">
+          <Property Name="idSalario" Type="int" />
+          <Property Name="idPersonaAsalariado" Type="int" />
+          <Property Name="idPersonaPatrono" Type="int" />
+          <Property Name="UltimoSalario" Type="decimal" Precision="13" Scale="2" />
+          <Property Name="SalarioPromedio2meses" Type="decimal" Precision="13" Scale="2" />
+          <Property Name="SalarioPromedio3meses" Type="decimal" Precision="13" Scale="2" />
+          <Property Name="SalarioPromedio6meses" Type="decimal" Precision="13" Scale="2" />
+          <Property Name="SalarioPromedio12meses" Type="decimal" Precision="13" Scale="2" />
+          <Property Name="IdRangoUltSalario" Type="smallint" />
+          <Property Name="IdRangoPromedio2meses" Type="smallint" />
+          <Property Name="IdRangoPromedio3meses" Type="smallint" />
+          <Property Name="IdRangoPromedio6meses" Type="smallint" />
+          <Property Name="IdRangoPromedio12meses" Type="smallint" />
+          <Property Name="ConteoMesesLaborados" Type="smallint" />
+          <Property Name="FechaActualizacion" Type="datetime" />
+          <Property Name="EsOculto" Type="bit" />
+          <Property Name="FechaOculto" Type="datetime" />
+          <Property Name="IdFuente" Type="int" />
+        </EntityType>-->
+  <EntityType Name="tb_SalarioActualizacion">
+    <Key>
+      <PropertyRef Name="idActualizacion" />
+    </Key>
+    <Property Name="idActualizacion" Type="int" Nullable="false" />
+    <Property Name="FechaActualizacion" Type="datetime" />
+    <Property Name="EsUltimaActualizacion" Type="bit" />
+    <Property Name="idfuente" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="tb_SalarioHistorico">
+    <Key>
+      <PropertyRef Name="idSalario" />
+      <PropertyRef Name="FechaActualizacion" />
+    </Key>
+    <Property Name="idSalario" Type="int" Nullable="false" />
+    <Property Name="FechaActualizacion" Type="datetime" Nullable="false" />
+    <Property Name="Salario" Type="int" />
+    <Property Name="IdPersonaPatrono" Type="int" />
+    <Property Name="IdActualizacion" Type="int" />
+    <Property Name="IdFuente" Type="int" />
+    <Property Name="EsOculto" Type="bit" />
+    <Property Name="FechaOculto" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tb_SalarioPatrono">
+    <Key>
+      <PropertyRef Name="idPatrono" />
+    </Key>
+    <Property Name="idPatrono" Type="int" Nullable="false" />
+    <Property Name="IdSujetoPatrono" Type="int" />
+    <Property Name="IdFuente" Type="int" />
+  </EntityType>
+  <EntityType Name="tb_Sector">
+    <Key>
+      <PropertyRef Name="IdSector" />
+    </Key>
+    <Property Name="IdSector" Type="smallint" Nullable="false" />
+    <Property Name="Sector" Type="varchar" MaxLength="100" />
+    <Property Name="SubSector" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tb_Sexo">
+    <Key>
+      <PropertyRef Name="IdSexo" />
+    </Key>
+    <Property Name="IdSexo" Type="tinyint" Nullable="false" />
+    <Property Name="Descripcion" Type="char" MaxLength="30" />
+    <Property Name="Sigla" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="tb_Telefono">
+    <Key>
+      <PropertyRef Name="idTelefono" />
+    </Key>
+    <Property Name="idTelefono" Type="int" Nullable="false" />
+    <Property Name="Telefono" Type="varchar" MaxLength="10" />
+    <Property Name="TipoTelefono" Type="smallint" />
+    <Property Name="idFuente" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dataVoxBD.dbo.tb_TelefonoPersona' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tb_TelefonoPersona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="IdTelefono" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="IdTelefono" Type="int" Nullable="false" />
+    <Property Name="EsOculto" Type="bit" />
+    <Property Name="FechaOculto" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tb_TipoDireccion">
+    <Key>
+      <PropertyRef Name="IdTipoDireccion" />
+    </Key>
+    <Property Name="IdTipoDireccion" Type="smallint" Nullable="false" />
+    <Property Name="Descripcion" Type="char" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'dataVoxBD.dbo.tb_TipoEstadoCivil' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tb_TipoEstadoCivil">
+          <Property Name="IdEstadoCivil" Type="smallint" />
+          <Property Name="Descripcion" Type="char" MaxLength="30" />
+          <Property Name="Sigla" Type="char" MaxLength="3" />
+        </EntityType>-->
+  <EntityType Name="tb_TipoTelefono">
+    <Key>
+      <PropertyRef Name="IdTipoTelefono" />
+    </Key>
+    <Property Name="IdTipoTelefono" Type="smallint" Nullable="false" />
+    <Property Name="Descripcion" Type="char" MaxLength="25" />
+  </EntityType>
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_ColegioProfesional' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_ColegioProfesional_tb_Persona" />-->
+  <Association Name="FK_tb_Credito_tb_CreditoPeriodoPago">
+    <End Role="tb_CreditoPeriodoPago" Type="Self.tb_CreditoPeriodoPago" Multiplicity="0..1" />
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CreditoPeriodoPago">
+        <PropertyRef Name="IdPeriodoPago" />
+      </Principal>
+      <Dependent Role="tb_Credito">
+        <PropertyRef Name="IdPeriodoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Credito_tb_CreditoTipoCredito">
+    <End Role="tb_CreditoTipoCredito" Type="Self.tb_CreditoTipoCredito" Multiplicity="0..1" />
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CreditoTipoCredito">
+        <PropertyRef Name="IdCreditoTipo" />
+      </Principal>
+      <Dependent Role="tb_Credito">
+        <PropertyRef Name="IdTipoCredito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Credito_tb_Fuente">
+    <End Role="tb_Fuente" Type="Self.tb_Fuente" Multiplicity="0..1" />
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Fuente">
+        <PropertyRef Name="IdFuente" />
+      </Principal>
+      <Dependent Role="tb_Credito">
+        <PropertyRef Name="IdFuente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CreditoObligacion_tb_Credito">
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="1" />
+    <End Role="tb_CreditoObligacion" Type="Self.tb_CreditoObligacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Credito">
+        <PropertyRef Name="ConsecutivoCredito" />
+      </Principal>
+      <Dependent Role="tb_CreditoObligacion">
+        <PropertyRef Name="CreditoConsecutivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CreditoObligacion_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_CreditoObligacion" Type="Self.tb_CreditoObligacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_CreditoObligacion">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CreditoSaldo_tb_Credito">
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="1" />
+    <End Role="tb_CreditoSaldo" Type="Self.tb_CreditoSaldo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Credito">
+        <PropertyRef Name="ConsecutivoCredito" />
+      </Principal>
+      <Dependent Role="tb_CreditoSaldo">
+        <PropertyRef Name="ConsecutivoCredito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CreditoSaldo_tb_CreditoTipoCalificacion">
+    <End Role="tb_CreditoTipoCalificacion" Type="Self.tb_CreditoTipoCalificacion" Multiplicity="0..1" />
+    <End Role="tb_CreditoSaldo" Type="Self.tb_CreditoSaldo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CreditoTipoCalificacion">
+        <PropertyRef Name="IdCalificacion" />
+      </Principal>
+      <Dependent Role="tb_CreditoSaldo">
+        <PropertyRef Name="IdCalificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CreditoSaldo_tb_CreditoTipoEstado">
+    <End Role="tb_CreditoTipoEstado" Type="Self.tb_CreditoTipoEstado" Multiplicity="0..1" />
+    <End Role="tb_CreditoSaldo" Type="Self.tb_CreditoSaldo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CreditoTipoEstado">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="tb_CreditoSaldo">
+        <PropertyRef Name="IdCreditoEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CreditoSaldo_tb_Moneda">
+    <End Role="tb_Moneda" Type="Self.tb_Moneda" Multiplicity="1" />
+    <End Role="tb_CreditoSaldo" Type="Self.tb_CreditoSaldo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="tb_CreditoSaldo">
+        <PropertyRef Name="IdMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Direccion_tb_TipoDireccion">
+    <End Role="tb_TipoDireccion" Type="Self.tb_TipoDireccion" Multiplicity="0..1" />
+    <End Role="tb_Direccion" Type="Self.tb_Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoDireccion">
+        <PropertyRef Name="IdTipoDireccion" />
+      </Principal>
+      <Dependent Role="tb_Direccion">
+        <PropertyRef Name="TipoDireccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_DireccionPersona' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_DireccionPersona_tb_Direccion" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_DireccionPersona' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_DireccionPersona_tb_Persona" />-->
+  <Association Name="FK_tb_Empresa_tb_SalarioPatrono">
+    <End Role="tb_SalarioPatrono" Type="Self.tb_SalarioPatrono" Multiplicity="1" />
+    <End Role="tb_Empresa" Type="Self.tb_Empresa" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_SalarioPatrono">
+        <PropertyRef Name="idPatrono" />
+      </Principal>
+      <Dependent Role="tb_Empresa">
+        <PropertyRef Name="idPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_EmpresaCapital' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_EmpresaCapital_tb_Empresa" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_EmpresaCapital' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_EmpresaCapital_tb_EmpresaTipoCapital" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_EmpresaCapital' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_EmpresaCapital_tb_EmpresaTipoClaseAccion" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_EmpresaNombramiento' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_EmpresaNombramiento_tb_Empresa" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_EmpresaNombramiento' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_EmpresaNombramiento_tb_EmpresaTipoParte" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_EmpresaNombramiento' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_EmpresaNombramiento_tb_EmpresaTipoRepresentacion" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_EmpresaNombramiento' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_EmpresaNombramiento_tb_Persona" />-->
+  <Association Name="FK_tb_Inmueble_tb_Inmueble">
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="1" />
+    <End Role="tb_Inmueble" Type="Self.tb_Inmueble" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdInmueble" />
+      </Principal>
+      <Dependent Role="tb_Inmueble">
+        <PropertyRef Name="IdInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho">
+    <End Role="tb_InmuebleTipoDerecho" Type="Self.tb_InmuebleTipoDerecho" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleTipoDerecho">
+        <PropertyRef Name="IdTipoDerecho" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdTipoDerecho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion">
+    <End Role="tb_InmuebleTipoOperacion" Type="Self.tb_InmuebleTipoOperacion" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleTipoOperacion">
+        <PropertyRef Name="IdOperacion" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="idTipoOperacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion">
+    <End Role="tb_InmuebleTipoProporcion" Type="Self.tb_InmuebleTipoProporcion" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleTipoProporcion">
+        <PropertyRef Name="IdProporcion" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdProporcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_Moneda">
+    <End Role="tb_Moneda" Type="Self.tb_Moneda" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleGarantia_tb_Inmueble">
+    <End Role="tb_Inmueble" Type="Self.tb_Inmueble" Multiplicity="1" />
+    <End Role="tb_InmuebleGarantia" Type="Self.tb_InmuebleGarantia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Inmueble">
+        <PropertyRef Name="IdInmueble" />
+      </Principal>
+      <Dependent Role="tb_InmuebleGarantia">
+        <PropertyRef Name="IdInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleGarantia_tb_InmuebleGravamen">
+    <End Role="tb_InmuebleGravamen" Type="Self.tb_InmuebleGravamen" Multiplicity="1" />
+    <End Role="tb_InmuebleGarantia" Type="Self.tb_InmuebleGarantia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Principal>
+      <Dependent Role="tb_InmuebleGarantia">
+        <PropertyRef Name="idGravamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleGravamen_tb_Moneda">
+    <End Role="tb_Moneda" Type="Self.tb_Moneda" Multiplicity="0..1" />
+    <End Role="tb_InmuebleGravamen" Type="Self.tb_InmuebleGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="tb_InmuebleGravamen">
+        <PropertyRef Name="IdMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleLinderos_tb_Inmueble">
+    <End Role="tb_Inmueble" Type="Self.tb_Inmueble" Multiplicity="1" />
+    <End Role="tb_InmuebleLinderos" Type="Self.tb_InmuebleLinderos" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Inmueble">
+        <PropertyRef Name="IdInmueble" />
+      </Principal>
+      <Dependent Role="tb_InmuebleLinderos">
+        <PropertyRef Name="IdInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleMatrices_tb_Inmueble">
+    <End Role="tb_Inmueble" Type="Self.tb_Inmueble" Multiplicity="1" />
+    <End Role="tb_InmuebleMatrices" Type="Self.tb_InmuebleMatrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Inmueble">
+        <PropertyRef Name="IdInmueble" />
+      </Principal>
+      <Dependent Role="tb_InmuebleMatrices">
+        <PropertyRef Name="IdInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleMatrices_tb_Moneda">
+    <End Role="tb_Moneda" Type="Self.tb_Moneda" Multiplicity="0..1" />
+    <End Role="tb_InmuebleMatrices" Type="Self.tb_InmuebleMatrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="tb_InmuebleMatrices">
+        <PropertyRef Name="IdMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleMatrices_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_InmuebleMatrices" Type="Self.tb_InmuebleMatrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_InmuebleMatrices">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen">
+    <End Role="tb_InmuebleGravamen" Type="Self.tb_InmuebleGravamen" Multiplicity="1" />
+    <End Role="tb_InmuebleParteGravamen" Type="Self.tb_InmuebleParteGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Principal>
+      <Dependent Role="tb_InmuebleParteGravamen">
+        <PropertyRef Name="IdGravamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleParteGravamen_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_InmuebleParteGravamen" Type="Self.tb_InmuebleParteGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_InmuebleParteGravamen">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_JuicioPersona' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_JuicioPersona_tb_Juicio" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_JuicioPersona' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_JuicioPersona_tb_Persona" />-->
+  <Association Name="FK_tb_Mueble_tb_MuebleAeronave1">
+    <End Role="tb_MuebleAeronave" Type="Self.tb_MuebleAeronave" Multiplicity="1" />
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleAeronave">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Mueble_tb_MuebleBuque1">
+    <End Role="tb_MuebleBuque" Type="Self.tb_MuebleBuque" Multiplicity="1" />
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleBuque">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Mueble_tb_MuebleLevantamientos">
+    <End Role="tb_MuebleLevantamientos" Type="Self.tb_MuebleLevantamientos" Multiplicity="1" />
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleLevantamientos">
+        <PropertyRef Name="IdLevantamiento" />
+      </Principal>
+      <Dependent Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Mueble_tb_MuebleMotores">
+    <End Role="tb_MuebleMotores" Type="Self.tb_MuebleMotores" Multiplicity="1" />
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleMotores">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Mueble_tb_MuebleTipoBien1">
+    <End Role="tb_MuebleTipoBien" Type="Self.tb_MuebleTipoBien" Multiplicity="0..1" />
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleTipoBien">
+        <PropertyRef Name="IdTipoBien" />
+      </Principal>
+      <Dependent Role="tb_Mueble">
+        <PropertyRef Name="TipoBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Mueble_tb_MuebleTipoClaseBien">
+    <End Role="tb_MuebleTipoClaseBien" Type="Self.tb_MuebleTipoClaseBien" Multiplicity="0..1" />
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleTipoClaseBien">
+        <PropertyRef Name="TipoBien" />
+        <PropertyRef Name="ClaseBien" />
+      </Principal>
+      <Dependent Role="tb_Mueble">
+        <PropertyRef Name="TipoBien" />
+        <PropertyRef Name="ClaseBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Mueble_tb_MuebleTipoCodigoBien">
+    <End Role="tb_MuebleTipoCodigoBien" Type="Self.tb_MuebleTipoCodigoBien" Multiplicity="0..1" />
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleTipoCodigoBien">
+        <PropertyRef Name="TipoBien" />
+        <PropertyRef Name="ClaseBien" />
+        <PropertyRef Name="CodigoBien" />
+      </Principal>
+      <Dependent Role="tb_Mueble">
+        <PropertyRef Name="TipoBien" />
+        <PropertyRef Name="ClaseBien" />
+        <PropertyRef Name="CodigoBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleDerecho_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleDerecho" Type="Self.tb_MuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleDerecho">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleDerecho_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_MuebleDerecho" Type="Self.tb_MuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_MuebleDerecho">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleGarantia_tb_MuebleGravamen">
+    <End Role="tb_MuebleGravamen" Type="Self.tb_MuebleGravamen" Multiplicity="1" />
+    <End Role="tb_MuebleGarantia" Type="Self.tb_MuebleGarantia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Principal>
+      <Dependent Role="tb_MuebleGarantia">
+        <PropertyRef Name="IdGravamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleInfracciones_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleInfracciones" Type="Self.tb_MuebleInfracciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleInfracciones">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleParteGravamen_tb_MuebleGravamen">
+    <End Role="tb_MuebleGravamen" Type="Self.tb_MuebleGravamen" Multiplicity="1" />
+    <End Role="tb_MuebleParteGravamen" Type="Self.tb_MuebleParteGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Principal>
+      <Dependent Role="tb_MuebleParteGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleVehiculo_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleVehiculo" Type="Self.tb_MuebleVehiculo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleVehiculo">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Persona_tb_Gentilicio">
+    <End Role="tb_Gentilicio" Type="Self.tb_Gentilicio" Multiplicity="0..1" />
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Gentilicio">
+        <PropertyRef Name="IdGentilicio" />
+      </Principal>
+      <Dependent Role="tb_Persona">
+        <PropertyRef Name="IdGentilicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Persona_tb_PersonaTipoPersona">
+    <End Role="tb_PersonaTipoPersona" Type="Self.tb_PersonaTipoPersona" Multiplicity="0..1" />
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PersonaTipoPersona">
+        <PropertyRef Name="idTipoPersona" />
+      </Principal>
+      <Dependent Role="tb_Persona">
+        <PropertyRef Name="IdTipoPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaIdentificacion_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_PersonaIdentificacion" Type="Self.tb_PersonaIdentificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_PersonaIdentificacion">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaIdentificacion_tb_PersonaEstadoId">
+    <End Role="tb_PersonaEstadoId" Type="Self.tb_PersonaEstadoId" Multiplicity="0..1" />
+    <End Role="tb_PersonaIdentificacion" Type="Self.tb_PersonaIdentificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PersonaEstadoId">
+        <PropertyRef Name="idEstadoIndetificacion" />
+      </Principal>
+      <Dependent Role="tb_PersonaIdentificacion">
+        <PropertyRef Name="IdentificacionEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaIdentificacion_tb_PersonaTipoId">
+    <End Role="tb_PersonaTipoId" Type="Self.tb_PersonaTipoId" Multiplicity="1" />
+    <End Role="tb_PersonaIdentificacion" Type="Self.tb_PersonaIdentificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PersonaTipoId">
+        <PropertyRef Name="IdIdentificacionTipo" />
+      </Principal>
+      <Dependent Role="tb_PersonaIdentificacion">
+        <PropertyRef Name="IdIdentificacionTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaPEPs_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_PersonaPEPs" Type="Self.tb_PersonaPEPs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_PersonaPEPs">
+        <PropertyRef Name="IdPersonaPeps" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_Salario' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_Salario_tb_Empresa" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'dataVoxBD.dbo.tb_Salario' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_tb_Salario_tb_Persona" />-->
+  <Association Name="FK_tb_SalarioHistorico_tb_SalarioActualizacion">
+    <End Role="tb_SalarioActualizacion" Type="Self.tb_SalarioActualizacion" Multiplicity="0..1" />
+    <End Role="tb_SalarioHistorico" Type="Self.tb_SalarioHistorico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_SalarioActualizacion">
+        <PropertyRef Name="idActualizacion" />
+      </Principal>
+      <Dependent Role="tb_SalarioHistorico">
+        <PropertyRef Name="IdActualizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Telefono_tb_TipoTelefono">
+    <End Role="tb_TipoTelefono" Type="Self.tb_TipoTelefono" Multiplicity="0..1" />
+    <End Role="tb_Telefono" Type="Self.tb_Telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoTelefono">
+        <PropertyRef Name="IdTipoTelefono" />
+      </Principal>
+      <Dependent Role="tb_Telefono">
+        <PropertyRef Name="TipoTelefono" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_TelefonoPersona_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_TelefonoPersona" Type="Self.tb_TelefonoPersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_TelefonoPersona">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_TelefonoPersona_tb_Telefono">
+    <End Role="tb_Telefono" Type="Self.tb_Telefono" Multiplicity="1" />
+    <End Role="tb_TelefonoPersona" Type="Self.tb_TelefonoPersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Telefono">
+        <PropertyRef Name="idTelefono" />
+      </Principal>
+      <Dependent Role="tb_TelefonoPersona">
+        <PropertyRef Name="IdTelefono" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dataVoxBDModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Cliente" EntityType="Self.tb_Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Credito" EntityType="Self.tb_Credito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_CreditoObligacion" EntityType="Self.tb_CreditoObligacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_CreditoPeriodoPago" EntityType="Self.tb_CreditoPeriodoPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_CreditoSaldo" EntityType="Self.tb_CreditoSaldo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_CreditoTipoCalificacion" EntityType="Self.tb_CreditoTipoCalificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_CreditoTipoCredito" EntityType="Self.tb_CreditoTipoCredito" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_CreditoTipoEstado" EntityType="Self.tb_CreditoTipoEstado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Direccion" EntityType="Self.tb_Direccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Ejecutivo" EntityType="Self.tb_Ejecutivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Empresa" EntityType="Self.tb_Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_EmpresaTipoCapital" EntityType="Self.tb_EmpresaTipoCapital" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_EmpresaTipoClaseAccion" EntityType="Self.tb_EmpresaTipoClaseAccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_EmpresaTipoParte" EntityType="Self.tb_EmpresaTipoParte" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_EmpresaTipoRepresentacion" EntityType="Self.tb_EmpresaTipoRepresentacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_EstadoFuente" EntityType="Self.tb_EstadoFuente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Fuente" EntityType="Self.tb_Fuente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Gentilicio" EntityType="Self.tb_Gentilicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Inmueble" EntityType="Self.tb_Inmueble" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleAnotaciones" EntityType="Self.tb_InmuebleAnotaciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleDerecho" EntityType="Self.tb_InmuebleDerecho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleGarantia" EntityType="Self.tb_InmuebleGarantia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleGravamen" EntityType="Self.tb_InmuebleGravamen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleLinderos" EntityType="Self.tb_InmuebleLinderos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleMatrices" EntityType="Self.tb_InmuebleMatrices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleParteGravamen" EntityType="Self.tb_InmuebleParteGravamen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleTipoDerecho" EntityType="Self.tb_InmuebleTipoDerecho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleTipoOperacion" EntityType="Self.tb_InmuebleTipoOperacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_InmuebleTipoProporcion" EntityType="Self.tb_InmuebleTipoProporcion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Juicio" EntityType="Self.tb_Juicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Moneda" EntityType="Self.tb_Moneda" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Mueble" EntityType="Self.tb_Mueble" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleAeronave" EntityType="Self.tb_MuebleAeronave" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleBuque" EntityType="Self.tb_MuebleBuque" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleDerecho" EntityType="Self.tb_MuebleDerecho" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleGarantia" EntityType="Self.tb_MuebleGarantia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleGenCodigos" EntityType="Self.tb_MuebleGenCodigos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleGenTablas" EntityType="Self.tb_MuebleGenTablas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleGravamen" EntityType="Self.tb_MuebleGravamen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleInfracciones" EntityType="Self.tb_MuebleInfracciones" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleLevantamientos" EntityType="Self.tb_MuebleLevantamientos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleMotores" EntityType="Self.tb_MuebleMotores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleParteGravamen" EntityType="Self.tb_MuebleParteGravamen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleTipoBien" EntityType="Self.tb_MuebleTipoBien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleTipoClaseBien" EntityType="Self.tb_MuebleTipoClaseBien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleTipoCodigoBien" EntityType="Self.tb_MuebleTipoCodigoBien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_MuebleVehiculo" EntityType="Self.tb_MuebleVehiculo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Persona" EntityType="Self.tb_Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PersonaEstadoCivilHistorico" EntityType="Self.tb_PersonaEstadoCivilHistorico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PersonaEstadoId" EntityType="Self.tb_PersonaEstadoId" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PersonaPEPs" EntityType="Self.tb_PersonaPEPs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PersonaTipoId" EntityType="Self.tb_PersonaTipoId" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PersonaTipoNacionalidad" EntityType="Self.tb_PersonaTipoNacionalidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PersonaTipoPersona" EntityType="Self.tb_PersonaTipoPersona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PersonaVinculo" EntityType="Self.tb_PersonaVinculo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SalarioActualizacion" EntityType="Self.tb_SalarioActualizacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SalarioHistorico" EntityType="Self.tb_SalarioHistorico" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_SalarioPatrono" EntityType="Self.tb_SalarioPatrono" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Sector" EntityType="Self.tb_Sector" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Sexo" EntityType="Self.tb_Sexo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_Telefono" EntityType="Self.tb_Telefono" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_TipoDireccion" EntityType="Self.tb_TipoDireccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_TipoTelefono" EntityType="Self.tb_TipoTelefono" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tb_PersonaIdentificacion" EntityType="Self.tb_PersonaIdentificacion" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_PersonaIdentificacion].[IdPersona] AS [IdPersona], 
+    [tb_PersonaIdentificacion].[Identificacion] AS [Identificacion], 
+    [tb_PersonaIdentificacion].[IdIdentificacionTipo] AS [IdIdentificacionTipo], 
+    [tb_PersonaIdentificacion].[FechaEmision] AS [FechaEmision], 
+    [tb_PersonaIdentificacion].[FechaVencimiento] AS [FechaVencimiento], 
+    [tb_PersonaIdentificacion].[IdUbicacionGeo1] AS [IdUbicacionGeo1], 
+    [tb_PersonaIdentificacion].[IdUbicacionGeo2] AS [IdUbicacionGeo2], 
+    [tb_PersonaIdentificacion].[IdUbicacionGeo3] AS [IdUbicacionGeo3], 
+    [tb_PersonaIdentificacion].[IdentificacionEstado] AS [IdentificacionEstado], 
+    [tb_PersonaIdentificacion].[IdFuente] AS [IdFuente]
+    FROM [dbo].[tb_PersonaIdentificacion] AS [tb_PersonaIdentificacion]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tb_PersonaIdentificacionPre" EntityType="Self.tb_PersonaIdentificacionPre" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_PersonaIdentificacionPre].[IdPersona] AS [IdPersona], 
+    [tb_PersonaIdentificacionPre].[Identificacion] AS [Identificacion], 
+    [tb_PersonaIdentificacionPre].[IdIdentificacionTipo] AS [IdIdentificacionTipo], 
+    [tb_PersonaIdentificacionPre].[FechaEmision] AS [FechaEmision], 
+    [tb_PersonaIdentificacionPre].[FechaVencimiento] AS [FechaVencimiento], 
+    [tb_PersonaIdentificacionPre].[IdUbicacionGeo1] AS [IdUbicacionGeo1], 
+    [tb_PersonaIdentificacionPre].[IdUbicacionGeo2] AS [IdUbicacionGeo2], 
+    [tb_PersonaIdentificacionPre].[IdUbicacionGeo3] AS [IdUbicacionGeo3], 
+    [tb_PersonaIdentificacionPre].[IdentificacionEstado] AS [IdentificacionEstado], 
+    [tb_PersonaIdentificacionPre].[IdFuente] AS [IdFuente]
+    FROM [dbo].[tb_PersonaIdentificacionPre] AS [tb_PersonaIdentificacionPre]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tb_PersonaPre" EntityType="Self.tb_PersonaPre" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_PersonaPre].[IdPersona] AS [IdPersona], 
+    [tb_PersonaPre].[NombreCompleto] AS [NombreCompleto], 
+    [tb_PersonaPre].[IdTipoPersona] AS [IdTipoPersona], 
+    [tb_PersonaPre].[PrimerNombre] AS [PrimerNombre], 
+    [tb_PersonaPre].[SegundoNombre] AS [SegundoNombre], 
+    [tb_PersonaPre].[PrimerApellido] AS [PrimerApellido], 
+    [tb_PersonaPre].[SegundoApellido] AS [SegundoApellido], 
+    [tb_PersonaPre].[RazonSocial] AS [RazonSocial], 
+    [tb_PersonaPre].[FechaNacimiento] AS [FechaNacimiento], 
+    [tb_PersonaPre].[FechaConstitucionJuridico] AS [FechaConstitucionJuridico], 
+    [tb_PersonaPre].[IdSexo] AS [IdSexo], 
+    [tb_PersonaPre].[IdEstadoCivil] AS [IdEstadoCivil], 
+    [tb_PersonaPre].[Nacionalidad] AS [Nacionalidad], 
+    [tb_PersonaPre].[EstadoVida] AS [EstadoVida], 
+    [tb_PersonaPre].[IdOcupacion] AS [IdOcupacion], 
+    [tb_PersonaPre].[LugarNacimiento] AS [LugarNacimiento], 
+    [tb_PersonaPre].[FechaDefuncion] AS [FechaDefuncion], 
+    [tb_PersonaPre].[IdGentilicio] AS [IdGentilicio], 
+    [tb_PersonaPre].[ConocidoComo] AS [ConocidoComo], 
+    [tb_PersonaPre].[TipoAsegurado] AS [TipoAsegurado], 
+    [tb_PersonaPre].[EsOculto] AS [EsOculto], 
+    [tb_PersonaPre].[FechaOculto] AS [FechaOculto], 
+    [tb_PersonaPre].[idFuente] AS [idFuente], 
+    [tb_PersonaPre].[IdTemp] AS [IdTemp]
+    FROM [dbo].[tb_PersonaPre] AS [tb_PersonaPre]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="tb_TelefonoPersona" EntityType="Self.tb_TelefonoPersona" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tb_TelefonoPersona].[IdPersona] AS [IdPersona], 
+    [tb_TelefonoPersona].[IdTelefono] AS [IdTelefono], 
+    [tb_TelefonoPersona].[EsOculto] AS [EsOculto], 
+    [tb_TelefonoPersona].[FechaOculto] AS [FechaOculto]
+    FROM [dbo].[tb_TelefonoPersona] AS [tb_TelefonoPersona]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_tb_Credito_tb_CreditoPeriodoPago" Association="Self.FK_tb_Credito_tb_CreditoPeriodoPago">
+      <End Role="tb_CreditoPeriodoPago" EntitySet="tb_CreditoPeriodoPago" />
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Credito_tb_CreditoTipoCredito" Association="Self.FK_tb_Credito_tb_CreditoTipoCredito">
+      <End Role="tb_CreditoTipoCredito" EntitySet="tb_CreditoTipoCredito" />
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Credito_tb_Fuente" Association="Self.FK_tb_Credito_tb_Fuente">
+      <End Role="tb_Fuente" EntitySet="tb_Fuente" />
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CreditoObligacion_tb_Credito" Association="Self.FK_tb_CreditoObligacion_tb_Credito">
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+      <End Role="tb_CreditoObligacion" EntitySet="tb_CreditoObligacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CreditoObligacion_tb_Persona" Association="Self.FK_tb_CreditoObligacion_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_CreditoObligacion" EntitySet="tb_CreditoObligacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CreditoSaldo_tb_Credito" Association="Self.FK_tb_CreditoSaldo_tb_Credito">
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+      <End Role="tb_CreditoSaldo" EntitySet="tb_CreditoSaldo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CreditoSaldo_tb_CreditoTipoCalificacion" Association="Self.FK_tb_CreditoSaldo_tb_CreditoTipoCalificacion">
+      <End Role="tb_CreditoTipoCalificacion" EntitySet="tb_CreditoTipoCalificacion" />
+      <End Role="tb_CreditoSaldo" EntitySet="tb_CreditoSaldo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CreditoSaldo_tb_CreditoTipoEstado" Association="Self.FK_tb_CreditoSaldo_tb_CreditoTipoEstado">
+      <End Role="tb_CreditoTipoEstado" EntitySet="tb_CreditoTipoEstado" />
+      <End Role="tb_CreditoSaldo" EntitySet="tb_CreditoSaldo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CreditoSaldo_tb_Moneda" Association="Self.FK_tb_CreditoSaldo_tb_Moneda">
+      <End Role="tb_Moneda" EntitySet="tb_Moneda" />
+      <End Role="tb_CreditoSaldo" EntitySet="tb_CreditoSaldo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Direccion_tb_TipoDireccion" Association="Self.FK_tb_Direccion_tb_TipoDireccion">
+      <End Role="tb_TipoDireccion" EntitySet="tb_TipoDireccion" />
+      <End Role="tb_Direccion" EntitySet="tb_Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Empresa_tb_SalarioPatrono" Association="Self.FK_tb_Empresa_tb_SalarioPatrono">
+      <End Role="tb_SalarioPatrono" EntitySet="tb_SalarioPatrono" />
+      <End Role="tb_Empresa" EntitySet="tb_Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Inmueble_tb_Inmueble" Association="Self.FK_tb_Inmueble_tb_Inmueble">
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+      <End Role="tb_Inmueble" EntitySet="tb_Inmueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho" Association="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho">
+      <End Role="tb_InmuebleTipoDerecho" EntitySet="tb_InmuebleTipoDerecho" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion" Association="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion">
+      <End Role="tb_InmuebleTipoOperacion" EntitySet="tb_InmuebleTipoOperacion" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion" Association="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion">
+      <End Role="tb_InmuebleTipoProporcion" EntitySet="tb_InmuebleTipoProporcion" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_Moneda" Association="Self.FK_tb_InmuebleDerecho_tb_Moneda">
+      <End Role="tb_Moneda" EntitySet="tb_Moneda" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_Persona" Association="Self.FK_tb_InmuebleDerecho_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleGarantia_tb_Inmueble" Association="Self.FK_tb_InmuebleGarantia_tb_Inmueble">
+      <End Role="tb_Inmueble" EntitySet="tb_Inmueble" />
+      <End Role="tb_InmuebleGarantia" EntitySet="tb_InmuebleGarantia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleGarantia_tb_InmuebleGravamen" Association="Self.FK_tb_InmuebleGarantia_tb_InmuebleGravamen">
+      <End Role="tb_InmuebleGravamen" EntitySet="tb_InmuebleGravamen" />
+      <End Role="tb_InmuebleGarantia" EntitySet="tb_InmuebleGarantia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleGravamen_tb_Moneda" Association="Self.FK_tb_InmuebleGravamen_tb_Moneda">
+      <End Role="tb_Moneda" EntitySet="tb_Moneda" />
+      <End Role="tb_InmuebleGravamen" EntitySet="tb_InmuebleGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleLinderos_tb_Inmueble" Association="Self.FK_tb_InmuebleLinderos_tb_Inmueble">
+      <End Role="tb_Inmueble" EntitySet="tb_Inmueble" />
+      <End Role="tb_InmuebleLinderos" EntitySet="tb_InmuebleLinderos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleMatrices_tb_Inmueble" Association="Self.FK_tb_InmuebleMatrices_tb_Inmueble">
+      <End Role="tb_Inmueble" EntitySet="tb_Inmueble" />
+      <End Role="tb_InmuebleMatrices" EntitySet="tb_InmuebleMatrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleMatrices_tb_Moneda" Association="Self.FK_tb_InmuebleMatrices_tb_Moneda">
+      <End Role="tb_Moneda" EntitySet="tb_Moneda" />
+      <End Role="tb_InmuebleMatrices" EntitySet="tb_InmuebleMatrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleMatrices_tb_Persona" Association="Self.FK_tb_InmuebleMatrices_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_InmuebleMatrices" EntitySet="tb_InmuebleMatrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen" Association="Self.FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen">
+      <End Role="tb_InmuebleGravamen" EntitySet="tb_InmuebleGravamen" />
+      <End Role="tb_InmuebleParteGravamen" EntitySet="tb_InmuebleParteGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleParteGravamen_tb_Persona" Association="Self.FK_tb_InmuebleParteGravamen_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_InmuebleParteGravamen" EntitySet="tb_InmuebleParteGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Mueble_tb_MuebleAeronave1" Association="Self.FK_tb_Mueble_tb_MuebleAeronave1">
+      <End Role="tb_MuebleAeronave" EntitySet="tb_MuebleAeronave" />
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Mueble_tb_MuebleBuque1" Association="Self.FK_tb_Mueble_tb_MuebleBuque1">
+      <End Role="tb_MuebleBuque" EntitySet="tb_MuebleBuque" />
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Mueble_tb_MuebleLevantamientos" Association="Self.FK_tb_Mueble_tb_MuebleLevantamientos">
+      <End Role="tb_MuebleLevantamientos" EntitySet="tb_MuebleLevantamientos" />
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Mueble_tb_MuebleMotores" Association="Self.FK_tb_Mueble_tb_MuebleMotores">
+      <End Role="tb_MuebleMotores" EntitySet="tb_MuebleMotores" />
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Mueble_tb_MuebleTipoBien1" Association="Self.FK_tb_Mueble_tb_MuebleTipoBien1">
+      <End Role="tb_MuebleTipoBien" EntitySet="tb_MuebleTipoBien" />
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Mueble_tb_MuebleTipoClaseBien" Association="Self.FK_tb_Mueble_tb_MuebleTipoClaseBien">
+      <End Role="tb_MuebleTipoClaseBien" EntitySet="tb_MuebleTipoClaseBien" />
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Mueble_tb_MuebleTipoCodigoBien" Association="Self.FK_tb_Mueble_tb_MuebleTipoCodigoBien">
+      <End Role="tb_MuebleTipoCodigoBien" EntitySet="tb_MuebleTipoCodigoBien" />
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleDerecho_tb_Mueble" Association="Self.FK_tb_MuebleDerecho_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleDerecho" EntitySet="tb_MuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleDerecho_tb_Persona" Association="Self.FK_tb_MuebleDerecho_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_MuebleDerecho" EntitySet="tb_MuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleGarantia_tb_MuebleGravamen" Association="Self.FK_tb_MuebleGarantia_tb_MuebleGravamen">
+      <End Role="tb_MuebleGravamen" EntitySet="tb_MuebleGravamen" />
+      <End Role="tb_MuebleGarantia" EntitySet="tb_MuebleGarantia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleInfracciones_tb_Mueble" Association="Self.FK_tb_MuebleInfracciones_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleInfracciones" EntitySet="tb_MuebleInfracciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleParteGravamen_tb_MuebleGravamen" Association="Self.FK_tb_MuebleParteGravamen_tb_MuebleGravamen">
+      <End Role="tb_MuebleGravamen" EntitySet="tb_MuebleGravamen" />
+      <End Role="tb_MuebleParteGravamen" EntitySet="tb_MuebleParteGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleVehiculo_tb_Mueble" Association="Self.FK_tb_MuebleVehiculo_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleVehiculo" EntitySet="tb_MuebleVehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Persona_tb_Gentilicio" Association="Self.FK_tb_Persona_tb_Gentilicio">
+      <End Role="tb_Gentilicio" EntitySet="tb_Gentilicio" />
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Persona_tb_PersonaTipoPersona" Association="Self.FK_tb_Persona_tb_PersonaTipoPersona">
+      <End Role="tb_PersonaTipoPersona" EntitySet="tb_PersonaTipoPersona" />
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaIdentificacion_tb_Persona" Association="Self.FK_tb_PersonaIdentificacion_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_PersonaIdentificacion" EntitySet="tb_PersonaIdentificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaIdentificacion_tb_PersonaEstadoId" Association="Self.FK_tb_PersonaIdentificacion_tb_PersonaEstadoId">
+      <End Role="tb_PersonaEstadoId" EntitySet="tb_PersonaEstadoId" />
+      <End Role="tb_PersonaIdentificacion" EntitySet="tb_PersonaIdentificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaIdentificacion_tb_PersonaTipoId" Association="Self.FK_tb_PersonaIdentificacion_tb_PersonaTipoId">
+      <End Role="tb_PersonaTipoId" EntitySet="tb_PersonaTipoId" />
+      <End Role="tb_PersonaIdentificacion" EntitySet="tb_PersonaIdentificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaPEPs_tb_Persona" Association="Self.FK_tb_PersonaPEPs_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_PersonaPEPs" EntitySet="tb_PersonaPEPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_SalarioHistorico_tb_SalarioActualizacion" Association="Self.FK_tb_SalarioHistorico_tb_SalarioActualizacion">
+      <End Role="tb_SalarioActualizacion" EntitySet="tb_SalarioActualizacion" />
+      <End Role="tb_SalarioHistorico" EntitySet="tb_SalarioHistorico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Telefono_tb_TipoTelefono" Association="Self.FK_tb_Telefono_tb_TipoTelefono">
+      <End Role="tb_TipoTelefono" EntitySet="tb_TipoTelefono" />
+      <End Role="tb_Telefono" EntitySet="tb_Telefono" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_TelefonoPersona_tb_Persona" Association="Self.FK_tb_TelefonoPersona_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_TelefonoPersona" EntitySet="tb_TelefonoPersona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_TelefonoPersona_tb_Telefono" Association="Self.FK_tb_TelefonoPersona_tb_Telefono">
+      <End Role="tb_Telefono" EntitySet="tb_Telefono" />
+      <End Role="tb_TelefonoPersona" EntitySet="tb_TelefonoPersona" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,2496 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tb_Canal">
+    <Key>
+      <PropertyRef Name="idCanal" />
+    </Key>
+    <Property Name="idCanal" Type="Byte" Nullable="false" />
+    <Property Name="NombreCanal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tb_HuellaBusqueda" Relationship="Self.FK_tb_HuellaBusqueda_Canal" FromRole="tb_Canal" ToRole="tb_HuellaBusqueda" />
+  </EntityType>
+  <EntityType Name="tb_Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" />
+    <Property Name="IdSector" Type="Int32" />
+    <Property Name="ClienteEstado" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="FechaAfiliacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="FechaDesafiliacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NivelReciprocidad" Type="Byte" />
+    <Property Name="IdEjecutivo" Type="Int16" />
+    <Property Name="EsInterno" Type="Boolean" />
+    <Property Name="EsCallCenter" Type="Boolean" />
+    <Property Name="EsSupervisado" Type="Boolean" />
+    <Property Name="CanceladoAutomaticoHC" Type="Boolean" />
+    <Property Name="CanceladoAutomaticoTC" Type="Boolean" />
+    <NavigationProperty Name="tb_Ejecutivo" Relationship="Self.FK_tb_Cliente_tb_Ejecutivo" FromRole="tb_Cliente" ToRole="tb_Ejecutivo" />
+    <NavigationProperty Name="tb_Empresa" Relationship="Self.FK_tb_Cliente_tb_Empresa" FromRole="tb_Cliente" ToRole="tb_Empresa" />
+    <NavigationProperty Name="tb_Credito" Relationship="Self.FK_tb_Credito_tb_Clientes" FromRole="tb_Cliente" ToRole="tb_Credito" />
+    <NavigationProperty Name="tb_HuellaBusqueda" Relationship="Self.FK_tb_HuellaBusqueda_Cliente" FromRole="tb_Cliente" ToRole="tb_HuellaBusqueda" />
+    <NavigationProperty Name="tb_HuellaConsulta" Relationship="Self.FK_tb_HuellaConsulta_Cliente" FromRole="tb_Cliente" ToRole="tb_HuellaConsulta" />
+  </EntityType>
+  <EntityType Name="tb_Credito">
+    <Key>
+      <PropertyRef Name="ConsecutivoCredito" />
+    </Key>
+    <Property Name="ConsecutivoCredito" Type="Int32" Nullable="false" />
+    <Property Name="NumeroCredito" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="FechaOtorgamiento" Type="DateTime" Precision="3" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaUltPago" Type="DateTime" Precision="3" />
+    <Property Name="IdTipoOperacion" Type="Int16" />
+    <Property Name="IdTipoCredito" Type="Int16" />
+    <Property Name="IdTipoGarantia" Type="Int16" />
+    <Property Name="IdPeriodoPago" Type="Int16" />
+    <Property Name="FechaIncobrable" Type="DateTime" Precision="3" />
+    <Property Name="EsOculto" Type="Boolean" />
+    <Property Name="FechaOculto" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <Property Name="IdFuenteOculto" Type="Int32" />
+    <NavigationProperty Name="tb_Cliente" Relationship="Self.FK_tb_Credito_tb_Clientes" FromRole="tb_Credito" ToRole="tb_Cliente" />
+    <NavigationProperty Name="tb_CreditoPeriodoPago" Relationship="Self.FK_tb_Credito_tb_CreditoPeriodoPago" FromRole="tb_Credito" ToRole="tb_CreditoPeriodoPago" />
+    <NavigationProperty Name="tb_CreditoTipoCredito" Relationship="Self.FK_tb_Credito_tb_CreditoTipoCredito" FromRole="tb_Credito" ToRole="tb_CreditoTipoCredito" />
+    <NavigationProperty Name="tb_CreditoTipoGarantia" Relationship="Self.FK_tb_Credito_tb_CreditoTipoGarantia" FromRole="tb_Credito" ToRole="tb_CreditoTipoGarantia" />
+    <NavigationProperty Name="tb_Fuente" Relationship="Self.FK_tb_Credito_tb_Fuente" FromRole="tb_Credito" ToRole="tb_Fuente" />
+  </EntityType>
+  <EntityType Name="tb_CreditoObligacion">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="CreditoConsecutivo" />
+    </Key>
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="CreditoConsecutivo" Type="Int32" Nullable="false" />
+    <Property Name="IdObligacion" Type="Byte" />
+    <Property Name="IdFuente" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tb_CreditoPeriodoPago">
+    <Key>
+      <PropertyRef Name="IdPeriodoPago" />
+    </Key>
+    <Property Name="IdPeriodoPago" Type="Int16" Nullable="false" />
+    <Property Name="DescripcionPeriodoPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SiglaPeriodoPago" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Credito" Relationship="Self.FK_tb_Credito_tb_CreditoPeriodoPago" FromRole="tb_CreditoPeriodoPago" ToRole="tb_Credito" />
+  </EntityType>
+  <EntityType Name="tb_CreditoSaldo">
+    <Key>
+      <PropertyRef Name="ConsecutivoCredito" />
+      <PropertyRef Name="IdMoneda" />
+      <PropertyRef Name="FechaActualizacion" />
+    </Key>
+    <Property Name="ConsecutivoCredito" Type="Int32" Nullable="false" />
+    <Property Name="MontoOtorgado" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SaldoActual" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="SaldoMora" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IndiceMora" Type="Int16" />
+    <Property Name="ValorCuota" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CantidadCuotasVencidas" Type="Int16" />
+    <Property Name="DiasMora" Type="Int32" />
+    <Property Name="IdMoneda" Type="Int16" Nullable="false" />
+    <Property Name="IdCalificacion" Type="Int16" />
+    <Property Name="IdCreditoEstado" Type="Int16" />
+    <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="tb_CreditoTipoCalificacion">
+    <Key>
+      <PropertyRef Name="IdCalificacion" />
+    </Key>
+    <Property Name="IdCalificacion" Type="Int16" Nullable="false" />
+    <Property Name="Calificacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_CreditoTipoCredito">
+    <Key>
+      <PropertyRef Name="IdCreditoTipo" />
+    </Key>
+    <Property Name="IdCreditoTipo" Type="Int16" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sigla" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Credito" Relationship="Self.FK_tb_Credito_tb_CreditoTipoCredito" FromRole="tb_CreditoTipoCredito" ToRole="tb_Credito" />
+  </EntityType>
+  <EntityType Name="tb_CreditoTipoEstado">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int16" Nullable="false" />
+    <Property Name="DescripcionEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SiglaEstado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="SiglaSubEstado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="PrioridadEstado" Type="Int16" />
+  </EntityType>
+  <EntityType Name="tb_CreditoTipoGarantia">
+    <Key>
+      <PropertyRef Name="IdGarantia" />
+    </Key>
+    <Property Name="IdGarantia" Type="Int16" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Credito" Relationship="Self.FK_tb_Credito_tb_CreditoTipoGarantia" FromRole="tb_CreditoTipoGarantia" ToRole="tb_Credito" />
+    <NavigationProperty Name="tb_CreditoTipoGarantia1" Relationship="Self.FK_tb_CreditoTipoGarantia_tb_CreditoTipoGarantia" FromRole="tb_CreditoTipoGarantia" ToRole="tb_CreditoTipoGarantia1" />
+    <NavigationProperty Name="tb_CreditoTipoGarantia2" Relationship="Self.FK_tb_CreditoTipoGarantia_tb_CreditoTipoGarantia" FromRole="tb_CreditoTipoGarantia1" ToRole="tb_CreditoTipoGarantia" />
+  </EntityType>
+  <EntityType Name="tb_CreditoTipoObligacion">
+    <Key>
+      <PropertyRef Name="idTipoObligacion" />
+    </Key>
+    <Property Name="idTipoObligacion" Type="Byte" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="Sigla" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_Direccion">
+    <Key>
+      <PropertyRef Name="IdDireccion" />
+    </Key>
+    <Property Name="IdDireccion" Type="Int32" Nullable="false" />
+    <Property Name="Provincia" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="Canton" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="DistritoAdministrativo" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="DistritoElectoral" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="Direccion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TipoDireccion" Type="Int16" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_TipoDireccion" Relationship="Self.FK_tb_Direccion_tb_TipoDireccion" FromRole="tb_Direccion" ToRole="tb_TipoDireccion" />
+  </EntityType>
+  <EntityType Name="tb_Ejecutivo">
+    <Key>
+      <PropertyRef Name="IdEjecutivo" />
+    </Key>
+    <Property Name="IdEjecutivo" Type="Int16" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" />
+    <Property Name="NombreEjecutivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CorreoNotificacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Cliente" Relationship="Self.FK_tb_Cliente_tb_Ejecutivo" FromRole="tb_Ejecutivo" ToRole="tb_Cliente" />
+  </EntityType>
+  <EntityType Name="tb_Empresa">
+    <Key>
+      <PropertyRef Name="idPersona" />
+    </Key>
+    <Property Name="idPersona" Type="Int32" Nullable="false" />
+    <Property Name="NombreComercial" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TipoPersonaJuridica" Type="Int32" />
+    <Property Name="IndOtorgaPoderes" Type="Int16" />
+    <Property Name="TomoInscripcion" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="FolioInscripcion" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="AsientoInscripcion" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="FechaInscripcion" Type="DateTime" Precision="3" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+    <Property Name="IdEstadoActual" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="FinesEmpresa" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Prorrogas" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DescProrrogas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Representacion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SectorEmpresa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SectorEconomicoEmpresa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaUltimaAct" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_Cliente" Relationship="Self.FK_tb_Cliente_tb_Empresa" FromRole="tb_Empresa" ToRole="tb_Cliente" />
+    <NavigationProperty Name="tb_EmpresaEstado" Relationship="Self.FK_tb_Empresa_tb_EmpresaEstado" FromRole="tb_Empresa" ToRole="tb_EmpresaEstado" />
+    <NavigationProperty Name="tb_TipoPersonaJuridica" Relationship="Self.FK_tb_Empresa_tb_TipoEmpresa" FromRole="tb_Empresa" ToRole="tb_TipoPersonaJuridica" />
+  </EntityType>
+  <EntityType Name="tb_EmpresaEstado">
+    <Key>
+      <PropertyRef Name="IdEstadoEmpresa" />
+    </Key>
+    <Property Name="IdEstadoEmpresa" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="EstadoEmpresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Empresa" Relationship="Self.FK_tb_Empresa_tb_EmpresaEstado" FromRole="tb_EmpresaEstado" ToRole="tb_Empresa" />
+  </EntityType>
+  <EntityType Name="tb_EmpresaTipoCapital">
+    <Key>
+      <PropertyRef Name="IdTipoCapital" />
+    </Key>
+    <Property Name="IdTipoCapital" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_EmpresaTipoClaseAccion">
+    <Key>
+      <PropertyRef Name="IdTipoClaseAccion" />
+    </Key>
+    <Property Name="IdTipoClaseAccion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_EmpresaTipoParte">
+    <Key>
+      <PropertyRef Name="IdTipoParte" />
+    </Key>
+    <Property Name="IdTipoParte" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_EmpresaTipoRepresentacion">
+    <Key>
+      <PropertyRef Name="IdTipoRepresentacion" />
+    </Key>
+    <Property Name="IdTipoRepresentacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_EstadoFuente">
+    <Key>
+      <PropertyRef Name="IdEstadoFuente" />
+    </Key>
+    <Property Name="IdEstadoFuente" Type="Int16" Nullable="false" />
+    <Property Name="EstadoFuente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sigla" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Fuente" Relationship="Self.FK_tb_Fuente_Estado" FromRole="tb_EstadoFuente" ToRole="tb_Fuente" />
+  </EntityType>
+  <EntityType Name="tb_Facturacion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdUsuario" Type="Int32" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="IdReporte" Type="Int32" />
+    <Property Name="IdTipoReporte" Type="Int32" />
+    <NavigationProperty Name="tb_TipoReport" Relationship="Self.FK__tb_Factur__IdTip__2E70E1FD" FromRole="tb_Facturacion" ToRole="tb_TipoReport" />
+  </EntityType>
+  <EntityType Name="tb_Fuente">
+    <Key>
+      <PropertyRef Name="IdFuente" />
+    </Key>
+    <Property Name="IdFuente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Equipo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Origen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdPaquete" Type="Int32" />
+    <Property Name="IdEstadoFuente" Type="Int16" />
+    <NavigationProperty Name="tb_Credito" Relationship="Self.FK_tb_Credito_tb_Fuente" FromRole="tb_Fuente" ToRole="tb_Credito" />
+    <NavigationProperty Name="tb_EstadoFuente" Relationship="Self.FK_tb_Fuente_Estado" FromRole="tb_Fuente" ToRole="tb_EstadoFuente" />
+  </EntityType>
+  <EntityType Name="tb_Gentilicio">
+    <Key>
+      <PropertyRef Name="IdGentilicio" />
+    </Key>
+    <Property Name="IdGentilicio" Type="Int16" Nullable="false" />
+    <Property Name="LugarNacimiento" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Gentilicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_HuellaBusqueda">
+    <Key>
+      <PropertyRef Name="IdHuellaBusqueda" />
+    </Key>
+    <Property Name="IdHuellaBusqueda" Type="Int64" Nullable="false" />
+    <Property Name="FechaBusqueda" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdCanal" Type="Byte" Nullable="false" />
+    <Property Name="IdProducto" Type="Int32" Nullable="false" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+    <Property Name="IpServidor" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PersonaHit" Type="Boolean" Nullable="false" />
+    <Property Name="IdTipoConsulta" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="tb_Canal" Relationship="Self.FK_tb_HuellaBusqueda_Canal" FromRole="tb_HuellaBusqueda" ToRole="tb_Canal" />
+    <NavigationProperty Name="tb_Cliente" Relationship="Self.FK_tb_HuellaBusqueda_Cliente" FromRole="tb_HuellaBusqueda" ToRole="tb_Cliente" />
+    <NavigationProperty Name="tb_Producto" Relationship="Self.FK_tb_HuellaBusqueda_Producto" FromRole="tb_HuellaBusqueda" ToRole="tb_Producto" />
+    <NavigationProperty Name="tb_HuellaTipoConsulta" Relationship="Self.FK_tb_HuellaBusqueda_TipoConsulta" FromRole="tb_HuellaBusqueda" ToRole="tb_HuellaTipoConsulta" />
+    <NavigationProperty Name="tb_Usuario" Relationship="Self.FK_tb_HuellaBusqueda_Usuario" FromRole="tb_HuellaBusqueda" ToRole="tb_Usuario" />
+    <NavigationProperty Name="tb_HuellaConsulta" Relationship="Self.FK_tb_HuellaConsulta_Busqueda" FromRole="tb_HuellaBusqueda" ToRole="tb_HuellaConsulta" />
+  </EntityType>
+  <EntityType Name="tb_HuellaConsulta">
+    <Key>
+      <PropertyRef Name="IdHuellaConsulta" />
+    </Key>
+    <Property Name="IdHuellaConsulta" Type="Int64" Nullable="false" />
+    <Property Name="IdHuellaBusqueda" Type="Int64" Nullable="false" />
+    <Property Name="FechaConsulta" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdMotivoConsulta" Type="Int16" Nullable="false" />
+    <Property Name="Cobrable" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Respuesta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="IdProducto" Type="Int32" Nullable="false" />
+    <Property Name="TiempoRespuesta" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tb_Cliente" Relationship="Self.FK_tb_HuellaConsulta_Cliente" FromRole="tb_HuellaConsulta" ToRole="tb_Cliente" />
+    <NavigationProperty Name="tb_HuellaBusqueda" Relationship="Self.FK_tb_HuellaConsulta_Busqueda" FromRole="tb_HuellaConsulta" ToRole="tb_HuellaBusqueda" />
+    <NavigationProperty Name="tb_HuellaMotivoConsulta" Relationship="Self.FK_tb_HuellaConsulta_MotivoConsulta" FromRole="tb_HuellaConsulta" ToRole="tb_HuellaMotivoConsulta" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_HuellaConsulta_Persona" FromRole="tb_HuellaConsulta" ToRole="tb_Persona" />
+    <NavigationProperty Name="tb_Producto" Relationship="Self.FK_tb_HuellaConsulta_Producto" FromRole="tb_HuellaConsulta" ToRole="tb_Producto" />
+  </EntityType>
+  <EntityType Name="tb_HuellaMotivoConsulta">
+    <Key>
+      <PropertyRef Name="IdMotivo" />
+    </Key>
+    <Property Name="IdMotivo" Type="Int16" Nullable="false" />
+    <Property Name="MotivoConsulta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tb_HuellaConsulta" Relationship="Self.FK_tb_HuellaConsulta_MotivoConsulta" FromRole="tb_HuellaMotivoConsulta" ToRole="tb_HuellaConsulta" />
+  </EntityType>
+  <EntityType Name="tb_HuellaTipoConsulta">
+    <Key>
+      <PropertyRef Name="IdTipoConsulta" />
+    </Key>
+    <Property Name="IdTipoConsulta" Type="Byte" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tb_HuellaBusqueda" Relationship="Self.FK_tb_HuellaBusqueda_TipoConsulta" FromRole="tb_HuellaTipoConsulta" ToRole="tb_HuellaBusqueda" />
+  </EntityType>
+  <EntityType Name="tb_Inmueble">
+    <Key>
+      <PropertyRef Name="IdInmueble" />
+    </Key>
+    <Property Name="IdInmueble" Type="Int32" Nullable="false" />
+    <Property Name="Provincia" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="Numero" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Duplicado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Horizontal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NumeroFinca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Canton" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="Distrito" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+    <Property Name="Medida" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="UltimoDerecho" Type="Int16" />
+    <Property Name="IdOperacion" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Presentacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaUltActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="Naturaleza" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Plano" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroCatastral" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Avaluo" Type="Decimal" Precision="14" Scale="2" />
+    <Property Name="ValorPorcentual" Type="Decimal" Precision="11" Scale="7" />
+    <Property Name="IndicadorSegregacion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IdProvincia2" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="IdCanton2" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="IdDistrito2" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+    <Property Name="ValorMedida" Type="Decimal" Precision="9" Scale="7" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaUltimaAct" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_InmuebleDerecho" Relationship="Self.FK_tb_Inmueble_Derecho" FromRole="tb_Inmueble" ToRole="tb_InmuebleDerecho" />
+    <NavigationProperty Name="tb_InmuebleGarantia" Relationship="Self.FK_tb_InmuebleGarantia_tb_Inmueble" FromRole="tb_Inmueble" ToRole="tb_InmuebleGarantia" />
+    <NavigationProperty Name="tb_InmuebleLinderos" Relationship="Self.FK_tb_InmuebleLinderos_tb_Inmueble" FromRole="tb_Inmueble" ToRole="tb_InmuebleLinderos" />
+    <NavigationProperty Name="tb_InmuebleMatrices" Relationship="Self.FK_tb_InmuebleMatrices_tb_Inmueble" FromRole="tb_Inmueble" ToRole="tb_InmuebleMatrices" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleAnotaciones">
+    <Key>
+      <PropertyRef Name="idAnotacion" />
+    </Key>
+    <Property Name="idAnotacion" Type="Int32" Nullable="false" />
+    <Property Name="CitaAnotacion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TipoOperacion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="FechaAnotacion" Type="DateTime" Precision="3" />
+    <Property Name="IdInmueble" Type="Int32" />
+    <Property Name="Derecho" Type="Int16" />
+    <Property Name="IdGravamen" Type="Int32" />
+    <Property Name="SecuenciaAfectada" Type="Int16" />
+    <Property Name="CreditoAsociado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleDerecho">
+    <Key>
+      <PropertyRef Name="IdDerecho" />
+    </Key>
+    <Property Name="IdDerecho" Type="Int32" Nullable="false" />
+    <Property Name="IdInmueble" Type="Int32" Nullable="false" />
+    <Property Name="NumeroFinca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Derecho" Type="Int16" />
+    <Property Name="IdMoneda" Type="Int16" />
+    <Property Name="MontoContrato" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="IdTipoDerecho" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="idTipoOperacion" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="FechaUltimaAct" Type="DateTime" Precision="3" />
+    <Property Name="IdProporcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ValorProporcion1" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="ValorProporcion2" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="CausaAdquisitiva" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FormaPago" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Inmueble" Relationship="Self.FK_tb_Inmueble_Derecho" FromRole="tb_InmuebleDerecho" ToRole="tb_Inmueble" />
+    <NavigationProperty Name="tb_InmuebleTipoDerecho" Relationship="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho" FromRole="tb_InmuebleDerecho" ToRole="tb_InmuebleTipoDerecho" />
+    <NavigationProperty Name="tb_InmuebleTipoOperacion" Relationship="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion" FromRole="tb_InmuebleDerecho" ToRole="tb_InmuebleTipoOperacion" />
+    <NavigationProperty Name="tb_InmuebleTipoProporcion" Relationship="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion" FromRole="tb_InmuebleDerecho" ToRole="tb_InmuebleTipoProporcion" />
+    <NavigationProperty Name="tb_Moneda" Relationship="Self.FK_tb_InmuebleDerecho_tb_Moneda" FromRole="tb_InmuebleDerecho" ToRole="tb_Moneda" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_InmuebleDerecho_tb_Persona" FromRole="tb_InmuebleDerecho" ToRole="tb_Persona" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleGarantia">
+    <Key>
+      <PropertyRef Name="IdGarantia" />
+    </Key>
+    <Property Name="IdGarantia" Type="Int32" Nullable="false" />
+    <Property Name="idGravamen" Type="Int32" Nullable="false" />
+    <Property Name="IdInmueble" Type="Int32" Nullable="false" />
+    <Property Name="TomoGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AsientoGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ConsecGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SubSecuenciaGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ClaseResponsabilidad" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TomoCredito" Type="Int16" />
+    <Property Name="AsientoCredito" Type="Int32" />
+    <Property Name="ConsecutivoCredito" Type="Int16" />
+    <Property Name="SecuenciaCredito" Type="Int16" />
+    <Property Name="SubsecuenciaCredito" Type="Int16" />
+    <Property Name="Monto" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="Grado" Type="Int16" />
+    <Property Name="Base_Remate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Referencia_Finca" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+    <Property Name="Referencia_Gravamen" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Inmueble" Relationship="Self.FK_tb_InmuebleGarantia_tb_Inmueble" FromRole="tb_InmuebleGarantia" ToRole="tb_Inmueble" />
+    <NavigationProperty Name="tb_InmuebleGravamen" Relationship="Self.FK_tb_InmuebleGarantia_tb_InmuebleGravamen" FromRole="tb_InmuebleGarantia" ToRole="tb_InmuebleGravamen" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleGravamen">
+    <Key>
+      <PropertyRef Name="idGravamen" />
+    </Key>
+    <Property Name="idGravamen" Type="Int32" Nullable="false" />
+    <Property Name="idGarantía" Type="Int32" />
+    <Property Name="TomoGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AsientoGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ConsecGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SubsecuenciaGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="IdMoneda" Type="Int16" />
+    <Property Name="Monto" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="FechaInicia" Type="DateTime" Precision="3" />
+    <Property Name="FechaVence" Type="DateTime" Precision="3" />
+    <Property Name="FechaInterrupcion" Type="DateTime" Precision="3" />
+    <Property Name="CantRenuncias" Type="Int16" />
+    <Property Name="CantCedulasHipotecarias" Type="Int16" />
+    <Property Name="UltSecuenciaParte" Type="Int16" />
+    <Property Name="IdTipoOperacion" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Presentacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaUltActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="CitasAntecedentes" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AreaArrendada" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="FormaPago" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Interes" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AreaResto" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_InmuebleGarantia" Relationship="Self.FK_tb_InmuebleGarantia_tb_InmuebleGravamen" FromRole="tb_InmuebleGravamen" ToRole="tb_InmuebleGarantia" />
+    <NavigationProperty Name="tb_InmuebleTipoOperacion" Relationship="Self.FK_tb_InmuebleGravamen_Operacion" FromRole="tb_InmuebleGravamen" ToRole="tb_InmuebleTipoOperacion" />
+    <NavigationProperty Name="tb_Moneda" Relationship="Self.FK_tb_InmuebleGravamen_tb_Moneda" FromRole="tb_InmuebleGravamen" ToRole="tb_Moneda" />
+    <NavigationProperty Name="tb_InmuebleParteGravamen" Relationship="Self.FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen" FromRole="tb_InmuebleGravamen" ToRole="tb_InmuebleParteGravamen" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleLinderos">
+    <Key>
+      <PropertyRef Name="IdLindero" />
+    </Key>
+    <Property Name="IdLindero" Type="Int32" Nullable="false" />
+    <Property Name="IdInmueble" Type="Int32" Nullable="false" />
+    <Property Name="Provincia" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="Numero" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Duplicado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Horizontal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="PuntoCardinal" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+    <Property Name="Lindero" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Inmueble" Relationship="Self.FK_tb_InmuebleLinderos_tb_Inmueble" FromRole="tb_InmuebleLinderos" ToRole="tb_Inmueble" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleMatrices">
+    <Key>
+      <PropertyRef Name="IdMatriz" />
+    </Key>
+    <Property Name="IdMatriz" Type="Int32" Nullable="false" />
+    <Property Name="IdInmueble" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Provincia" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="Numero" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Duplicado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Horizontal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="InicioAdm" Type="DateTime" Precision="3" />
+    <Property Name="VenceAdm" Type="DateTime" Precision="3" />
+    <Property Name="IdPoder" Type="Int16" />
+    <Property Name="Filiales" Type="Int16" />
+    <Property Name="AreaComun" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="ValorTotal" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="IdMoneda" Type="Int16" />
+    <Property Name="NombreCondominio" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdPersonaJuridica" Type="Int32" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Inmueble" Relationship="Self.FK_tb_InmuebleMatrices_tb_Inmueble" FromRole="tb_InmuebleMatrices" ToRole="tb_Inmueble" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_InmuebleMatrices_PersonaCondominio" FromRole="tb_InmuebleMatrices" ToRole="tb_Persona" />
+    <NavigationProperty Name="tb_InmuebleTipoPoderes" Relationship="Self.FK_tb_InmuebleMatrices_Poderes" FromRole="tb_InmuebleMatrices" ToRole="tb_InmuebleTipoPoderes" />
+    <NavigationProperty Name="tb_Moneda" Relationship="Self.FK_tb_InmuebleMatrices_tb_Moneda" FromRole="tb_InmuebleMatrices" ToRole="tb_Moneda" />
+    <NavigationProperty Name="tb_Persona1" Relationship="Self.FK_tb_InmuebleMatrices_tb_Persona" FromRole="tb_InmuebleMatrices" ToRole="tb_Persona" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleParteGravamen">
+    <Key>
+      <PropertyRef Name="IdParte" />
+    </Key>
+    <Property Name="IdParte" Type="Int32" Nullable="false" />
+    <Property Name="IdGravamen" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="TomoGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AsientoGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="ConsecGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SubSecuenciaGravamen" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaParte" Type="Int16" />
+    <Property Name="CausaAdquisitiva" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Monto" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_InmuebleGravamen" Relationship="Self.FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen" FromRole="tb_InmuebleParteGravamen" ToRole="tb_InmuebleGravamen" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_InmuebleParteGravamen_tb_Persona" FromRole="tb_InmuebleParteGravamen" ToRole="tb_Persona" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleTipoDerecho">
+    <Key>
+      <PropertyRef Name="IdTipoDerecho" />
+    </Key>
+    <Property Name="IdTipoDerecho" Type="String" MaxLength="2" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DescripcionTipoDerecho" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_InmuebleDerecho" Relationship="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho" FromRole="tb_InmuebleTipoDerecho" ToRole="tb_InmuebleDerecho" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleTipoOperacion">
+    <Key>
+      <PropertyRef Name="IdOperacion" />
+    </Key>
+    <Property Name="IdOperacion" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Causa" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="ClaseCausa" Type="Int16" />
+    <Property Name="RutinaCalculo" Type="Int16" />
+    <Property Name="DescripcionOperacion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_InmuebleDerecho" Relationship="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion" FromRole="tb_InmuebleTipoOperacion" ToRole="tb_InmuebleDerecho" />
+    <NavigationProperty Name="tb_InmuebleGravamen" Relationship="Self.FK_tb_InmuebleGravamen_Operacion" FromRole="tb_InmuebleTipoOperacion" ToRole="tb_InmuebleGravamen" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleTipoPoderes">
+    <Key>
+      <PropertyRef Name="IdPoder" />
+    </Key>
+    <Property Name="IdPoder" Type="Int16" Nullable="false" />
+    <Property Name="DescripcionPoder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_InmuebleMatrices" Relationship="Self.FK_tb_InmuebleMatrices_Poderes" FromRole="tb_InmuebleTipoPoderes" ToRole="tb_InmuebleMatrices" />
+  </EntityType>
+  <EntityType Name="tb_InmuebleTipoProporcion">
+    <Key>
+      <PropertyRef Name="IdProporcion" />
+    </Key>
+    <Property Name="IdProporcion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="DescripcionProporcion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_InmuebleDerecho" Relationship="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion" FromRole="tb_InmuebleTipoProporcion" ToRole="tb_InmuebleDerecho" />
+  </EntityType>
+  <EntityType Name="tb_Juicio">
+    <Key>
+      <PropertyRef Name="IdJuicio" />
+    </Key>
+    <Property Name="IdJuicio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Expediente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descrpcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Caso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Asunto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Cuantia" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="MonedaCuantia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Oficina" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Circuito" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Sentencia" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaEstado" Type="DateTime" Precision="3" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaUltimaAct" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <Property Name="TempId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EsOculto" Type="Boolean" />
+    <Property Name="FechaOculto" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tb_Moneda">
+    <Key>
+      <PropertyRef Name="IdMoneda" />
+    </Key>
+    <Property Name="IdMoneda" Type="Int16" Nullable="false" />
+    <Property Name="Sigla" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="Nombre" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="TipoCambio" Type="Decimal" Precision="3" Scale="2" />
+    <Property Name="FechaTipoCambio" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_InmuebleDerecho" Relationship="Self.FK_tb_InmuebleDerecho_tb_Moneda" FromRole="tb_Moneda" ToRole="tb_InmuebleDerecho" />
+    <NavigationProperty Name="tb_InmuebleGravamen" Relationship="Self.FK_tb_InmuebleGravamen_tb_Moneda" FromRole="tb_Moneda" ToRole="tb_InmuebleGravamen" />
+    <NavigationProperty Name="tb_InmuebleMatrices" Relationship="Self.FK_tb_InmuebleMatrices_tb_Moneda" FromRole="tb_Moneda" ToRole="tb_InmuebleMatrices" />
+  </EntityType>
+  <EntityType Name="tb_Mueble">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="Int32" Nullable="false" />
+    <Property Name="Placa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TipoBien" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="ClaseBien" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="CodigoBien" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroBien" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroRegistral" Type="Decimal" Precision="7" Scale="0" />
+    <Property Name="TomoInscripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="AsientoInscripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SecuenciaInscripcion" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInscripcion" Type="DateTime" Precision="3" />
+    <Property Name="NumIdAnterior" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CitasAnteriores" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ValorHaciendaInscripcion" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="ValorHaciendaOficial" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="ValorContrato" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="EstadoActual" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoActualTributario" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Uso" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TomoUltMovimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AsientoUltMovimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SecuenciaUltMovimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="FechaUltMovimiento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IdMoneda" Type="Int32" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_MuebleTipoBien" Relationship="Self.FK_tb_Mueble_tb_MuebleTipoBien1" FromRole="tb_Mueble" ToRole="tb_MuebleTipoBien" />
+    <NavigationProperty Name="tb_MuebleAeronave" Relationship="Self.FK_tb_MuebleAeronave_tb_Mueble" FromRole="tb_Mueble" ToRole="tb_MuebleAeronave" />
+    <NavigationProperty Name="tb_MuebleBuque" Relationship="Self.FK_tb_MuebleBuque_tb_Mueble" FromRole="tb_Mueble" ToRole="tb_MuebleBuque" />
+    <NavigationProperty Name="tb_MuebleDerecho" Relationship="Self.FK_tb_MuebleDerecho_tb_Mueble" FromRole="tb_Mueble" ToRole="tb_MuebleDerecho" />
+    <NavigationProperty Name="tb_MuebleInfracciones" Relationship="Self.FK_tb_MuebleInfracciones_tb_Mueble" FromRole="tb_Mueble" ToRole="tb_MuebleInfracciones" />
+    <NavigationProperty Name="tb_MuebleLevantamientos" Relationship="Self.FK_tb_MuebleLevantamientos_tb_Mueble" FromRole="tb_Mueble" ToRole="tb_MuebleLevantamientos" />
+    <NavigationProperty Name="tb_MuebleMotores" Relationship="Self.FK_tb_MuebleMotores_tb_Mueble" FromRole="tb_Mueble" ToRole="tb_MuebleMotores" />
+    <NavigationProperty Name="tb_MuebleVehiculo" Relationship="Self.FK_tb_MuebleVehiculo_tb_Mueble" FromRole="tb_Mueble" ToRole="tb_MuebleVehiculo" />
+  </EntityType>
+  <EntityType Name="tb_MuebleDerecho">
+    <Key>
+      <PropertyRef Name="IdDerechoMueble" />
+    </Key>
+    <Property Name="IdDerechoMueble" Type="Int32" Nullable="false" />
+    <Property Name="IdMueble" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="NumeroDerecho" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TomoAdquisicion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AsientoAdquisicion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecuentaAdquisicion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TipoDerecho" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="CausaAdquisitiva" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Proporcion1" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="Proporcion2" Type="Decimal" Precision="3" Scale="0" />
+    <Property Name="FechaAdquisicion" Type="DateTime" Precision="3" />
+    <Property Name="FechaConstitucion" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Mueble" Relationship="Self.FK_tb_MuebleDerecho_tb_Mueble" FromRole="tb_MuebleDerecho" ToRole="tb_Mueble" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_MuebleDerecho_tb_Persona" FromRole="tb_MuebleDerecho" ToRole="tb_Persona" />
+  </EntityType>
+  <EntityType Name="tb_MuebleGenCodigos">
+    <Key>
+      <PropertyRef Name="idTabla" />
+      <PropertyRef Name="IdCodigo" />
+    </Key>
+    <Property Name="idTabla" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IdCodigo" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IndicadorHabilitado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="DescripcionCorta" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_MuebleGenTablas">
+    <Key>
+      <PropertyRef Name="IdTabla" />
+    </Key>
+    <Property Name="IdTabla" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Indicador" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NombreTabla" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_MuebleGravamen">
+    <Key>
+      <PropertyRef Name="idGravamen" />
+    </Key>
+    <Property Name="idGravamen" Type="Int32" Nullable="false" />
+    <Property Name="TomoGravamen" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+    <Property Name="AsientoGravamen" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaGravamen" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="TipoGravamen" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+    <Property Name="FechaInscripcion" Type="DateTime" Precision="3" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+    <Property Name="IdMoneda" Type="Int32" />
+    <Property Name="Monto" Type="Decimal" Precision="17" Scale="0" />
+    <Property Name="Plazo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoGravamen" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroSumaria" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="AutoridadJudicial" Type="String" MaxLength="150" FixedLength="true" Unicode="false" />
+    <Property Name="Intereses" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TomoUltMovimiento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="AsientoUltMovimiento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SecuenciaUltMovimiento" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="FechaUltMovimiento" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_MuebleGarantia" Relationship="Self.FK_tb_MuebleGarantia_tb_MuebleGravamen" FromRole="tb_MuebleGravamen" ToRole="tb_MuebleGarantia" />
+    <NavigationProperty Name="tb_MuebleParteGravamen" Relationship="Self.FK_tb_MuebleParteGravamen_tb_MuebleGravamen" FromRole="tb_MuebleGravamen" ToRole="tb_MuebleParteGravamen" />
+  </EntityType>
+  <EntityType Name="tb_MuebleInfracciones">
+    <Key>
+      <PropertyRef Name="IdInfraccion" />
+    </Key>
+    <Property Name="IdInfraccion" Type="Int32" Nullable="false" />
+    <Property Name="IdMueble" Type="Int32" Nullable="false" />
+    <Property Name="IdAutoridadJudicial" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NumeroSumaria" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroBoleta" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="FechaBoleta" Type="DateTime" Precision="3" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="HoraRegistro" Type="DateTime" Precision="3" />
+    <Property Name="IdTipoGravamen" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="AutoridadJudicial" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Obsrvaciones" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Mueble" Relationship="Self.FK_tb_MuebleInfracciones_tb_Mueble" FromRole="tb_MuebleInfracciones" ToRole="tb_Mueble" />
+  </EntityType>
+  <EntityType Name="tb_MuebleLevantamientos">
+    <Key>
+      <PropertyRef Name="IdLevantamiento" />
+    </Key>
+    <Property Name="IdLevantamiento" Type="Int32" Nullable="false" />
+    <Property Name="IdMueble" Type="Int32" Nullable="false" />
+    <Property Name="IdAutoridadJudicial" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NumeroSumaria" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroBoleta" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="FechaBoleta" Type="DateTime" Precision="3" />
+    <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+    <Property Name="FechaLevantamiento" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Mueble" Relationship="Self.FK_tb_MuebleLevantamientos_tb_Mueble" FromRole="tb_MuebleLevantamientos" ToRole="tb_Mueble" />
+  </EntityType>
+  <EntityType Name="tb_MuebleParteGravamen">
+    <Key>
+      <PropertyRef Name="IdParteGravamen" />
+    </Key>
+    <Property Name="IdParteGravamen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idGravamen" Type="Int32" Nullable="false" />
+    <Property Name="idPersona" Type="Int32" />
+    <Property Name="NumeroParte" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="TipoParte" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="TomoConstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AsientoConstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaConstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="FechaConstitucion" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_MuebleGravamen" Relationship="Self.FK_tb_MuebleParteGravamen_tb_MuebleGravamen" FromRole="tb_MuebleParteGravamen" ToRole="tb_MuebleGravamen" />
+  </EntityType>
+  <EntityType Name="tb_MuebleTipoBien">
+    <Key>
+      <PropertyRef Name="IdTipoBien" />
+    </Key>
+    <Property Name="IdTipoBien" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Inhabilitado" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Mueble" Relationship="Self.FK_tb_Mueble_tb_MuebleTipoBien1" FromRole="tb_MuebleTipoBien" ToRole="tb_Mueble" />
+  </EntityType>
+  <EntityType Name="tb_MuebleTipoClaseBien">
+    <Key>
+      <PropertyRef Name="TipoBien" />
+      <PropertyRef Name="ClaseBien" />
+    </Key>
+    <Property Name="TipoBien" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ClaseBien" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IndicadorHabilitado" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="DescripcionCorta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_MuebleTipoCodigoBien">
+    <Key>
+      <PropertyRef Name="TipoBien" />
+      <PropertyRef Name="ClaseBien" />
+      <PropertyRef Name="CodigoBien" />
+    </Key>
+    <Property Name="TipoBien" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ClaseBien" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CodigoBien" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UltConsecutivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IndicadorHabilitado" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+    <Property Name="DescripcionCorta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_MuebleVehiculo">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="Int32" Nullable="false" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="AnoFabricacion" Type="Int32" />
+    <Property Name="Estilo" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="Categoria" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="TipoBien" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroChasis" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroSerie" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="Carroceria" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="CapacidadPasajeros" Type="Int16" />
+    <Property Name="PesoNeto" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PesoBruto" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PesoRemolque" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PesoVacio" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Traccion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroVIN" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="TipoCabina" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="TipoTecho" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroEjes" Type="Int16" />
+    <Property Name="Longitud" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="IndicadorRefaccion" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IndicadorConvertido" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ClaseTributaria" Type="Decimal" Precision="7" Scale="0" />
+    <NavigationProperty Name="tb_Mueble" Relationship="Self.FK_tb_MuebleVehiculo_tb_Mueble" FromRole="tb_MuebleVehiculo" ToRole="tb_Mueble" />
+  </EntityType>
+  <EntityType Name="tb_Nicaraguenses">
+    <Key>
+      <PropertyRef Name="IdNicaraguense" />
+    </Key>
+    <Property Name="IdNicaraguense" Type="Int32" Nullable="false" />
+    <Property Name="IdTipoPersona" Type="Int16" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+    <Property Name="IdSexo" Type="Byte" />
+    <Property Name="IdEstadoCivil" Type="Int16" />
+    <Property Name="EstadoVida" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Identificacion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="IdTipoIdentificacion" Type="Int16" />
+    <Property Name="FechaEmision" Type="DateTime" Precision="3" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+    <Property Name="EstadoIdentificacion" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Name="Departamento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Municipio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IngresoRegistrado" Type="Decimal" Precision="12" Scale="2" />
+    <Property Name="RangoIngreso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaActIngreso" Type="DateTime" Precision="3" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="Fuente" Type="Int32" />
+    <NavigationProperty Name="tb_TipoEstadoCivil" Relationship="Self.FK_tb_Nicaraguenses_EstadoCivil" FromRole="tb_Nicaraguenses" ToRole="tb_TipoEstadoCivil" />
+    <NavigationProperty Name="tb_Sexo" Relationship="Self.FK_tb_Nicaraguenses_Sexo" FromRole="tb_Nicaraguenses" ToRole="tb_Sexo" />
+    <NavigationProperty Name="tb_Nicaraguenses1" Relationship="Self.FK_tb_Nicaraguenses_tb_Nicaraguenses" FromRole="tb_Nicaraguenses" ToRole="tb_Nicaraguenses1" />
+    <NavigationProperty Name="tb_Nicaraguenses2" Relationship="Self.FK_tb_Nicaraguenses_tb_Nicaraguenses" FromRole="tb_Nicaraguenses1" ToRole="tb_Nicaraguenses" />
+    <NavigationProperty Name="tb_PersonaTipoId" Relationship="Self.FK_tb_Nicaraguenses_TipoIdentificacion" FromRole="tb_Nicaraguenses" ToRole="tb_PersonaTipoId" />
+    <NavigationProperty Name="tb_PersonaTipoPersona" Relationship="Self.FK_tb_Nicaraguenses_TipoPersona" FromRole="tb_Nicaraguenses" ToRole="tb_PersonaTipoPersona" />
+  </EntityType>
+  <EntityType Name="tb_Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IdTipoPersona" Type="Int16" />
+    <Property Name="PrimerNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SegundoNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PrimerApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="SegundoApellido" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="RazonSocial" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Precision="3" />
+    <Property Name="FechaConstitucionJuridico" Type="DateTime" Precision="3" />
+    <Property Name="IdSexo" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IdEstadoCivil" Type="Int16" />
+    <Property Name="Nacionalidad" Type="Int16" />
+    <Property Name="EstadoVida" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IdOcupacion" Type="Int16" />
+    <Property Name="LugarNacimiento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FechaDefuncion" Type="DateTime" Precision="3" />
+    <Property Name="IdGentilicio" Type="Int16" />
+    <Property Name="ConocidoComo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TipoAsegurado" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="EsOculto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="FechaOculto" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="idFuente" Type="Int32" />
+    <Property Name="IdTemp" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNaturalizacion" Type="DateTime" Precision="3" />
+    <Property Name="NombrePadre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NombreMadre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaUltimaAct" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_HuellaConsulta" Relationship="Self.FK_tb_HuellaConsulta_Persona" FromRole="tb_Persona" ToRole="tb_HuellaConsulta" />
+    <NavigationProperty Name="tb_InmuebleDerecho" Relationship="Self.FK_tb_InmuebleDerecho_tb_Persona" FromRole="tb_Persona" ToRole="tb_InmuebleDerecho" />
+    <NavigationProperty Name="tb_InmuebleMatrices" Relationship="Self.FK_tb_InmuebleMatrices_PersonaCondominio" FromRole="tb_Persona" ToRole="tb_InmuebleMatrices" />
+    <NavigationProperty Name="tb_InmuebleMatrices1" Relationship="Self.FK_tb_InmuebleMatrices_tb_Persona" FromRole="tb_Persona" ToRole="tb_InmuebleMatrices" />
+    <NavigationProperty Name="tb_InmuebleParteGravamen" Relationship="Self.FK_tb_InmuebleParteGravamen_tb_Persona" FromRole="tb_Persona" ToRole="tb_InmuebleParteGravamen" />
+    <NavigationProperty Name="tb_MuebleDerecho" Relationship="Self.FK_tb_MuebleDerecho_tb_Persona" FromRole="tb_Persona" ToRole="tb_MuebleDerecho" />
+    <NavigationProperty Name="tb_PersonaIdentificacion" Relationship="Self.FK_tb_PersonaIdentificacion_tb_Persona" FromRole="tb_Persona" ToRole="tb_PersonaIdentificacion" />
+    <NavigationProperty Name="tb_PersonaPEPs" Relationship="Self.FK_tb_PersonaPEPs_tb_Persona" FromRole="tb_Persona" ToRole="tb_PersonaPEPs" />
+    <NavigationProperty Name="tb_PersonaVinculo" Relationship="Self.FK_tb_PersonaVinculo_tb_Persona" FromRole="tb_Persona" ToRole="tb_PersonaVinculo" />
+    <NavigationProperty Name="tb_PersonaVinculo1" Relationship="Self.FK_tb_PersonaVinculo_tb_PersonaVinculo" FromRole="tb_Persona" ToRole="tb_PersonaVinculo" />
+    <NavigationProperty Name="tb_Salario" Relationship="Self.FK_tb_Salario_tb_Persona" FromRole="tb_Persona" ToRole="tb_Salario" />
+    <NavigationProperty Name="tb_TelefonoPersona" Relationship="Self.FK_tb_TelefonoPersona_tb_Persona" FromRole="tb_Persona" ToRole="tb_TelefonoPersona" />
+  </EntityType>
+  <EntityType Name="tb_PersonaEstadoCivilHistorico">
+    <Key>
+      <PropertyRef Name="IdEvento" />
+    </Key>
+    <Property Name="IdEvento" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" />
+    <Property Name="IdPersonaConyuge" Type="Int32" />
+    <Property Name="CitaMatrimonio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TipoSuceso" Type="Int16" />
+    <Property Name="TipoMatrimonio" Type="Int16" />
+    <Property Name="FechaSuceso" Type="DateTime" Precision="3" />
+    <Property Name="FechaEntrada" Type="DateTime" Precision="3" />
+    <Property Name="ProvinciaSuceso" Type="Int16" />
+    <Property Name="CantonSuceso" Type="Int16" />
+    <Property Name="DistritoSuceso" Type="Int16" />
+    <Property Name="LugarSuceso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EsOculto" Type="Boolean" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaOculto" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tb_PersonaEstadoId">
+    <Key>
+      <PropertyRef Name="idEstadoIndetificacion" />
+    </Key>
+    <Property Name="idEstadoIndetificacion" Type="Int16" Nullable="false" />
+    <Property Name="DescripcionEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_PersonaIdentificacion" Relationship="Self.FK_tb_PersonaIdentificacion_tb_PersonaEstadoId" FromRole="tb_PersonaEstadoId" ToRole="tb_PersonaIdentificacion" />
+  </EntityType>
+  <EntityType Name="tb_PersonaPEPs">
+    <Key>
+      <PropertyRef Name="IdPersonaPeps" />
+    </Key>
+    <Property Name="IdPersonaPeps" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" />
+    <Property Name="Identificacion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="NombreCompleto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Institucion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Cargo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Periodo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_PersonaPEPs_tb_Persona" FromRole="tb_PersonaPEPs" ToRole="tb_Persona" />
+  </EntityType>
+  <EntityType Name="tb_PersonaTipoId">
+    <Key>
+      <PropertyRef Name="IdIdentificacionTipo" />
+    </Key>
+    <Property Name="IdIdentificacionTipo" Type="Int16" Nullable="false" />
+    <Property Name="NombreIdentificacion" Type="String" MaxLength="120" FixedLength="false" Unicode="false" />
+    <Property Name="Sigla" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+    <Property Name="IdFisico" Type="Boolean" />
+    <Property Name="IdJuridico" Type="Boolean" />
+    <NavigationProperty Name="tb_Nicaraguenses" Relationship="Self.FK_tb_Nicaraguenses_TipoIdentificacion" FromRole="tb_PersonaTipoId" ToRole="tb_Nicaraguenses" />
+    <NavigationProperty Name="tb_PersonaIdentificacion" Relationship="Self.FK_tb_PersonaIdentificacion_tb_PersonaTipoId" FromRole="tb_PersonaTipoId" ToRole="tb_PersonaIdentificacion" />
+  </EntityType>
+  <EntityType Name="tb_PersonaTipoNacionalidad">
+    <Key>
+      <PropertyRef Name="IdNacionalidad" />
+    </Key>
+    <Property Name="IdNacionalidad" Type="Byte" Nullable="false" />
+    <Property Name="Nacionalidad" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_PersonaTipoPersona">
+    <Key>
+      <PropertyRef Name="idTipoPersona" />
+    </Key>
+    <Property Name="idTipoPersona" Type="Int16" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Sigla" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Nicaraguenses" Relationship="Self.FK_tb_Nicaraguenses_TipoPersona" FromRole="tb_PersonaTipoPersona" ToRole="tb_Nicaraguenses" />
+  </EntityType>
+  <EntityType Name="tb_PersonaTipoVinculo">
+    <Key>
+      <PropertyRef Name="IdTipoVinculo" />
+    </Key>
+    <Property Name="IdTipoVinculo" Type="Int16" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_PersonaVinculo" Relationship="Self.FK_tb_PersonaVinculo_tb_PersonaTipoVinculo" FromRole="tb_PersonaTipoVinculo" ToRole="tb_PersonaVinculo" />
+  </EntityType>
+  <EntityType Name="tb_PersonaVinculo">
+    <Key>
+      <PropertyRef Name="IdVinculo" />
+    </Key>
+    <Property Name="IdVinculo" Type="Int32" Nullable="false" />
+    <Property Name="IdPersona" Type="Int32" />
+    <Property Name="IdVinculoTipo" Type="Int16" />
+    <Property Name="IdVinculoPersona" Type="Int32" />
+    <Property Name="FechaVinculo" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_PersonaVinculo_tb_Persona" FromRole="tb_PersonaVinculo" ToRole="tb_Persona" />
+    <NavigationProperty Name="tb_Persona1" Relationship="Self.FK_tb_PersonaVinculo_tb_PersonaVinculo" FromRole="tb_PersonaVinculo" ToRole="tb_Persona" />
+    <NavigationProperty Name="tb_PersonaTipoVinculo" Relationship="Self.FK_tb_PersonaVinculo_tb_PersonaTipoVinculo" FromRole="tb_PersonaVinculo" ToRole="tb_PersonaTipoVinculo" />
+  </EntityType>
+  <EntityType Name="tb_Producto">
+    <Key>
+      <PropertyRef Name="idProducto" />
+    </Key>
+    <Property Name="idProducto" Type="Int32" Nullable="false" />
+    <Property Name="NombreProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="tb_HuellaBusqueda" Relationship="Self.FK_tb_HuellaBusqueda_Producto" FromRole="tb_Producto" ToRole="tb_HuellaBusqueda" />
+    <NavigationProperty Name="tb_HuellaConsulta" Relationship="Self.FK_tb_HuellaConsulta_Producto" FromRole="tb_Producto" ToRole="tb_HuellaConsulta" />
+  </EntityType>
+  <EntityType Name="tb_SalarioActualizacion">
+    <Key>
+      <PropertyRef Name="idActualizacion" />
+    </Key>
+    <Property Name="idActualizacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="EsUltimaActualizacion" Type="Boolean" />
+    <Property Name="idfuente" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="tb_SalarioHistorico" Relationship="Self.FK_tb_SalarioHistorico_tb_SalarioActualizacion" FromRole="tb_SalarioActualizacion" ToRole="tb_SalarioHistorico" />
+  </EntityType>
+  <EntityType Name="tb_SalarioHistorico">
+    <Key>
+      <PropertyRef Name="idSalario" />
+      <PropertyRef Name="FechaActualizacion" />
+    </Key>
+    <Property Name="idSalario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaActualizacion" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Salario" Type="Int32" />
+    <Property Name="IdPersonaEmpleado" Type="Int32" />
+    <Property Name="IdPersonaPatrono" Type="Int32" />
+    <Property Name="IdActualizacion" Type="Int32" />
+    <Property Name="IdFuente" Type="Int32" />
+    <Property Name="EsOculto" Type="Boolean" />
+    <Property Name="FechaOculto" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_SalarioActualizacion" Relationship="Self.FK_tb_SalarioHistorico_tb_SalarioActualizacion" FromRole="tb_SalarioHistorico" ToRole="tb_SalarioActualizacion" />
+  </EntityType>
+  <EntityType Name="tb_Sector">
+    <Key>
+      <PropertyRef Name="IdSector" />
+    </Key>
+    <Property Name="IdSector" Type="Int16" Nullable="false" />
+    <Property Name="Sector" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SubSector" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_Sexo">
+    <Key>
+      <PropertyRef Name="IdSexo" />
+    </Key>
+    <Property Name="IdSexo" Type="Byte" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="Sigla" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Nicaraguenses" Relationship="Self.FK_tb_Nicaraguenses_Sexo" FromRole="tb_Sexo" ToRole="tb_Nicaraguenses" />
+  </EntityType>
+  <EntityType Name="tb_Telefono">
+    <Key>
+      <PropertyRef Name="idTelefono" />
+    </Key>
+    <Property Name="idTelefono" Type="Int32" Nullable="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TipoTelefono" Type="Int16" />
+    <Property Name="idFuente" Type="Int32" />
+    <Property Name="TempId" Type="Int32" />
+    <NavigationProperty Name="tb_TipoTelefono" Relationship="Self.FK_tb_Telefono_tb_TelefonoTipo" FromRole="tb_Telefono" ToRole="tb_TipoTelefono" />
+    <NavigationProperty Name="tb_TelefonoPersona" Relationship="Self.FK_tb_TelefonoPersona_tb_Telefono" FromRole="tb_Telefono" ToRole="tb_TelefonoPersona" />
+  </EntityType>
+  <EntityType Name="tb_TipoDireccion">
+    <Key>
+      <PropertyRef Name="IdTipoDireccion" />
+    </Key>
+    <Property Name="IdTipoDireccion" Type="Int16" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Direccion" Relationship="Self.FK_tb_Direccion_tb_TipoDireccion" FromRole="tb_TipoDireccion" ToRole="tb_Direccion" />
+  </EntityType>
+  <EntityType Name="tb_TipoEstadoCivil">
+    <Key>
+      <PropertyRef Name="IdEstadoCivil" />
+    </Key>
+    <Property Name="IdEstadoCivil" Type="Int16" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="Sigla" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Nicaraguenses" Relationship="Self.FK_tb_Nicaraguenses_EstadoCivil" FromRole="tb_TipoEstadoCivil" ToRole="tb_Nicaraguenses" />
+  </EntityType>
+  <EntityType Name="tb_TipoPersonaJuridica">
+    <Key>
+      <PropertyRef Name="IdTipoPersonaJuridica" />
+    </Key>
+    <Property Name="IdTipoPersonaJuridica" Type="Int32" Nullable="false" />
+    <Property Name="CodigoTipoCedula" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="DescripcionTipo" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <Property Name="CodigoClaseCedula" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="DescripcionClase" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Empresa" Relationship="Self.FK_tb_Empresa_tb_TipoEmpresa" FromRole="tb_TipoPersonaJuridica" ToRole="tb_Empresa" />
+    <NavigationProperty Name="tb_TipoPersonaJuridica1" Relationship="Self.FK_Table_1_Table_TipoEmpresa" FromRole="tb_TipoPersonaJuridica" ToRole="tb_TipoPersonaJuridica1" />
+    <NavigationProperty Name="tb_TipoPersonaJuridica2" Relationship="Self.FK_Table_1_Table_TipoEmpresa" FromRole="tb_TipoPersonaJuridica1" ToRole="tb_TipoPersonaJuridica" />
+  </EntityType>
+  <EntityType Name="tb_TipoReport">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripcion" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="Precio" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="tb_Facturacion" Relationship="Self.FK__tb_Factur__IdTip__2E70E1FD" FromRole="tb_TipoReport" ToRole="tb_Facturacion" />
+  </EntityType>
+  <EntityType Name="tb_TipoTelefono">
+    <Key>
+      <PropertyRef Name="IdTipoTelefono" />
+    </Key>
+    <Property Name="IdTipoTelefono" Type="Int16" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="25" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="tb_Telefono" Relationship="Self.FK_tb_Telefono_tb_TelefonoTipo" FromRole="tb_TipoTelefono" ToRole="tb_Telefono" />
+  </EntityType>
+  <EntityType Name="tb_Usuario">
+    <Key>
+      <PropertyRef Name="idUsuario" />
+    </Key>
+    <Property Name="idUsuario" Type="Int32" Nullable="false" />
+    <Property Name="NombreUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Identificacion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdCliente" Type="Int32" Nullable="false" />
+    <Property Name="AreaEmpresa" Type="Byte" />
+    <Property Name="Cargo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tb_HuellaBusqueda" Relationship="Self.FK_tb_HuellaBusqueda_Usuario" FromRole="tb_Usuario" ToRole="tb_HuellaBusqueda" />
+  </EntityType>
+  <EntityType Name="DerechosMueblesExp">
+    <Key>
+      <PropertyRef Name="idderechomueble" />
+    </Key>
+    <Property Name="idderechomueble" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tb_DivisionTerritorial">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CodProvincia" Type="String" MaxLength="2" FixedLength="true" Unicode="true" />
+    <Property Name="CodCanton" Type="String" MaxLength="3" FixedLength="true" Unicode="true" />
+    <Property Name="CodDistritoAdm" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+    <Property Name="CodDistritoElec" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
+    <Property Name="NombreProvincia" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="NombreCanton" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreDistritoAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreDistritoElec" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tb_MuebleAeronave">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="Int32" Nullable="false" />
+    <Property Name="AnoFabricacion" Type="Decimal" Precision="4" Scale="0" />
+    <Property Name="TipoAeronave" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroSerie" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+    <Property Name="Estilo" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="Modelo" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="ClaseTributaria" Type="Decimal" Precision="7" Scale="0" />
+    <Property Name="PesoMaximo" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PesoVacio" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="Fabricante" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Mueble" Relationship="Self.FK_tb_MuebleAeronave_tb_Mueble" FromRole="tb_MuebleAeronave" ToRole="tb_Mueble" />
+  </EntityType>
+  <EntityType Name="tb_MuebleBuque">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="Int32" Nullable="false" />
+    <Property Name="IdMarca" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="IdActividad" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroSerie" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="AnoConstruccion" Type="Int32" />
+    <Property Name="PesoNeto" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="PesoBruto" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="NumeroEslora" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="NumeroManga" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="NumeroPuntal" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="Estilo" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroCasco" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="NombreBuque" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroChasis" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="NombreConstructor" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="LugarConstruccion" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="DescripcionCasco" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Mueble" Relationship="Self.FK_tb_MuebleBuque_tb_Mueble" FromRole="tb_MuebleBuque" ToRole="tb_Mueble" />
+  </EntityType>
+  <EntityType Name="tb_MuebleGarantia">
+    <Key>
+      <PropertyRef Name="IdGravamen" />
+    </Key>
+    <Property Name="IdGravamen" Type="Int32" Nullable="false" />
+    <Property Name="IdMueble" Type="Int32" />
+    <Property Name="NumeroGarantia" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroDerecho" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="TomoGravamenAfectado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AsientoGravamenAfectado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaGravamenAfectado" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TipoGarantia" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+    <Property Name="GradoGarantia" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+    <Property Name="TomoConstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AsientoConstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="SecuenciaConstitucion" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="NumeroFinca" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="AnoAgricola" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="EstadoGarantia" Type="String" MaxLength="100" FixedLength="true" Unicode="false" />
+    <Property Name="ProporcionMonto" Type="Decimal" Precision="14" Scale="0" />
+    <Property Name="DescripcionGarantia" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_MuebleGravamen" Relationship="Self.FK_tb_MuebleGarantia_tb_MuebleGravamen" FromRole="tb_MuebleGarantia" ToRole="tb_MuebleGravamen" />
+  </EntityType>
+  <EntityType Name="tb_MuebleMotores">
+    <Key>
+      <PropertyRef Name="IdMueble" />
+    </Key>
+    <Property Name="IdMueble" Type="Int32" Nullable="false" />
+    <Property Name="NumeroMotor" Type="String" MaxLength="40" FixedLength="true" Unicode="false" />
+    <Property Name="Marca" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Procedencia" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="Combustible" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+    <Property Name="NumeroCilindros" Type="Int16" />
+    <Property Name="Cilindrada" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="Potencia" Type="Decimal" Precision="8" Scale="0" />
+    <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroSerie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NombreFabricante" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Mueble" Relationship="Self.FK_tb_MuebleMotores_tb_Mueble" FromRole="tb_MuebleMotores" ToRole="tb_Mueble" />
+  </EntityType>
+  <EntityType Name="tb_PersonaIdentificacion">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="Identificacion" />
+      <PropertyRef Name="IdIdentificacionTipo" />
+    </Key>
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdIdentificacionTipo" Type="Int16" Nullable="false" />
+    <Property Name="FechaEmision" Type="DateTime" Precision="3" />
+    <Property Name="FechaVencimiento" Type="DateTime" Precision="3" />
+    <Property Name="IdUbicacionGeo1" Type="Int32" />
+    <Property Name="IdUbicacionGeo2" Type="Int32" />
+    <Property Name="IdUbicacionGeo3" Type="Int32" />
+    <Property Name="IdentificacionEstado" Type="Int16" />
+    <Property Name="IdFuente" Type="Int32" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaUltimaAct" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_PersonaIdentificacion_tb_Persona" FromRole="tb_PersonaIdentificacion" ToRole="tb_Persona" />
+    <NavigationProperty Name="tb_PersonaEstadoId" Relationship="Self.FK_tb_PersonaIdentificacion_tb_PersonaEstadoId" FromRole="tb_PersonaIdentificacion" ToRole="tb_PersonaEstadoId" />
+    <NavigationProperty Name="tb_PersonaTipoId" Relationship="Self.FK_tb_PersonaIdentificacion_tb_PersonaTipoId" FromRole="tb_PersonaIdentificacion" ToRole="tb_PersonaTipoId" />
+  </EntityType>
+  <EntityType Name="tb_Salario">
+    <Key>
+      <PropertyRef Name="idSalario" />
+    </Key>
+    <Property Name="idSalario" Type="Int32" Nullable="false" />
+    <Property Name="idPersonaAsalariado" Type="Int32" />
+    <Property Name="idPersonaPatrono" Type="Int32" />
+    <Property Name="UltimoSalario" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="SalarioPromedio2meses" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="SalarioPromedio3meses" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="SalarioPromedio6meses" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="SalarioPromedio12meses" Type="Decimal" Precision="13" Scale="2" />
+    <Property Name="IdRangoUltSalario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdRangoPromedio2meses" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdRangoPromedio3meses" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdRangoPromedio6meses" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdRangoPromedio12meses" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ConteoMesesLaborados" Type="Int16" />
+    <Property Name="FechaActualizacion" Type="DateTime" Precision="3" />
+    <Property Name="EsOculto" Type="Boolean" />
+    <Property Name="FechaOculto" Type="DateTime" Precision="3" />
+    <Property Name="IdFuente" Type="Int32" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_Salario_tb_Persona" FromRole="tb_Salario" ToRole="tb_Persona" />
+  </EntityType>
+  <EntityType Name="tb_SalarioPatrono">
+    <Key>
+      <PropertyRef Name="idPatrono" />
+    </Key>
+    <Property Name="idPatrono" Type="Int32" Nullable="false" />
+    <Property Name="IdPersonaEmpleado" Type="Int32" />
+    <Property Name="IdFuente" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tb_TelefonoPersona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="IdTelefono" />
+    </Key>
+    <Property Name="IdPersona" Type="Int32" Nullable="false" />
+    <Property Name="IdTelefono" Type="Int32" Nullable="false" />
+    <Property Name="EsOculto" Type="Boolean" />
+    <Property Name="FechaOculto" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tb_Persona" Relationship="Self.FK_tb_TelefonoPersona_tb_Persona" FromRole="tb_TelefonoPersona" ToRole="tb_Persona" />
+    <NavigationProperty Name="tb_Telefono" Relationship="Self.FK_tb_TelefonoPersona_tb_Telefono" FromRole="tb_TelefonoPersona" ToRole="tb_Telefono" />
+  </EntityType>
+  <Association Name="FK_tb_HuellaBusqueda_Canal">
+    <End Role="tb_Canal" Type="Self.tb_Canal" Multiplicity="1" />
+    <End Role="tb_HuellaBusqueda" Type="Self.tb_HuellaBusqueda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Canal">
+        <PropertyRef Name="idCanal" />
+      </Principal>
+      <Dependent Role="tb_HuellaBusqueda">
+        <PropertyRef Name="IdCanal" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Cliente_tb_Ejecutivo">
+    <End Role="tb_Ejecutivo" Type="Self.tb_Ejecutivo" Multiplicity="0..1" />
+    <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Ejecutivo">
+        <PropertyRef Name="IdEjecutivo" />
+      </Principal>
+      <Dependent Role="tb_Cliente">
+        <PropertyRef Name="IdEjecutivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Cliente_tb_Empresa">
+    <End Role="tb_Empresa" Type="Self.tb_Empresa" Multiplicity="0..1" />
+    <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Empresa">
+        <PropertyRef Name="idPersona" />
+      </Principal>
+      <Dependent Role="tb_Cliente">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Credito_tb_Clientes">
+    <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="0..1" />
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="tb_Credito">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaBusqueda_Cliente">
+    <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="1" />
+    <End Role="tb_HuellaBusqueda" Type="Self.tb_HuellaBusqueda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="tb_HuellaBusqueda">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaConsulta_Cliente">
+    <End Role="tb_Cliente" Type="Self.tb_Cliente" Multiplicity="1" />
+    <End Role="tb_HuellaConsulta" Type="Self.tb_HuellaConsulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="tb_HuellaConsulta">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Credito_tb_CreditoPeriodoPago">
+    <End Role="tb_CreditoPeriodoPago" Type="Self.tb_CreditoPeriodoPago" Multiplicity="0..1" />
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CreditoPeriodoPago">
+        <PropertyRef Name="IdPeriodoPago" />
+      </Principal>
+      <Dependent Role="tb_Credito">
+        <PropertyRef Name="IdPeriodoPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Credito_tb_CreditoTipoCredito">
+    <End Role="tb_CreditoTipoCredito" Type="Self.tb_CreditoTipoCredito" Multiplicity="0..1" />
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CreditoTipoCredito">
+        <PropertyRef Name="IdCreditoTipo" />
+      </Principal>
+      <Dependent Role="tb_Credito">
+        <PropertyRef Name="IdTipoCredito" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Credito_tb_CreditoTipoGarantia">
+    <End Role="tb_CreditoTipoGarantia" Type="Self.tb_CreditoTipoGarantia" Multiplicity="0..1" />
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CreditoTipoGarantia">
+        <PropertyRef Name="IdGarantia" />
+      </Principal>
+      <Dependent Role="tb_Credito">
+        <PropertyRef Name="IdTipoGarantia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Credito_tb_Fuente">
+    <End Role="tb_Fuente" Type="Self.tb_Fuente" Multiplicity="0..1" />
+    <End Role="tb_Credito" Type="Self.tb_Credito" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Fuente">
+        <PropertyRef Name="IdFuente" />
+      </Principal>
+      <Dependent Role="tb_Credito">
+        <PropertyRef Name="IdFuente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_CreditoTipoGarantia_tb_CreditoTipoGarantia">
+    <End Role="tb_CreditoTipoGarantia" Type="Self.tb_CreditoTipoGarantia" Multiplicity="1" />
+    <End Role="tb_CreditoTipoGarantia1" Type="Self.tb_CreditoTipoGarantia" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_CreditoTipoGarantia">
+        <PropertyRef Name="IdGarantia" />
+      </Principal>
+      <Dependent Role="tb_CreditoTipoGarantia1">
+        <PropertyRef Name="IdGarantia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Direccion_tb_TipoDireccion">
+    <End Role="tb_TipoDireccion" Type="Self.tb_TipoDireccion" Multiplicity="0..1" />
+    <End Role="tb_Direccion" Type="Self.tb_Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoDireccion">
+        <PropertyRef Name="IdTipoDireccion" />
+      </Principal>
+      <Dependent Role="tb_Direccion">
+        <PropertyRef Name="TipoDireccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Empresa_tb_EmpresaEstado">
+    <End Role="tb_EmpresaEstado" Type="Self.tb_EmpresaEstado" Multiplicity="0..1" />
+    <End Role="tb_Empresa" Type="Self.tb_Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_EmpresaEstado">
+        <PropertyRef Name="IdEstadoEmpresa" />
+      </Principal>
+      <Dependent Role="tb_Empresa">
+        <PropertyRef Name="IdEstadoActual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Empresa_tb_TipoEmpresa">
+    <End Role="tb_TipoPersonaJuridica" Type="Self.tb_TipoPersonaJuridica" Multiplicity="0..1" />
+    <End Role="tb_Empresa" Type="Self.tb_Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoPersonaJuridica">
+        <PropertyRef Name="IdTipoPersonaJuridica" />
+      </Principal>
+      <Dependent Role="tb_Empresa">
+        <PropertyRef Name="TipoPersonaJuridica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Fuente_Estado">
+    <End Role="tb_EstadoFuente" Type="Self.tb_EstadoFuente" Multiplicity="0..1" />
+    <End Role="tb_Fuente" Type="Self.tb_Fuente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_EstadoFuente">
+        <PropertyRef Name="IdEstadoFuente" />
+      </Principal>
+      <Dependent Role="tb_Fuente">
+        <PropertyRef Name="IdEstadoFuente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tb_Factur__IdTip__2E70E1FD">
+    <End Role="tb_TipoReport" Type="Self.tb_TipoReport" Multiplicity="0..1" />
+    <End Role="tb_Facturacion" Type="Self.tb_Facturacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoReport">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tb_Facturacion">
+        <PropertyRef Name="IdTipoReporte" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaBusqueda_Producto">
+    <End Role="tb_Producto" Type="Self.tb_Producto" Multiplicity="1" />
+    <End Role="tb_HuellaBusqueda" Type="Self.tb_HuellaBusqueda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Producto">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="tb_HuellaBusqueda">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaBusqueda_TipoConsulta">
+    <End Role="tb_HuellaTipoConsulta" Type="Self.tb_HuellaTipoConsulta" Multiplicity="1" />
+    <End Role="tb_HuellaBusqueda" Type="Self.tb_HuellaBusqueda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_HuellaTipoConsulta">
+        <PropertyRef Name="IdTipoConsulta" />
+      </Principal>
+      <Dependent Role="tb_HuellaBusqueda">
+        <PropertyRef Name="IdTipoConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaBusqueda_Usuario">
+    <End Role="tb_Usuario" Type="Self.tb_Usuario" Multiplicity="1" />
+    <End Role="tb_HuellaBusqueda" Type="Self.tb_HuellaBusqueda" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Usuario">
+        <PropertyRef Name="idUsuario" />
+      </Principal>
+      <Dependent Role="tb_HuellaBusqueda">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaConsulta_Busqueda">
+    <End Role="tb_HuellaBusqueda" Type="Self.tb_HuellaBusqueda" Multiplicity="1" />
+    <End Role="tb_HuellaConsulta" Type="Self.tb_HuellaConsulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_HuellaBusqueda">
+        <PropertyRef Name="IdHuellaBusqueda" />
+      </Principal>
+      <Dependent Role="tb_HuellaConsulta">
+        <PropertyRef Name="IdHuellaBusqueda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaConsulta_MotivoConsulta">
+    <End Role="tb_HuellaMotivoConsulta" Type="Self.tb_HuellaMotivoConsulta" Multiplicity="1" />
+    <End Role="tb_HuellaConsulta" Type="Self.tb_HuellaConsulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_HuellaMotivoConsulta">
+        <PropertyRef Name="IdMotivo" />
+      </Principal>
+      <Dependent Role="tb_HuellaConsulta">
+        <PropertyRef Name="IdMotivoConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaConsulta_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_HuellaConsulta" Type="Self.tb_HuellaConsulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_HuellaConsulta">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_HuellaConsulta_Producto">
+    <End Role="tb_Producto" Type="Self.tb_Producto" Multiplicity="1" />
+    <End Role="tb_HuellaConsulta" Type="Self.tb_HuellaConsulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Producto">
+        <PropertyRef Name="idProducto" />
+      </Principal>
+      <Dependent Role="tb_HuellaConsulta">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Inmueble_Derecho">
+    <End Role="tb_Inmueble" Type="Self.tb_Inmueble" Multiplicity="1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Inmueble">
+        <PropertyRef Name="IdInmueble" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleGarantia_tb_Inmueble">
+    <End Role="tb_Inmueble" Type="Self.tb_Inmueble" Multiplicity="1" />
+    <End Role="tb_InmuebleGarantia" Type="Self.tb_InmuebleGarantia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Inmueble">
+        <PropertyRef Name="IdInmueble" />
+      </Principal>
+      <Dependent Role="tb_InmuebleGarantia">
+        <PropertyRef Name="IdInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleLinderos_tb_Inmueble">
+    <End Role="tb_Inmueble" Type="Self.tb_Inmueble" Multiplicity="1" />
+    <End Role="tb_InmuebleLinderos" Type="Self.tb_InmuebleLinderos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Inmueble">
+        <PropertyRef Name="IdInmueble" />
+      </Principal>
+      <Dependent Role="tb_InmuebleLinderos">
+        <PropertyRef Name="IdInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleMatrices_tb_Inmueble">
+    <End Role="tb_Inmueble" Type="Self.tb_Inmueble" Multiplicity="1" />
+    <End Role="tb_InmuebleMatrices" Type="Self.tb_InmuebleMatrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Inmueble">
+        <PropertyRef Name="IdInmueble" />
+      </Principal>
+      <Dependent Role="tb_InmuebleMatrices">
+        <PropertyRef Name="IdInmueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho">
+    <End Role="tb_InmuebleTipoDerecho" Type="Self.tb_InmuebleTipoDerecho" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleTipoDerecho">
+        <PropertyRef Name="IdTipoDerecho" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdTipoDerecho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion">
+    <End Role="tb_InmuebleTipoOperacion" Type="Self.tb_InmuebleTipoOperacion" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleTipoOperacion">
+        <PropertyRef Name="IdOperacion" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="idTipoOperacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion">
+    <End Role="tb_InmuebleTipoProporcion" Type="Self.tb_InmuebleTipoProporcion" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleTipoProporcion">
+        <PropertyRef Name="IdProporcion" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdProporcion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_Moneda">
+    <End Role="tb_Moneda" Type="Self.tb_Moneda" Multiplicity="0..1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleDerecho_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_InmuebleDerecho" Type="Self.tb_InmuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_InmuebleDerecho">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleGarantia_tb_InmuebleGravamen">
+    <End Role="tb_InmuebleGravamen" Type="Self.tb_InmuebleGravamen" Multiplicity="1" />
+    <End Role="tb_InmuebleGarantia" Type="Self.tb_InmuebleGarantia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Principal>
+      <Dependent Role="tb_InmuebleGarantia">
+        <PropertyRef Name="idGravamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleGravamen_Operacion">
+    <End Role="tb_InmuebleTipoOperacion" Type="Self.tb_InmuebleTipoOperacion" Multiplicity="0..1" />
+    <End Role="tb_InmuebleGravamen" Type="Self.tb_InmuebleGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleTipoOperacion">
+        <PropertyRef Name="IdOperacion" />
+      </Principal>
+      <Dependent Role="tb_InmuebleGravamen">
+        <PropertyRef Name="IdTipoOperacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleGravamen_tb_Moneda">
+    <End Role="tb_Moneda" Type="Self.tb_Moneda" Multiplicity="0..1" />
+    <End Role="tb_InmuebleGravamen" Type="Self.tb_InmuebleGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="tb_InmuebleGravamen">
+        <PropertyRef Name="IdMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen">
+    <End Role="tb_InmuebleGravamen" Type="Self.tb_InmuebleGravamen" Multiplicity="1" />
+    <End Role="tb_InmuebleParteGravamen" Type="Self.tb_InmuebleParteGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Principal>
+      <Dependent Role="tb_InmuebleParteGravamen">
+        <PropertyRef Name="IdGravamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleMatrices_PersonaCondominio">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="0..1" />
+    <End Role="tb_InmuebleMatrices" Type="Self.tb_InmuebleMatrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_InmuebleMatrices">
+        <PropertyRef Name="IdPersonaJuridica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleMatrices_Poderes">
+    <End Role="tb_InmuebleTipoPoderes" Type="Self.tb_InmuebleTipoPoderes" Multiplicity="0..1" />
+    <End Role="tb_InmuebleMatrices" Type="Self.tb_InmuebleMatrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_InmuebleTipoPoderes">
+        <PropertyRef Name="IdPoder" />
+      </Principal>
+      <Dependent Role="tb_InmuebleMatrices">
+        <PropertyRef Name="IdPoder" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleMatrices_tb_Moneda">
+    <End Role="tb_Moneda" Type="Self.tb_Moneda" Multiplicity="0..1" />
+    <End Role="tb_InmuebleMatrices" Type="Self.tb_InmuebleMatrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Moneda">
+        <PropertyRef Name="IdMoneda" />
+      </Principal>
+      <Dependent Role="tb_InmuebleMatrices">
+        <PropertyRef Name="IdMoneda" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleMatrices_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_InmuebleMatrices" Type="Self.tb_InmuebleMatrices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_InmuebleMatrices">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_InmuebleParteGravamen_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_InmuebleParteGravamen" Type="Self.tb_InmuebleParteGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_InmuebleParteGravamen">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Mueble_tb_MuebleTipoBien1">
+    <End Role="tb_MuebleTipoBien" Type="Self.tb_MuebleTipoBien" Multiplicity="0..1" />
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleTipoBien">
+        <PropertyRef Name="IdTipoBien" />
+      </Principal>
+      <Dependent Role="tb_Mueble">
+        <PropertyRef Name="TipoBien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleAeronave_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleAeronave" Type="Self.tb_MuebleAeronave" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleAeronave">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleBuque_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleBuque" Type="Self.tb_MuebleBuque" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleBuque">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleDerecho_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleDerecho" Type="Self.tb_MuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleDerecho">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleInfracciones_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleInfracciones" Type="Self.tb_MuebleInfracciones" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleInfracciones">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleLevantamientos_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleLevantamientos" Type="Self.tb_MuebleLevantamientos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleLevantamientos">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleMotores_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleMotores" Type="Self.tb_MuebleMotores" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleMotores">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleVehiculo_tb_Mueble">
+    <End Role="tb_Mueble" Type="Self.tb_Mueble" Multiplicity="1" />
+    <End Role="tb_MuebleVehiculo" Type="Self.tb_MuebleVehiculo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Mueble">
+        <PropertyRef Name="IdMueble" />
+      </Principal>
+      <Dependent Role="tb_MuebleVehiculo">
+        <PropertyRef Name="IdMueble" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleDerecho_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_MuebleDerecho" Type="Self.tb_MuebleDerecho" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_MuebleDerecho">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleGarantia_tb_MuebleGravamen">
+    <End Role="tb_MuebleGravamen" Type="Self.tb_MuebleGravamen" Multiplicity="1" />
+    <End Role="tb_MuebleGarantia" Type="Self.tb_MuebleGarantia" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Principal>
+      <Dependent Role="tb_MuebleGarantia">
+        <PropertyRef Name="IdGravamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_MuebleParteGravamen_tb_MuebleGravamen">
+    <End Role="tb_MuebleGravamen" Type="Self.tb_MuebleGravamen" Multiplicity="1" />
+    <End Role="tb_MuebleParteGravamen" Type="Self.tb_MuebleParteGravamen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_MuebleGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Principal>
+      <Dependent Role="tb_MuebleParteGravamen">
+        <PropertyRef Name="idGravamen" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Nicaraguenses_EstadoCivil">
+    <End Role="tb_TipoEstadoCivil" Type="Self.tb_TipoEstadoCivil" Multiplicity="0..1" />
+    <End Role="tb_Nicaraguenses" Type="Self.tb_Nicaraguenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoEstadoCivil">
+        <PropertyRef Name="IdEstadoCivil" />
+      </Principal>
+      <Dependent Role="tb_Nicaraguenses">
+        <PropertyRef Name="IdEstadoCivil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Nicaraguenses_Sexo">
+    <End Role="tb_Sexo" Type="Self.tb_Sexo" Multiplicity="0..1" />
+    <End Role="tb_Nicaraguenses" Type="Self.tb_Nicaraguenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Sexo">
+        <PropertyRef Name="IdSexo" />
+      </Principal>
+      <Dependent Role="tb_Nicaraguenses">
+        <PropertyRef Name="IdSexo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Nicaraguenses_tb_Nicaraguenses">
+    <End Role="tb_Nicaraguenses" Type="Self.tb_Nicaraguenses" Multiplicity="1" />
+    <End Role="tb_Nicaraguenses1" Type="Self.tb_Nicaraguenses" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Nicaraguenses">
+        <PropertyRef Name="IdNicaraguense" />
+      </Principal>
+      <Dependent Role="tb_Nicaraguenses1">
+        <PropertyRef Name="IdNicaraguense" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Nicaraguenses_TipoIdentificacion">
+    <End Role="tb_PersonaTipoId" Type="Self.tb_PersonaTipoId" Multiplicity="0..1" />
+    <End Role="tb_Nicaraguenses" Type="Self.tb_Nicaraguenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PersonaTipoId">
+        <PropertyRef Name="IdIdentificacionTipo" />
+      </Principal>
+      <Dependent Role="tb_Nicaraguenses">
+        <PropertyRef Name="IdTipoIdentificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Nicaraguenses_TipoPersona">
+    <End Role="tb_PersonaTipoPersona" Type="Self.tb_PersonaTipoPersona" Multiplicity="0..1" />
+    <End Role="tb_Nicaraguenses" Type="Self.tb_Nicaraguenses" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PersonaTipoPersona">
+        <PropertyRef Name="idTipoPersona" />
+      </Principal>
+      <Dependent Role="tb_Nicaraguenses">
+        <PropertyRef Name="IdTipoPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaIdentificacion_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_PersonaIdentificacion" Type="Self.tb_PersonaIdentificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_PersonaIdentificacion">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaPEPs_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_PersonaPEPs" Type="Self.tb_PersonaPEPs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_PersonaPEPs">
+        <PropertyRef Name="IdPersonaPeps" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaVinculo_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="0..1" />
+    <End Role="tb_PersonaVinculo" Type="Self.tb_PersonaVinculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_PersonaVinculo">
+        <PropertyRef Name="IdVinculoPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaVinculo_tb_PersonaVinculo">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="0..1" />
+    <End Role="tb_PersonaVinculo" Type="Self.tb_PersonaVinculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_PersonaVinculo">
+        <PropertyRef Name="IdVinculoPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Salario_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="0..1" />
+    <End Role="tb_Salario" Type="Self.tb_Salario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_Salario">
+        <PropertyRef Name="idPersonaAsalariado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_TelefonoPersona_tb_Persona">
+    <End Role="tb_Persona" Type="Self.tb_Persona" Multiplicity="1" />
+    <End Role="tb_TelefonoPersona" Type="Self.tb_TelefonoPersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="tb_TelefonoPersona">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaIdentificacion_tb_PersonaEstadoId">
+    <End Role="tb_PersonaEstadoId" Type="Self.tb_PersonaEstadoId" Multiplicity="0..1" />
+    <End Role="tb_PersonaIdentificacion" Type="Self.tb_PersonaIdentificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PersonaEstadoId">
+        <PropertyRef Name="idEstadoIndetificacion" />
+      </Principal>
+      <Dependent Role="tb_PersonaIdentificacion">
+        <PropertyRef Name="IdentificacionEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaIdentificacion_tb_PersonaTipoId">
+    <End Role="tb_PersonaTipoId" Type="Self.tb_PersonaTipoId" Multiplicity="1" />
+    <End Role="tb_PersonaIdentificacion" Type="Self.tb_PersonaIdentificacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PersonaTipoId">
+        <PropertyRef Name="IdIdentificacionTipo" />
+      </Principal>
+      <Dependent Role="tb_PersonaIdentificacion">
+        <PropertyRef Name="IdIdentificacionTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_PersonaVinculo_tb_PersonaTipoVinculo">
+    <End Role="tb_PersonaTipoVinculo" Type="Self.tb_PersonaTipoVinculo" Multiplicity="0..1" />
+    <End Role="tb_PersonaVinculo" Type="Self.tb_PersonaVinculo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_PersonaTipoVinculo">
+        <PropertyRef Name="IdTipoVinculo" />
+      </Principal>
+      <Dependent Role="tb_PersonaVinculo">
+        <PropertyRef Name="IdVinculoTipo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_SalarioHistorico_tb_SalarioActualizacion">
+    <End Role="tb_SalarioActualizacion" Type="Self.tb_SalarioActualizacion" Multiplicity="0..1" />
+    <End Role="tb_SalarioHistorico" Type="Self.tb_SalarioHistorico" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_SalarioActualizacion">
+        <PropertyRef Name="idActualizacion" />
+      </Principal>
+      <Dependent Role="tb_SalarioHistorico">
+        <PropertyRef Name="IdActualizacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_Telefono_tb_TelefonoTipo">
+    <End Role="tb_TipoTelefono" Type="Self.tb_TipoTelefono" Multiplicity="0..1" />
+    <End Role="tb_Telefono" Type="Self.tb_Telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoTelefono">
+        <PropertyRef Name="IdTipoTelefono" />
+      </Principal>
+      <Dependent Role="tb_Telefono">
+        <PropertyRef Name="TipoTelefono" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tb_TelefonoPersona_tb_Telefono">
+    <End Role="tb_Telefono" Type="Self.tb_Telefono" Multiplicity="1" />
+    <End Role="tb_TelefonoPersona" Type="Self.tb_TelefonoPersona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tb_Telefono">
+        <PropertyRef Name="idTelefono" />
+      </Principal>
+      <Dependent Role="tb_TelefonoPersona">
+        <PropertyRef Name="IdTelefono" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Table_1_Table_TipoEmpresa">
+    <End Role="tb_TipoPersonaJuridica" Type="Self.tb_TipoPersonaJuridica" Multiplicity="1" />
+    <End Role="tb_TipoPersonaJuridica1" Type="Self.tb_TipoPersonaJuridica" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tb_TipoPersonaJuridica">
+        <PropertyRef Name="IdTipoPersonaJuridica" />
+      </Principal>
+      <Dependent Role="tb_TipoPersonaJuridica1">
+        <PropertyRef Name="IdTipoPersonaJuridica" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EntitiesDatavox2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tb_Canal" EntityType="Self.tb_Canal" />
+    <EntitySet Name="tb_Cliente" EntityType="Self.tb_Cliente" />
+    <EntitySet Name="tb_Credito" EntityType="Self.tb_Credito" />
+    <EntitySet Name="tb_CreditoObligacion" EntityType="Self.tb_CreditoObligacion" />
+    <EntitySet Name="tb_CreditoPeriodoPago" EntityType="Self.tb_CreditoPeriodoPago" />
+    <EntitySet Name="tb_CreditoSaldo" EntityType="Self.tb_CreditoSaldo" />
+    <EntitySet Name="tb_CreditoTipoCalificacion" EntityType="Self.tb_CreditoTipoCalificacion" />
+    <EntitySet Name="tb_CreditoTipoCredito" EntityType="Self.tb_CreditoTipoCredito" />
+    <EntitySet Name="tb_CreditoTipoEstado" EntityType="Self.tb_CreditoTipoEstado" />
+    <EntitySet Name="tb_CreditoTipoGarantia" EntityType="Self.tb_CreditoTipoGarantia" />
+    <EntitySet Name="tb_CreditoTipoObligacion" EntityType="Self.tb_CreditoTipoObligacion" />
+    <EntitySet Name="tb_Direccion" EntityType="Self.tb_Direccion" />
+    <EntitySet Name="tb_Ejecutivo" EntityType="Self.tb_Ejecutivo" />
+    <EntitySet Name="tb_Empresa" EntityType="Self.tb_Empresa" />
+    <EntitySet Name="tb_EmpresaEstado" EntityType="Self.tb_EmpresaEstado" />
+    <EntitySet Name="tb_EmpresaTipoCapital" EntityType="Self.tb_EmpresaTipoCapital" />
+    <EntitySet Name="tb_EmpresaTipoClaseAccion" EntityType="Self.tb_EmpresaTipoClaseAccion" />
+    <EntitySet Name="tb_EmpresaTipoParte" EntityType="Self.tb_EmpresaTipoParte" />
+    <EntitySet Name="tb_EmpresaTipoRepresentacion" EntityType="Self.tb_EmpresaTipoRepresentacion" />
+    <EntitySet Name="tb_EstadoFuente" EntityType="Self.tb_EstadoFuente" />
+    <EntitySet Name="tb_Facturacion" EntityType="Self.tb_Facturacion" />
+    <EntitySet Name="tb_Fuente" EntityType="Self.tb_Fuente" />
+    <EntitySet Name="tb_Gentilicio" EntityType="Self.tb_Gentilicio" />
+    <EntitySet Name="tb_HuellaBusqueda" EntityType="Self.tb_HuellaBusqueda" />
+    <EntitySet Name="tb_HuellaConsulta" EntityType="Self.tb_HuellaConsulta" />
+    <EntitySet Name="tb_HuellaMotivoConsulta" EntityType="Self.tb_HuellaMotivoConsulta" />
+    <EntitySet Name="tb_HuellaTipoConsulta" EntityType="Self.tb_HuellaTipoConsulta" />
+    <EntitySet Name="tb_Inmueble" EntityType="Self.tb_Inmueble" />
+    <EntitySet Name="tb_InmuebleAnotaciones" EntityType="Self.tb_InmuebleAnotaciones" />
+    <EntitySet Name="tb_InmuebleDerecho" EntityType="Self.tb_InmuebleDerecho" />
+    <EntitySet Name="tb_InmuebleGarantia" EntityType="Self.tb_InmuebleGarantia" />
+    <EntitySet Name="tb_InmuebleGravamen" EntityType="Self.tb_InmuebleGravamen" />
+    <EntitySet Name="tb_InmuebleLinderos" EntityType="Self.tb_InmuebleLinderos" />
+    <EntitySet Name="tb_InmuebleMatrices" EntityType="Self.tb_InmuebleMatrices" />
+    <EntitySet Name="tb_InmuebleParteGravamen" EntityType="Self.tb_InmuebleParteGravamen" />
+    <EntitySet Name="tb_InmuebleTipoDerecho" EntityType="Self.tb_InmuebleTipoDerecho" />
+    <EntitySet Name="tb_InmuebleTipoOperacion" EntityType="Self.tb_InmuebleTipoOperacion" />
+    <EntitySet Name="tb_InmuebleTipoPoderes" EntityType="Self.tb_InmuebleTipoPoderes" />
+    <EntitySet Name="tb_InmuebleTipoProporcion" EntityType="Self.tb_InmuebleTipoProporcion" />
+    <EntitySet Name="tb_Juicio" EntityType="Self.tb_Juicio" />
+    <EntitySet Name="tb_Moneda" EntityType="Self.tb_Moneda" />
+    <EntitySet Name="tb_Mueble" EntityType="Self.tb_Mueble" />
+    <EntitySet Name="tb_MuebleDerecho" EntityType="Self.tb_MuebleDerecho" />
+    <EntitySet Name="tb_MuebleGenCodigos" EntityType="Self.tb_MuebleGenCodigos" />
+    <EntitySet Name="tb_MuebleGenTablas" EntityType="Self.tb_MuebleGenTablas" />
+    <EntitySet Name="tb_MuebleGravamen" EntityType="Self.tb_MuebleGravamen" />
+    <EntitySet Name="tb_MuebleInfracciones" EntityType="Self.tb_MuebleInfracciones" />
+    <EntitySet Name="tb_MuebleLevantamientos" EntityType="Self.tb_MuebleLevantamientos" />
+    <EntitySet Name="tb_MuebleParteGravamen" EntityType="Self.tb_MuebleParteGravamen" />
+    <EntitySet Name="tb_MuebleTipoBien" EntityType="Self.tb_MuebleTipoBien" />
+    <EntitySet Name="tb_MuebleTipoClaseBien" EntityType="Self.tb_MuebleTipoClaseBien" />
+    <EntitySet Name="tb_MuebleTipoCodigoBien" EntityType="Self.tb_MuebleTipoCodigoBien" />
+    <EntitySet Name="tb_MuebleVehiculo" EntityType="Self.tb_MuebleVehiculo" />
+    <EntitySet Name="tb_Nicaraguenses" EntityType="Self.tb_Nicaraguenses" />
+    <EntitySet Name="tb_Persona" EntityType="Self.tb_Persona" />
+    <EntitySet Name="tb_PersonaEstadoCivilHistorico" EntityType="Self.tb_PersonaEstadoCivilHistorico" />
+    <EntitySet Name="tb_PersonaEstadoId" EntityType="Self.tb_PersonaEstadoId" />
+    <EntitySet Name="tb_PersonaPEPs" EntityType="Self.tb_PersonaPEPs" />
+    <EntitySet Name="tb_PersonaTipoId" EntityType="Self.tb_PersonaTipoId" />
+    <EntitySet Name="tb_PersonaTipoNacionalidad" EntityType="Self.tb_PersonaTipoNacionalidad" />
+    <EntitySet Name="tb_PersonaTipoPersona" EntityType="Self.tb_PersonaTipoPersona" />
+    <EntitySet Name="tb_PersonaTipoVinculo" EntityType="Self.tb_PersonaTipoVinculo" />
+    <EntitySet Name="tb_PersonaVinculo" EntityType="Self.tb_PersonaVinculo" />
+    <EntitySet Name="tb_Producto" EntityType="Self.tb_Producto" />
+    <EntitySet Name="tb_SalarioActualizacion" EntityType="Self.tb_SalarioActualizacion" />
+    <EntitySet Name="tb_SalarioHistorico" EntityType="Self.tb_SalarioHistorico" />
+    <EntitySet Name="tb_Sector" EntityType="Self.tb_Sector" />
+    <EntitySet Name="tb_Sexo" EntityType="Self.tb_Sexo" />
+    <EntitySet Name="tb_Telefono" EntityType="Self.tb_Telefono" />
+    <EntitySet Name="tb_TipoDireccion" EntityType="Self.tb_TipoDireccion" />
+    <EntitySet Name="tb_TipoEstadoCivil" EntityType="Self.tb_TipoEstadoCivil" />
+    <EntitySet Name="tb_TipoPersonaJuridica" EntityType="Self.tb_TipoPersonaJuridica" />
+    <EntitySet Name="tb_TipoReport" EntityType="Self.tb_TipoReport" />
+    <EntitySet Name="tb_TipoTelefono" EntityType="Self.tb_TipoTelefono" />
+    <EntitySet Name="tb_Usuario" EntityType="Self.tb_Usuario" />
+    <EntitySet Name="DerechosMueblesExp" EntityType="Self.DerechosMueblesExp" />
+    <EntitySet Name="tb_DivisionTerritorial" EntityType="Self.tb_DivisionTerritorial" />
+    <EntitySet Name="tb_MuebleAeronave" EntityType="Self.tb_MuebleAeronave" />
+    <EntitySet Name="tb_MuebleBuque" EntityType="Self.tb_MuebleBuque" />
+    <EntitySet Name="tb_MuebleGarantia" EntityType="Self.tb_MuebleGarantia" />
+    <EntitySet Name="tb_MuebleMotores" EntityType="Self.tb_MuebleMotores" />
+    <EntitySet Name="tb_PersonaIdentificacion" EntityType="Self.tb_PersonaIdentificacion" />
+    <EntitySet Name="tb_Salario" EntityType="Self.tb_Salario" />
+    <EntitySet Name="tb_SalarioPatrono" EntityType="Self.tb_SalarioPatrono" />
+    <EntitySet Name="tb_TelefonoPersona" EntityType="Self.tb_TelefonoPersona" />
+    <AssociationSet Name="FK_tb_HuellaBusqueda_Canal" Association="Self.FK_tb_HuellaBusqueda_Canal">
+      <End Role="tb_Canal" EntitySet="tb_Canal" />
+      <End Role="tb_HuellaBusqueda" EntitySet="tb_HuellaBusqueda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Cliente_tb_Ejecutivo" Association="Self.FK_tb_Cliente_tb_Ejecutivo">
+      <End Role="tb_Ejecutivo" EntitySet="tb_Ejecutivo" />
+      <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Cliente_tb_Empresa" Association="Self.FK_tb_Cliente_tb_Empresa">
+      <End Role="tb_Empresa" EntitySet="tb_Empresa" />
+      <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Credito_tb_Clientes" Association="Self.FK_tb_Credito_tb_Clientes">
+      <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaBusqueda_Cliente" Association="Self.FK_tb_HuellaBusqueda_Cliente">
+      <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+      <End Role="tb_HuellaBusqueda" EntitySet="tb_HuellaBusqueda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaConsulta_Cliente" Association="Self.FK_tb_HuellaConsulta_Cliente">
+      <End Role="tb_Cliente" EntitySet="tb_Cliente" />
+      <End Role="tb_HuellaConsulta" EntitySet="tb_HuellaConsulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Credito_tb_CreditoPeriodoPago" Association="Self.FK_tb_Credito_tb_CreditoPeriodoPago">
+      <End Role="tb_CreditoPeriodoPago" EntitySet="tb_CreditoPeriodoPago" />
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Credito_tb_CreditoTipoCredito" Association="Self.FK_tb_Credito_tb_CreditoTipoCredito">
+      <End Role="tb_CreditoTipoCredito" EntitySet="tb_CreditoTipoCredito" />
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Credito_tb_CreditoTipoGarantia" Association="Self.FK_tb_Credito_tb_CreditoTipoGarantia">
+      <End Role="tb_CreditoTipoGarantia" EntitySet="tb_CreditoTipoGarantia" />
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Credito_tb_Fuente" Association="Self.FK_tb_Credito_tb_Fuente">
+      <End Role="tb_Fuente" EntitySet="tb_Fuente" />
+      <End Role="tb_Credito" EntitySet="tb_Credito" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_CreditoTipoGarantia_tb_CreditoTipoGarantia" Association="Self.FK_tb_CreditoTipoGarantia_tb_CreditoTipoGarantia">
+      <End Role="tb_CreditoTipoGarantia" EntitySet="tb_CreditoTipoGarantia" />
+      <End Role="tb_CreditoTipoGarantia1" EntitySet="tb_CreditoTipoGarantia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Direccion_tb_TipoDireccion" Association="Self.FK_tb_Direccion_tb_TipoDireccion">
+      <End Role="tb_TipoDireccion" EntitySet="tb_TipoDireccion" />
+      <End Role="tb_Direccion" EntitySet="tb_Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Empresa_tb_EmpresaEstado" Association="Self.FK_tb_Empresa_tb_EmpresaEstado">
+      <End Role="tb_EmpresaEstado" EntitySet="tb_EmpresaEstado" />
+      <End Role="tb_Empresa" EntitySet="tb_Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Empresa_tb_TipoEmpresa" Association="Self.FK_tb_Empresa_tb_TipoEmpresa">
+      <End Role="tb_TipoPersonaJuridica" EntitySet="tb_TipoPersonaJuridica" />
+      <End Role="tb_Empresa" EntitySet="tb_Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Fuente_Estado" Association="Self.FK_tb_Fuente_Estado">
+      <End Role="tb_EstadoFuente" EntitySet="tb_EstadoFuente" />
+      <End Role="tb_Fuente" EntitySet="tb_Fuente" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tb_Factur__IdTip__2E70E1FD" Association="Self.FK__tb_Factur__IdTip__2E70E1FD">
+      <End Role="tb_TipoReport" EntitySet="tb_TipoReport" />
+      <End Role="tb_Facturacion" EntitySet="tb_Facturacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaBusqueda_Producto" Association="Self.FK_tb_HuellaBusqueda_Producto">
+      <End Role="tb_Producto" EntitySet="tb_Producto" />
+      <End Role="tb_HuellaBusqueda" EntitySet="tb_HuellaBusqueda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaBusqueda_TipoConsulta" Association="Self.FK_tb_HuellaBusqueda_TipoConsulta">
+      <End Role="tb_HuellaTipoConsulta" EntitySet="tb_HuellaTipoConsulta" />
+      <End Role="tb_HuellaBusqueda" EntitySet="tb_HuellaBusqueda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaBusqueda_Usuario" Association="Self.FK_tb_HuellaBusqueda_Usuario">
+      <End Role="tb_Usuario" EntitySet="tb_Usuario" />
+      <End Role="tb_HuellaBusqueda" EntitySet="tb_HuellaBusqueda" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaConsulta_Busqueda" Association="Self.FK_tb_HuellaConsulta_Busqueda">
+      <End Role="tb_HuellaBusqueda" EntitySet="tb_HuellaBusqueda" />
+      <End Role="tb_HuellaConsulta" EntitySet="tb_HuellaConsulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaConsulta_MotivoConsulta" Association="Self.FK_tb_HuellaConsulta_MotivoConsulta">
+      <End Role="tb_HuellaMotivoConsulta" EntitySet="tb_HuellaMotivoConsulta" />
+      <End Role="tb_HuellaConsulta" EntitySet="tb_HuellaConsulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaConsulta_Persona" Association="Self.FK_tb_HuellaConsulta_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_HuellaConsulta" EntitySet="tb_HuellaConsulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_HuellaConsulta_Producto" Association="Self.FK_tb_HuellaConsulta_Producto">
+      <End Role="tb_Producto" EntitySet="tb_Producto" />
+      <End Role="tb_HuellaConsulta" EntitySet="tb_HuellaConsulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Inmueble_Derecho" Association="Self.FK_tb_Inmueble_Derecho">
+      <End Role="tb_Inmueble" EntitySet="tb_Inmueble" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleGarantia_tb_Inmueble" Association="Self.FK_tb_InmuebleGarantia_tb_Inmueble">
+      <End Role="tb_Inmueble" EntitySet="tb_Inmueble" />
+      <End Role="tb_InmuebleGarantia" EntitySet="tb_InmuebleGarantia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleLinderos_tb_Inmueble" Association="Self.FK_tb_InmuebleLinderos_tb_Inmueble">
+      <End Role="tb_Inmueble" EntitySet="tb_Inmueble" />
+      <End Role="tb_InmuebleLinderos" EntitySet="tb_InmuebleLinderos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleMatrices_tb_Inmueble" Association="Self.FK_tb_InmuebleMatrices_tb_Inmueble">
+      <End Role="tb_Inmueble" EntitySet="tb_Inmueble" />
+      <End Role="tb_InmuebleMatrices" EntitySet="tb_InmuebleMatrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho" Association="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoDerecho">
+      <End Role="tb_InmuebleTipoDerecho" EntitySet="tb_InmuebleTipoDerecho" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion" Association="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoOperacion">
+      <End Role="tb_InmuebleTipoOperacion" EntitySet="tb_InmuebleTipoOperacion" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion" Association="Self.FK_tb_InmuebleDerecho_tb_InmuebleTipoProporcion">
+      <End Role="tb_InmuebleTipoProporcion" EntitySet="tb_InmuebleTipoProporcion" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_Moneda" Association="Self.FK_tb_InmuebleDerecho_tb_Moneda">
+      <End Role="tb_Moneda" EntitySet="tb_Moneda" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleDerecho_tb_Persona" Association="Self.FK_tb_InmuebleDerecho_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_InmuebleDerecho" EntitySet="tb_InmuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleGarantia_tb_InmuebleGravamen" Association="Self.FK_tb_InmuebleGarantia_tb_InmuebleGravamen">
+      <End Role="tb_InmuebleGravamen" EntitySet="tb_InmuebleGravamen" />
+      <End Role="tb_InmuebleGarantia" EntitySet="tb_InmuebleGarantia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleGravamen_Operacion" Association="Self.FK_tb_InmuebleGravamen_Operacion">
+      <End Role="tb_InmuebleTipoOperacion" EntitySet="tb_InmuebleTipoOperacion" />
+      <End Role="tb_InmuebleGravamen" EntitySet="tb_InmuebleGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleGravamen_tb_Moneda" Association="Self.FK_tb_InmuebleGravamen_tb_Moneda">
+      <End Role="tb_Moneda" EntitySet="tb_Moneda" />
+      <End Role="tb_InmuebleGravamen" EntitySet="tb_InmuebleGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen" Association="Self.FK_tb_InmuebleParteGravamen_tb_InmuebleGravamen">
+      <End Role="tb_InmuebleGravamen" EntitySet="tb_InmuebleGravamen" />
+      <End Role="tb_InmuebleParteGravamen" EntitySet="tb_InmuebleParteGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleMatrices_PersonaCondominio" Association="Self.FK_tb_InmuebleMatrices_PersonaCondominio">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_InmuebleMatrices" EntitySet="tb_InmuebleMatrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleMatrices_Poderes" Association="Self.FK_tb_InmuebleMatrices_Poderes">
+      <End Role="tb_InmuebleTipoPoderes" EntitySet="tb_InmuebleTipoPoderes" />
+      <End Role="tb_InmuebleMatrices" EntitySet="tb_InmuebleMatrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleMatrices_tb_Moneda" Association="Self.FK_tb_InmuebleMatrices_tb_Moneda">
+      <End Role="tb_Moneda" EntitySet="tb_Moneda" />
+      <End Role="tb_InmuebleMatrices" EntitySet="tb_InmuebleMatrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleMatrices_tb_Persona" Association="Self.FK_tb_InmuebleMatrices_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_InmuebleMatrices" EntitySet="tb_InmuebleMatrices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_InmuebleParteGravamen_tb_Persona" Association="Self.FK_tb_InmuebleParteGravamen_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_InmuebleParteGravamen" EntitySet="tb_InmuebleParteGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Mueble_tb_MuebleTipoBien1" Association="Self.FK_tb_Mueble_tb_MuebleTipoBien1">
+      <End Role="tb_MuebleTipoBien" EntitySet="tb_MuebleTipoBien" />
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleAeronave_tb_Mueble" Association="Self.FK_tb_MuebleAeronave_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleAeronave" EntitySet="tb_MuebleAeronave" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleBuque_tb_Mueble" Association="Self.FK_tb_MuebleBuque_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleBuque" EntitySet="tb_MuebleBuque" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleDerecho_tb_Mueble" Association="Self.FK_tb_MuebleDerecho_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleDerecho" EntitySet="tb_MuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleInfracciones_tb_Mueble" Association="Self.FK_tb_MuebleInfracciones_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleInfracciones" EntitySet="tb_MuebleInfracciones" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleLevantamientos_tb_Mueble" Association="Self.FK_tb_MuebleLevantamientos_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleLevantamientos" EntitySet="tb_MuebleLevantamientos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleMotores_tb_Mueble" Association="Self.FK_tb_MuebleMotores_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleMotores" EntitySet="tb_MuebleMotores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleVehiculo_tb_Mueble" Association="Self.FK_tb_MuebleVehiculo_tb_Mueble">
+      <End Role="tb_Mueble" EntitySet="tb_Mueble" />
+      <End Role="tb_MuebleVehiculo" EntitySet="tb_MuebleVehiculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleDerecho_tb_Persona" Association="Self.FK_tb_MuebleDerecho_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_MuebleDerecho" EntitySet="tb_MuebleDerecho" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleGarantia_tb_MuebleGravamen" Association="Self.FK_tb_MuebleGarantia_tb_MuebleGravamen">
+      <End Role="tb_MuebleGravamen" EntitySet="tb_MuebleGravamen" />
+      <End Role="tb_MuebleGarantia" EntitySet="tb_MuebleGarantia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_MuebleParteGravamen_tb_MuebleGravamen" Association="Self.FK_tb_MuebleParteGravamen_tb_MuebleGravamen">
+      <End Role="tb_MuebleGravamen" EntitySet="tb_MuebleGravamen" />
+      <End Role="tb_MuebleParteGravamen" EntitySet="tb_MuebleParteGravamen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Nicaraguenses_EstadoCivil" Association="Self.FK_tb_Nicaraguenses_EstadoCivil">
+      <End Role="tb_TipoEstadoCivil" EntitySet="tb_TipoEstadoCivil" />
+      <End Role="tb_Nicaraguenses" EntitySet="tb_Nicaraguenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Nicaraguenses_Sexo" Association="Self.FK_tb_Nicaraguenses_Sexo">
+      <End Role="tb_Sexo" EntitySet="tb_Sexo" />
+      <End Role="tb_Nicaraguenses" EntitySet="tb_Nicaraguenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Nicaraguenses_tb_Nicaraguenses" Association="Self.FK_tb_Nicaraguenses_tb_Nicaraguenses">
+      <End Role="tb_Nicaraguenses" EntitySet="tb_Nicaraguenses" />
+      <End Role="tb_Nicaraguenses1" EntitySet="tb_Nicaraguenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Nicaraguenses_TipoIdentificacion" Association="Self.FK_tb_Nicaraguenses_TipoIdentificacion">
+      <End Role="tb_PersonaTipoId" EntitySet="tb_PersonaTipoId" />
+      <End Role="tb_Nicaraguenses" EntitySet="tb_Nicaraguenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Nicaraguenses_TipoPersona" Association="Self.FK_tb_Nicaraguenses_TipoPersona">
+      <End Role="tb_PersonaTipoPersona" EntitySet="tb_PersonaTipoPersona" />
+      <End Role="tb_Nicaraguenses" EntitySet="tb_Nicaraguenses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaIdentificacion_tb_Persona" Association="Self.FK_tb_PersonaIdentificacion_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_PersonaIdentificacion" EntitySet="tb_PersonaIdentificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaPEPs_tb_Persona" Association="Self.FK_tb_PersonaPEPs_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_PersonaPEPs" EntitySet="tb_PersonaPEPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaVinculo_tb_Persona" Association="Self.FK_tb_PersonaVinculo_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_PersonaVinculo" EntitySet="tb_PersonaVinculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaVinculo_tb_PersonaVinculo" Association="Self.FK_tb_PersonaVinculo_tb_PersonaVinculo">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_PersonaVinculo" EntitySet="tb_PersonaVinculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Salario_tb_Persona" Association="Self.FK_tb_Salario_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_Salario" EntitySet="tb_Salario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_TelefonoPersona_tb_Persona" Association="Self.FK_tb_TelefonoPersona_tb_Persona">
+      <End Role="tb_Persona" EntitySet="tb_Persona" />
+      <End Role="tb_TelefonoPersona" EntitySet="tb_TelefonoPersona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaIdentificacion_tb_PersonaEstadoId" Association="Self.FK_tb_PersonaIdentificacion_tb_PersonaEstadoId">
+      <End Role="tb_PersonaEstadoId" EntitySet="tb_PersonaEstadoId" />
+      <End Role="tb_PersonaIdentificacion" EntitySet="tb_PersonaIdentificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaIdentificacion_tb_PersonaTipoId" Association="Self.FK_tb_PersonaIdentificacion_tb_PersonaTipoId">
+      <End Role="tb_PersonaTipoId" EntitySet="tb_PersonaTipoId" />
+      <End Role="tb_PersonaIdentificacion" EntitySet="tb_PersonaIdentificacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_PersonaVinculo_tb_PersonaTipoVinculo" Association="Self.FK_tb_PersonaVinculo_tb_PersonaTipoVinculo">
+      <End Role="tb_PersonaTipoVinculo" EntitySet="tb_PersonaTipoVinculo" />
+      <End Role="tb_PersonaVinculo" EntitySet="tb_PersonaVinculo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_SalarioHistorico_tb_SalarioActualizacion" Association="Self.FK_tb_SalarioHistorico_tb_SalarioActualizacion">
+      <End Role="tb_SalarioActualizacion" EntitySet="tb_SalarioActualizacion" />
+      <End Role="tb_SalarioHistorico" EntitySet="tb_SalarioHistorico" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_Telefono_tb_TelefonoTipo" Association="Self.FK_tb_Telefono_tb_TelefonoTipo">
+      <End Role="tb_TipoTelefono" EntitySet="tb_TipoTelefono" />
+      <End Role="tb_Telefono" EntitySet="tb_Telefono" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tb_TelefonoPersona_tb_Telefono" Association="Self.FK_tb_TelefonoPersona_tb_Telefono">
+      <End Role="tb_Telefono" EntitySet="tb_Telefono" />
+      <End Role="tb_TelefonoPersona" EntitySet="tb_TelefonoPersona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Table_1_Table_TipoEmpresa" Association="Self.FK_Table_1_Table_TipoEmpresa">
+      <End Role="tb_TipoPersonaJuridica" EntitySet="tb_TipoPersonaJuridica" />
+      <End Role="tb_TipoPersonaJuridica1" EntitySet="tb_TipoPersonaJuridica" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2DA68B9B-23D1-4543-9942-424B787A997D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Repository</RootNamespace>
+    <AssemblyName>Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Datavox2.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Datavox2.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Datavox2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Datavox2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Datavox2.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DerechosMueblesExp.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Filiacion.cs" />
+    <Compile Include="Models\Aircraft.cs" />
+    <Compile Include="Models\Annotations.cs" />
+    <Compile Include="Models\ApplicantInformation.cs" />
+    <Compile Include="Models\Appointments.cs" />
+    <Compile Include="Models\Assessment.cs" />
+    <Compile Include="Models\Company.cs" />
+    <Compile Include="Models\Consulta.cs" />
+    <Compile Include="Models\ContactData.cs" />
+    <Compile Include="Models\Credit.cs" />
+    <Compile Include="Models\Incomes.cs" />
+    <Compile Include="Models\Limit.cs" />
+    <Compile Include="Models\Operations.cs" />
+    <Compile Include="Models\PersonalData.cs" />
+    <Compile Include="Models\PersonalProperty.cs" />
+    <Compile Include="Models\Report.cs" />
+    <Compile Include="Models\Ships.cs" />
+    <Compile Include="Models\States.cs" />
+    <Compile Include="Models\tb_Canal.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_CreditoTipoGarantia.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_CreditoTipoObligacion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_DivisionTerritorial.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_EmpresaEstado.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Facturacion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_HuellaBusqueda.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_HuellaConsulta.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_HuellaMotivoConsulta.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_HuellaTipoConsulta.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleTipoPoderes.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Nicaraguenses.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaTipoVinculo.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Producto.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Salario.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_TipoEstadoCivil.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_TipoPersonaJuridica.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_TipoReport.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Usuario.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vehicles.cs" />
+    <Compile Include="Models\Vinculo.cs" />
+    <Compile Include="Mycontext.cs" />
+    <Compile Include="Models\tb_Cliente.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Credito.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_CreditoObligacion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_CreditoPeriodoPago.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_CreditoSaldo.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_CreditoTipoCalificacion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_CreditoTipoCredito.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_CreditoTipoEstado.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Direccion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Ejecutivo.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Empresa.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_EmpresaTipoCapital.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_EmpresaTipoClaseAccion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_EmpresaTipoParte.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_EmpresaTipoRepresentacion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_EstadoFuente.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Fuente.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Gentilicio.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Inmueble.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleAnotaciones.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleDerecho.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleGarantia.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleGravamen.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleLinderos.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleMatrices.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleParteGravamen.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleTipoDerecho.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleTipoOperacion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_InmuebleTipoProporcion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Juicio.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Moneda.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Mueble.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleAeronave.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleBuque.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleDerecho.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleGarantia.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleGenCodigos.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleGenTablas.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleGravamen.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleInfracciones.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleLevantamientos.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleMotores.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleParteGravamen.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleTipoBien.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleTipoClaseBien.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleTipoCodigoBien.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_MuebleVehiculo.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Persona.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaEstadoCivilHistorico.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaEstadoId.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaIdentificacion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaPEPs.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaTipoId.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaTipoNacionalidad.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaTipoPersona.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_PersonaVinculo.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_SalarioActualizacion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_SalarioHistorico.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_SalarioPatrono.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Sector.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Sexo.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_Telefono.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_TelefonoPersona.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_TipoDireccion.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tb_TipoTelefono.cs">
+      <DependentUpon>Datavox2.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorys\IRepositoryConsulta.cs" />
+    <Compile Include="Repositorys\IRepositoryIncome.cs" />
+    <Compile Include="Repositorys\IRepositoryJuicios.cs" />
+    <Compile Include="Repositorys\IRepositoryOperations.cs" />
+    <Compile Include="Repositorys\IRepositoryPersona.cs" />
+    <Compile Include="Repositorys\IRepositoryReport.cs" />
+    <Compile Include="Repositorys\IRepositoryStates.cs" />
+    <Compile Include="Models\RealEstate.cs" />
+    <Compile Include="Repositorys\RepositoryConsulta.cs" />
+    <Compile Include="Repositorys\RepositoryIncomes.cs" />
+    <Compile Include="Repositorys\RepositoryJuicios.cs" />
+    <Compile Include="Repositorys\RepositoryOperations.cs" />
+    <Compile Include="Repositorys\RepositoryPersona.cs" />
+    <Compile Include="Repositorys\RepositoryReport.cs" />
+    <Compile Include="Repositorys\RepositoryStates.cs" />
+    <Compile Include="Enums\TipoVinculo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Models\Datavox2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Datavox2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\Datavox2.edmx.diagram">
+      <DependentUpon>Datavox2.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Datavox2.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Datavox2.edmx</DependentUpon>
+      <LastGenOutput>Datavox2.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Datavox2.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Datavox2.edmx</DependentUpon>
+      <LastGenOutput>Datavox2.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
